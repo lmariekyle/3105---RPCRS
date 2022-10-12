@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CustomerClassController;
+use App\Http\Controllers\CustEnClassController;
+use App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +30,18 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth','role:admin'])->name('admin.')->prefix('admin')->group(function(){
     Route::get('/',[IndexController::class, 'index'])->name('index');
-    Route::resource('/roles', RoleController::class);
-    Route::resource('/permissions', PermissionController::class);
+    Route::resource('/roles', 'Admin\RoleController');
+    Route::post('/roles/{role}/permissions',[RoleController::class, 'givePermission'])->name('roles.permissions');
+    Route::delete('/roles/{role}/permissions/{permission}',[RoleController::class, 'revokePermission'])->name('roles.permissions.revoke');
+    Route::resource('/permissions', 'Admin\PermissionController');
 });
 
+Route::resource('members', 'CustomerController');
+Route::resource('members.class', 'CustomerClassController')->shallow();
+Route::resource('members.enclass', 'CustEnClassController')->shallow();
 
+Route::resource('employees','EmployeeController');
+Route::get('/employees/{employee}', [EmployeeController::class, 'viewEmployee'])->name('employees.viewEmployee');
+Route::post('/employees/{employee}/roles', [EmployeeController::class, 'assignRole'])->name('employees.roles');
+Route::delete('/employees/{employee}/roles/{role}', [EmployeeController::class, 'removeRole'])->name('employees.roles.remove');
 require __DIR__.'/auth.php';
