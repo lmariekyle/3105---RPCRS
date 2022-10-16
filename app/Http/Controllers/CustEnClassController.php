@@ -60,19 +60,24 @@ class CustEnClassController extends Controller
      */
     public function store(Request $request,$id)    
     {
-        $enrolled = CustomerClass::where(['customer_id', '=', $id],['class_id', '=', $request->input('class')]);
         
+        $enrolled = CustomerClass::where(['customer_id' => $id, 'class_id' => $request->input('class')])->first();
+        
+        if($enrolled == null){
+            $cc = new CustomerClass;
+            $cc->class_id = $request->input('class');
+            $cc->customer_id = $request->input('customer');
+            $cc->save();
+            $class = GymClass::where('id','=',$request->input('class'))->first();
+            $class->cur_number=$class->cur_number+1;
+            $class->save();
 
-        $cc = new CustomerClass;
-        $cc->class_id = $request->input('class');
-        $cc->customer_id = $request->input('customer');
-        $cc->save();
-        $class = GymClass::where('id','=',$request->input('class'))->first();
-        $class->cur_number=$class->cur_number+1;
-        $class->save();
-
-
-        return redirect(url('/members'.'/'.$id.'/class/create'))->with('success', 'Class Enrolled');
+            
+            return redirect(url('/members'.'/'.$id.'/class/create'))->with('success', 'Class Enrolled');
+        }else{
+            
+            return redirect(url('/members'.'/'.$id.'/class/create'))->with('error', 'Duplcated Class');
+        }
     }
 
     /**
