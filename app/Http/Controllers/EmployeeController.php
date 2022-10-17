@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
@@ -20,7 +21,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::paginate(5);
+        $employees = User::paginate(5);
        return view('employees.index', compact('employees'));	
     }
 
@@ -29,7 +30,7 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Employee $employee)
+    public function create(User $employee)
     {
         return view('employees.create', compact('employee'));	
     }
@@ -45,7 +46,7 @@ class EmployeeController extends Controller
 
         $this->validate($request, [
 			'status' => 'required',
-			'type' => 'required',
+			'role' => 'required',
 			'firstname' => 'required',
 			'middlename' => 'required',
 			'lastname' =>  'required',
@@ -55,21 +56,20 @@ class EmployeeController extends Controller
             'password' =>'required'
 		]);
 
-        $employee= Employee::create([
+        $employee= User::create([
 			'status' => $request->status,
-			'type' => $request->type,
+			'role' => $request->role,
 			'firstname' => $request->firstname,
 			'middlename' => $request->middlename,
 			'lastname' =>  $request->lastname,
             'email' => $request->email,
             'date_of_birth' => $request->date_of_birth,
             'phone_number' => $request->phone_number,
-            'password' => $request->password
+            'password' => Hash::make($request->password)
 		]);
-
+        
         event(new Registered($employee));
-
-        Auth::login($employee);
+        // Auth::login($employee);
 
     	return back()->with('success', 'Employee added successfully');
     }
@@ -82,7 +82,7 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        $employee = Employee::find($id);
+        $employee = User::find($id);
         return view('employees.show')->with('employee',$employee);
     }
 
@@ -94,7 +94,7 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        $employee = Employee::find($id);
+        $employee = User::find($id);
         return view('employees.edit')->with('employee',$employee);
     }
 
@@ -105,11 +105,11 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(Request $request, User $employee)
     {
         $this->validate($request, [
 			'status' => 'required',
-			'type' => 'required',
+			'role' => 'required',
 			'firstname' => 'required',
 			'middlename' => 'required',
 			'lastname' =>  'required',
@@ -132,21 +132,21 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        $employee = Employee::find($id);
+        $employee = User::find($id);
         $employee->delete();
 
         return back()->with('success', 'Employee Deleted successfully');
     }
 
-    public function viewEmployee(Employee $employee)
+    public function viewEmployee(User $employee)
     {
-        $employee=Employee::all();
+        $employee=User::all();
         $roles = Role::all();
         $permissions = Permission::all();
         return view('employees.role',compact('employee','roles','permissions'));
     }
 
-    public function assignRole(Request $request,Employee $employee){
+    public function assignRole(Request $request,User $employee){
 
         if($employee->hasRole($request->role)){
             return back()->with('message','Role Exists');
@@ -155,7 +155,7 @@ class EmployeeController extends Controller
         return back()->with('message','Role Added');
     }
 
-    public function removeRole(Employee $employee, Role $role){
+    public function removeRole(User $employee, Role $role){
 
         if($employee->hasRole($role)){
             $employee->removeRole($role);

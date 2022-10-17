@@ -21,10 +21,10 @@ class CreateEmployeesTable extends Migration
             $table->string('type')->default('STAFF');
 
             $table->string('firstname');
-            $table->string('middlename');
-            $table->string('lastname');
+            $table->string('middlename')->nullable();;
+            $table->string('lastname')->nullable();;
 
-            $table->date('date_of_birth');
+            $table->date('date_of_birth')->nullable();;
 
             $table->string('phone_number')->nullable();
             $table->string('email')->unique();
