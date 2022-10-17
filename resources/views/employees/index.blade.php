@@ -3,8 +3,8 @@
 
 @section('content')
 @if($employees->count())
-<h1 >VIEEEEW EMPLOYEEEES</h1> 
-    <a href="{{ route('employees.create') }}" class="text-sm">ADD EMPLPOYEE</a>
+<h1 >VIEEEEW EMPLOYEEEES</h1>
+<a href="{{ route('employees.create') }}" class="text-sm">ADD EMPLPOYEE</a>
         <table>
             <thead>
                 <tr>
@@ -60,7 +60,7 @@
         @else
         <div >
             <h1 >NO EMPLOYEEEEES</h1> 
-            <a href="{{ route('employees.create') }}" class="text-sm">ADD EMPLPOYEE</a>
+            <a href="{{ route('register') }}" class="text-sm">ADD EMPLPOYEE</a>
         </div>
         @endif
 @endsection

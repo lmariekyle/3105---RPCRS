@@ -32,8 +32,8 @@
         {{Form::select('status', ['Active' => 'Active', 'Inactive' => 'Inactive'], 'Active');}}
       </div>
       <div class="form-group">
-        {{Form::label('type','Type')}}
-        {{Form::select('type', ['Staff' => 'Staff', 'Employee' => 'Employee', 'Instructor' => 'Instructor']);}}
+        {{Form::label('role','Role')}}
+        {{Form::select('role', ['0' => '0', '1' => '1', '2' => '2']);}}
       </div>
       <div class="form-group">
         {{Form::label('firstname','First Name')}}
