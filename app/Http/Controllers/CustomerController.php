@@ -174,6 +174,7 @@ class CustomerController extends Controller
         ]);
 
         $customer = Customer::find($id);
+        $customer->status = $request->input('status');
         $customer->firstname = $request->input('firstname');
         $customer->middlename = $request->input('middlename');
         $customer->lastname = $request->input('lastname');
@@ -225,10 +226,10 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $customer = Customer::find($id);
-        $customships = CustomerMembership::where ('customer_id', '=', $id)->first();
+        $customer = Customer::find($request->customer_delete_id);
+        $customships = CustomerMembership::where ('customer_id', '=', $request->customer_delete_id)->first();
         $mem = Membership::where ('id','=',$customships->membership_id)->first();
         $mem->cur_number=$mem->cur_number-1;
         $mem->save();
