@@ -52,77 +52,75 @@
         </div>
 
     <hr>
-    <span class="main-container d-flex">
-      <div class="sidebar m-2" id="side_nav">
-          <div class="header-box px-2 pt-3 pb-4">
-              <h1 class="fs-4 d-flex justify-content-center">
-                  <!-- <span class="bg-white text-dark rounded shadow px-2 me-2">CL</span> -->
-                  <span class="GIM">GIM</span>
-              </h1>
-              <!-- <button class="btn d-md-none d-block close-btn px-1 py-0 text-white"><i class="fa-solid fa-bars-staggered"></i></button> -->
-              <ul class="list-unstyled px-2">
-              <li class="d-flex justify-content-center" >
-                  <a href="/dashboard/home" class="text-decoration-none py-2 d-block">
-                      <div class="d-flex justify-content-center">
-                          <i class="fa-solid fa-house"></i>
-                      </div>
-                      <div class="GIMText">
-                          Dashboard
-                      </div>
-                  </a>
-              </li>
-              <div class="space"></div>
-              <li class="active d-flex justify-content-center">
-                  <a href="/members" class="text-decoration-none py-2 d-block">
-                      <div class="d-flex justify-content-center">
-                          <i class="fa-solid fa-dumbbell"></i>
-                      </div>
-                      <div class="GIMText">
-                        Gym Members
-                      </div>
-                  </a>
-              </li>
-              <div class="space"></div>
-              <li class="d-flex justify-content-center">
-                  <a href="/employees" class="text-decoration-none py-2 d-block">
-                      <div class="d-flex justify-content-center">
-                          <i class="fa-solid fa-user" ></i>
-                      </div>
-                      <div class="GIMText">
-                          Employees
-                      </div>
-                  </a>
-              </li>
-              <div class="space"></div>
-              <li class="d-flex justify-content-center">
-                  <a href="/classes" class="text-decoration-none py-2 d-block">
-                      <div class="d-flex justify-content-center">
-                        <i class="fa-solid fa-chalkboard"></i>
-                      </div>
-                      <div class="GIMText">
-                        Classes
-                      </div>
-                  </a>
-              </li>
-              <div class="space"></div>
-              <li class="d-flex justify-content-center">
-                <a href="/membership" class="text-decoration-none py-2 d-block">
-                  <div class="d-flex justify-content-center">
-                    <i class="fa-solid fa-users"></i>
-                  </div>
-                  <div class="GIMText">
-                    Membership
-                  </div>
-                </a>
-              </li>
-              </ul>
-          </div>
-      </div>
-  
-      <div class="content">
-      
-      </div>
-  </span>
+    <div class="content" id="side_nav">
+        <span class="main-container d-flex">
+        <div class="sidebar m-2">
+            <div class="header-box px-2 pt-3 pb-4">
+                <h1 class="fs-4 d-flex justify-content-center">
+                    <!-- <span class="bg-white text-dark rounded shadow px-2 me-2">CL</span> -->
+                    <span class="GIM">GIM</span>
+                </h1>
+                <!-- <button class="btn d-md-none d-block close-btn px-1 py-0 text-white"><i class="fa-solid fa-bars-staggered"></i></button> -->
+                <ul class="list-unstyled px-2">
+                <li class="d-flex justify-content-center" >
+                    <a href="/dashboard" class="text-decoration-none py-2 d-block">
+                        <div class="d-flex justify-content-center">
+                            <i class="fa-solid fa-house"></i>
+                        </div>
+                        <div class="GIMText">
+                            Dashboard
+                        </div>
+                    </a>
+                </li>
+                <div class="space"></div>
+                <li class="active d-flex justify-content-center">
+                    <a href="/members" class="text-decoration-none py-2 d-block">
+                        <div class="d-flex justify-content-center">
+                            <i class="fa-solid fa-dumbbell"></i>
+                        </div>
+                        <div class="GIMText">
+                            Gym Members
+                        </div>
+                    </a>
+                </li>
+                <div class="space"></div>
+                <li class="d-flex justify-content-center">
+                    <a href="/employees" class="text-decoration-none py-2 d-block">
+                        <div class="d-flex justify-content-center">
+                            <i class="fa-solid fa-user" ></i>
+                        </div>
+                        <div class="GIMText">
+                            Employees
+                        </div>
+                    </a>
+                </li>
+                <div class="space"></div>
+                <li class="d-flex justify-content-center">
+                    <a href="/classes" class="text-decoration-none py-2 d-block">
+                        <div class="d-flex justify-content-center">
+                            <i class="fa-solid fa-chalkboard"></i>
+                        </div>
+                        <div class="GIMText">
+                            Classes
+                        </div>
+                    </a>
+                </li>
+                <div class="space"></div>
+                <li class="d-flex justify-content-center">
+                    <a href="/membership" class="text-decoration-none py-2 d-block">
+                    <div class="d-flex justify-content-center">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="GIMText">
+                        Membership
+                    </div>
+                    </a>
+                </li>
+                </ul>
+            </div>
+        </div>
+        </span>
+    </div>
   
 
     <hr>

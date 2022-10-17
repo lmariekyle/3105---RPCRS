@@ -1,18 +1,24 @@
+
 #side_nav{
     /* min-width: 150px;
     max-width: 150px; */
-    width: 164px;
-    height: 996px;
+    /* width: 164px;
+    height: 996px; */
     left: 12px;
     top: 11px;
     border: 5px solid #DDA15E;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.header-box{
+    margin-top: 87px;
+    margin-bottom: 150px;
 }
 
 .content{
     min-height: 100vh;
     width:100%
 }
- 
+
 hr.h-color{
     background: #eee;
 }
@@ -27,6 +33,12 @@ i{
     display:none;
     
 }
+
+li:hover{
+    -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+    filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+}
+
 .GIMText{
     margin-top: 15px;
     color:black;
@@ -61,9 +73,10 @@ i{
 } */
 
 .GIM{
-    margin-top:75px;
+    /* margin-top:87px; */
+    /*margin-right: 10px;*/
     margin-bottom: 22px;
-    margin-right: 10px;
+
     font-family: 'Inter';
     font-style: italic;
     font-weight: 400;
