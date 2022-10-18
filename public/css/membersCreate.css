@@ -30,6 +30,27 @@
     width: 332px;
 }
 
+.GIM-membersCreate-container-button button{
+    width: 179px;
+    height: 35px;
+    left: 0px;
+    top: 0px;
+
+    background: #343A40;
+    border:1px;
+    border-radius: 10px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    text-align: center;
+
+    color: #FFFFFF;
+
+    margin: 55px 0px 40px 280px;
+}
+
 .GIM-membersCreate-container-button input{
     width: 179px;
     height: 35px;
@@ -107,4 +128,10 @@
 .GIM-membersEdit-statusRadio input{
     margin-left: 0.7%;
     margin-right: 2.5%;
+}
+
+/*Will also use the same classes for Employee pages*/
+
+.GIM-employeesCreate-dropListSpace{
+    margin: 5px 0px;
 }
