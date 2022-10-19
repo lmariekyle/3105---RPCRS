@@ -1,8 +1,22 @@
 @extends('layout.app')
 
+
+@section('gymMembersActive-css')
+
+    <style>
+        .gymMembersActive{
+            background: white;
+            border-radius:8px;
+        }
+    </style>
+
+@endsection
+
 @section('show-css')
 <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('/css/show.css') }}"/>
+<link rel="stylesheet" href="{{ asset('/css/gymMembersActive.css') }}"/>
+
 <style>
 tr, th, td,{
     border:none;
@@ -43,7 +57,7 @@ table.dataTable tbody tr {
                 <span class="name px-3">Name</span>
             </div>
             <div class="px-3">
-                <div class="pb-3">
+                <div class="pb-3 pt-3">
                     <div class="col">
                         <h1 class="customer-name">{{$customer->firstname}} {{$customer->middlename[0]}}. {{$customer->lastname}}</h1>
                     </div>

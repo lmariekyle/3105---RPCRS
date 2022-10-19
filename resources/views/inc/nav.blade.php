@@ -1,12 +1,14 @@
 
+            
+            <!-- max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -->
             <div class="sidebar m-2 h-100" id="side_nav">
                 <div class="header-box px-2 pt-3">
                     <h1 class="fs-4 d-flex justify-content-center">
                         <span class="GIM">GIM</span>
                     </h1>
                     <ul class="list-unstyled px-2">
-                    <li class="d-flex justify-content-center" >
-                        <a href="/dashboard/home" class="text-decoration-none py-2 d-block">
+                    <li class="dashboardActive d-flex justify-content-center" >
+                        <a href="/dashboard" class="text-decoration-none py-2 d-block">
                             <div class="d-flex justify-content-center">
                                 <i class="fa-solid fa-house"></i>
                             </div>
@@ -16,7 +18,7 @@
                         </a>
                     </li>
                     <div class="space"></div>
-                    <li class="active d-flex justify-content-center">
+                    <li class="gymMembersActive d-flex justify-content-center">
                         <a href="/members" class="text-decoration-none py-2 d-block">
                             <div class="d-flex justify-content-center">
                                 <i class="fa-solid fa-dumbbell"></i>
@@ -27,7 +29,7 @@
                         </a>
                     </li>
                     <div class="space"></div>
-                    <li class="d-flex justify-content-center">
+                    <li class="employeesActive d-flex justify-content-center">
                         <a href="/employees" class="text-decoration-none py-2 d-block">
                             <div class="d-flex justify-content-center">
                                 <i class="fa-solid fa-user" ></i>
@@ -66,8 +68,8 @@
                 </div>
             </div>
 <script>
-    $(".sidebar ul li").on('click' , function(){
-        $(".sidebar ul li.active").removeClass('active');
-        $(this).addClass('active');
-    });
+    // $(".sidebar ul li").on('click' , function(){
+    //     $(".sidebar ul li.active").removeClass('active');
+    //     $(this).addClass('active');
+    // });
 </script>

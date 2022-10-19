@@ -41,6 +41,8 @@ li:hover{
 
 .GIMText{
     margin-top: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
     color:black;
     box-sizing: border-box;
     text-transform: uppercase;
@@ -56,14 +58,14 @@ li:hover{
     margin:16px;
 }
 
-.sidebar li.active{
+/* .sidebar li.active{
     background: white;
     border-radius:8px;
 }
 
 .sidebar li.active a, .sidebar li.active a:hover{
     color: black;
-}
+} */
 
 .sidebar li a{
     color: #fff;

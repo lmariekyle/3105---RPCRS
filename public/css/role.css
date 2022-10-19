@@ -1,0 +1,14 @@
+.delete-role{
+    border:none;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    visibility: none;
+    width:0px;
+    height:0px;    
+    margin-left:10px;
+    margin-right:10px;
+}
+
+#role{
+    /* height:38px; */
+}
