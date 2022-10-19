@@ -14,7 +14,7 @@
 
 
         <!-- sidebar-css-js -->
-        <link rel="stylesheet" href="{{ asset('/css/sidebar.css') }}"/>
+        <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet"/>
         <link href="{{ asset('css/membersCreate.css') }}" rel="stylesheet">
 
         <!-- fonts -->
@@ -51,9 +51,9 @@
 
     <body>
         <div class="main-container d-flex">
-        @include('layouts.navigation')
             <div class="container">
-                @yield('content')
+                @include('layouts.navigation')
+            @yield('content')
             </div>
         </div>
         

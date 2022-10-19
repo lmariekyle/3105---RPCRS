@@ -1,47 +1,51 @@
-
-#side_nav{
-    /* min-width: 150px;
-    max-width: 150px; */
-    /* width: 164px;
-    height: 996px; */
+#side_nav {
+    /* min-width: 180px;
+    max-width: 180px; */
+    width: 180px;
+    height: 1150px;
     left: 12px;
     top: 11px;
     border: 5px solid #DDA15E;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
-.header-box{
+
+.header-box {
     margin-top: 87px;
     margin-bottom: 150px;
 }
 
-.content{
+.content {
     min-height: 100vh;
-    width:100%
+    width: 100%
 }
 
-hr.h-color{
+.content-dropdown {
+    text-decoration: none;
+    color: black;
+}
+
+hr.h-color {
     background: #eee;
 }
 
-i{
+i {
     /* min-width: 20px;
     max-width: 20px; */
     font-size: 2.0em;
     /* margin-top: 38px; */
-    margin-bottom:20px;
+    margin-bottom: 20px;
     color: black;
-    display:none;
-    
+    display: none;
 }
 
-li:hover{
+li:hover {
     -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
     filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
 }
 
-.GIMText{
+.GIMText {
     margin-top: 15px;
-    color:black;
+    color: black;
     box-sizing: border-box;
     text-transform: uppercase;
     font-family: 'Roboto';
@@ -50,41 +54,65 @@ li:hover{
     font-size: 20px;
     line-height: 23px;
     text-align: center;
+    text-decoration: none;
 }
 
-.space{
-    margin:16px;
+.space {
+    margin: 16px;
 }
 
-.sidebar li.active{
+.sidebar li.active {
     background: white;
-    border-radius:8px;
+    border-radius: 8px;
 }
 
-.sidebar li.active a, .sidebar li.active a:hover{
+.sidebar li.active a,
+.sidebar li.active a:hover {
     color: black;
 }
 
-.sidebar li a{
+.sidebar li a {
     color: #fff;
 }
+
+
 /* .sidebar li:not(:active) {
     visibility: collapse;
 } */
 
-.GIM{
-    /* margin-top:87px; */
-    /*margin-right: 10px;*/
+.GIM {
+    margin-right: 10px;
     margin-bottom: 22px;
-
     font-family: 'Inter';
     font-style: italic;
     font-weight: 400;
-    font-size: 48px;
+    font-size: 75px;
+    text-align: center;
     line-height: 58px;
-
     color: #DDA15E;
     font-variation-settings: 'slnt' -5;
-
     text-shadow: 1px 0 0 black, 0 -1px 0 black, 0 1px 0 black, -1px 0 0 black;
+}
+
+.logout-dropdown {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 2px 20px 20px 15px;
+    max-width: 250px;
+    height: 35px;
+    background: white;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 22px;
+    line-height: 27px;
+    text-align: center;
+    color: black;
+}
+
+.logout-icon {
+    font-size: 12px;
+    margin-left: 25px;
+    margin-top: 5px;
 }

@@ -1,5 +1,5 @@
 @extends('layout.app')
- 
+
 @section('index-css')
         <!-- css needed for tables -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
