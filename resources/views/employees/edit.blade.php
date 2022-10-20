@@ -1,5 +1,16 @@
 @extends('layout.app')
 
+@section('employeesActive-css')
+
+    <style>
+        .employeesActive{
+            background: white;
+            border-radius:8px;
+        }
+    </style>
+
+@endsection
+
 @section('content')
 <div>
  
