@@ -61,10 +61,60 @@
                         </div>
                       </a>
                     </li>
+                    
                     </ul>
+                    <div class="space"></div>
+                      <li class="d-flex justify-content-center">
+                        <a href="{{route('admin.roles.index')}}" :active="request()->routeIs('admin.roles.index')" class="text-decoration-none py-2 d-block">
+                          <div class="d-flex justify-content-center">
+                            <!-- <i class="fa-solid fa-users"></i> -->
+                          </div>
+                          <div class="GIMText">
+                            Roles
+                          </div>
+                        </a>
+                      </li>
+
+                      <div class="space"></div>
+                      <li class="d-flex justify-content-center">
+                        <a href="{{route('admin.permissions.index')}}" :active="request()->routeIs('admin.roles.index')" class="text-decoration-none py-2 d-block">
+                          <div class="d-flex justify-content-center">
+                            <i class="fa-solid fa-users"></i>
+                          </div>
+                          <div class="GIMText">
+                            Permissions
+                          </div>
+                        </a>
+                      </li>
+
+                      </ul>
 
                     <hr class="h-color mx-2"></hr>
+                            <div class="logout-container">
+                              <x-dropdown>
+                                  <x-slot name="trigger">
+                                      <button class="logout-dropdown">
+                                          <div>{{ Auth::user()->firstname }}</div>
+                                          <div class="logout-icon">
+                                          <i class="fa-solid fa-arrow-down"></i>
+                                          </div>
+                                      </button>
+                                  </x-slot>
 
+                                  <x-slot name="content">
+                                      <!-- Authentication -->
+                                      <form method="POST" action="{{ route('logout') }}">
+                                          @csrf
+
+                                          <x-dropdown-link :href="route('logout')"
+                                                  onclick="event.preventDefault();
+                                                              this.closest('form').submit();" class="content-dropdown">
+                                              {{ __('Log Out') }}
+                                          </x-dropdown-link>
+                                      </form>
+                                  </x-slot>
+                              </x-dropdown>
+                            </div>
                 </div>
             </div>
 <script>
