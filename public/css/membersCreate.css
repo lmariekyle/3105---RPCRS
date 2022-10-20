@@ -97,6 +97,50 @@
     color:red;
 }
 
+.head-title{
+    font-family: 'Inter';
+    /* font-style: italic; */
+    font-style: oblique;
+    font-weight: lighter;
+    font-size: 36px;
+    line-height: 44px;
+
+    color: #DDA15E;
+    /* font-variation-settings: 'slnt' -5; */
+
+    text-shadow: 1px 0 0 black, 0 -1px 0 black, 0 1px 0 black, -1px 0 0 black;
+}
+
+
+.go-back{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 100;
+    margin-top: 10px;
+    /* identical to box height */
+
+    color: #FFFFFF;
+}
+
+.go-back-bg{
+    width: 160px;
+    height: 41px;
+
+    background: #DDAA5E;
+    
+    border-radius: 10px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    text-align: center;
+
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+
+.go-back-bg:hover{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
 /*Also used by the Edit page since they are similar*/
 
 /*-----------For some parts in edit page-----------*/

@@ -1,9 +1,22 @@
 @extends('layout.app')
 
 @section('content')
+
 <div class="GIM-membersCreate">
-    <h1 class="GIM-membersCreate-header">Add New Member</h1>
+
+    <div class="my-custom-row d-flex flex-row justify-content-between " >
+        <div class="col-4 align-self-end">
+            <h1 class="head-title"> Add New Member </h1>
+        </div>
+        <div class="col-4 align-self-end d-flex justify-content-end" >
+                <a href="/members" class="go-back-bg ">
+                    <div class="go-back">Go Back</div>
+                </a>
+        </div>
+
+    </div>
     
+    <br>
 
     {!! Form::open(['action' => 'CustomerController@store','method'=>'POST']) !!}
     
@@ -37,7 +50,8 @@
             {{Form::label('date_of_birth','Date of Birth')}}
             <br>
             {{Form::date('date_of_birth', \Carbon\Carbon::now());}}
-            <div class="errCreate">{{$errors->first('date_of_birth')}}</div>
+            <div class="errCreate"><span id = "message"> </span> </div>
+
         </div>
         </div>
 
@@ -143,9 +157,7 @@
             {!! Form::close() !!}
         </div>
 
-    </div>
-    <div class="GIM-membersCreate-goBackLink">
-    <a href="/members"><div>Go Back</div></a>
+        </div>
     </div>
 </div>
 @endsection
@@ -162,5 +174,36 @@
 
             });
         </script>
+
+    <script>  
+        function ageCalculator() {  
+            var userinput = document.getElementById("date_of_birth").value;  
+            var dob = new Date(userinput);  
+             
+            
+            //calculate month difference from current date in time  
+            var month_diff = Date.now() - dob.getTime();  
+            
+            //convert the calculated difference in date format  
+            var age_dt = new Date(month_diff);   
+            
+            //extract year from date      
+            var year = age_dt.getUTCFullYear();  
+            var thisYear = Date.getFullYear();
+            
+            //now calculate the age of the user  
+            var age = Math.abs(year - thisYear);  
+            
+            //display the calculated age  
+            if(age<16){
+                document.getElementById("message").innerHTML =    
+                    "You must be atleast 16 years old";  
+                return true;
+            }else{
+                return false;
+            }
+            
+        }  
+    </script> 
 
 @endsection
