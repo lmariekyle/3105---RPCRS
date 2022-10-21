@@ -72,7 +72,7 @@
                                 <form method="POST" action="{{route('admin.roles.permissions.revoke', [$role->id, $role->permission->id ])}}" onsubmit="return confirm('Are you sure?');">
                                         @csrf
                                         @method('DELETE')
-                                        <label for="roletype">Current Permission:  </label>
+                                        <label for="roletype">Current Permission :  </label>
                                         <button type="submit" class="roleTypePerm">{{$role->permission->name}}</button>
                                         </form>
                                 @endforeach
@@ -83,7 +83,7 @@
                         <form method="POST" action="{{ route('admin.roles.permissions', $role->id)}}">
                             @csrf
                                 <div>
-                                <label for="permission" class="role-name">Permission:</label>
+                                <label for="permission" class="role-name">Permission :</label>
                                 <select id="permission" name="permission" autocomplete="permission-name" class="role-input">
                                     @foreach($permissions as $permission)
                                     <option value="{{$permission->name}}">{{$permission->name}}</option>
