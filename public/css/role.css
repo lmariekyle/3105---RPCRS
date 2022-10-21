@@ -1,14 +1,87 @@
-.delete-role{
-    border:none;
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    visibility: none;
-    width:0px;
-    height:0px;    
-    margin-left:10px;
-    margin-right:10px;
+.roleTableHeader{
+    border-bottom: 1px solid #111;
 }
 
-#role{
-    /* height:38px; */
+.roleButtonRow{
+    width: 15%;
+}
+
+.GIM-roleContainer{
+    border: 3px solid #DDA15E;
+    padding: 20px 35px 0px;
+}
+
+.GIM-roleContainer label{
+    font-size: 115%;
+}
+
+.GIM-roleContainer-input input{
+    background: #D9D9D9;
+    border: 0px;
+
+    width: 200px;
+
+    margin-top: 5px;
+}
+
+.GIM-roleContainer-button button{
+    width: 179px;
+    height: 35px;
+    left: 0px;
+    top: 0px;
+
+    background: #343A40;
+    border:1px;
+    border-radius: 10px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    text-align: center;
+
+    color: #FFFFFF;
+
+    margin: 10px 0px 3px 165px;
+}
+
+.roleTypePerm{
+    width: 120px;
+    height: 35px;
+    left: 0px;
+    top: 0px;
+
+    background: #DDA15E;
+    border:1px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+
+    color: black;
+
+    margin-left: 5px;
+}
+
+.permissionButton button{
+    width: 179px;
+    height: 35px;
+    left: 0px;
+    top: 0px;
+
+    background: #343A40;
+    border:1px;
+    border-radius: 10px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+
+    color: #FFFFFF;
+
+    margin: 10px 0px 3px 165px;
 }
