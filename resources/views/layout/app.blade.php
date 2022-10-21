@@ -55,7 +55,6 @@
     <body>
         
         <div class="main-container d-flex">
-       
         @include('layouts.navigation')
             <div class="container">
             

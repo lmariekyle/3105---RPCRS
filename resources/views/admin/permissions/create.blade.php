@@ -1,4 +1,15 @@
+@extends('layouts.app')
+
+@section('rolesActive-css')
+    <style>
+        .rolesActive{
+            background: white;
+            border-radius:8px;
+        }
+    </style>
+@endsection
 <x-admin-layout>
+
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -30,3 +41,4 @@
     </form>
 
 </x-admin-layout>
+

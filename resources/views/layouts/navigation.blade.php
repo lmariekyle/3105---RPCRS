@@ -43,7 +43,7 @@
                         </a>
                     </li>
                     <div class="space"></div>
-                    <li class="d-flex justify-content-center">
+                    <li class="classesActive d-flex justify-content-center">
                         <a href="/classes" class="text-decoration-none py-2 d-block">
                             <div class="d-flex justify-content-center">
                               <i class="fa-solid fa-chalkboard"></i>
@@ -54,7 +54,7 @@
                         </a>
                     </li>
                     <div class="space"></div>
-                    <li class="d-flex justify-content-center">
+                    <li class="membershipActive d-flex justify-content-center">
                       <a href="/membership" class="text-decoration-none py-2 d-block">
                         <div class="d-flex justify-content-center">
                           <i class="fa-solid fa-users"></i>
@@ -67,10 +67,10 @@
                     
                     </ul>
                     <div class="space"></div>
-                      <li class="d-flex justify-content-center">
+                      <li class="rolesActive d-flex justify-content-center">
                         <a href="{{route('admin.roles.index')}}" :active="request()->routeIs('admin.roles.index')" class="text-decoration-none py-2 d-block">
                           <div class="d-flex justify-content-center">
-                            <!-- <i class="fa-solid fa-users"></i> -->
+                            <i class="fa-solid fa-users"></i>
                           </div>
                           <div class="GIMText">
                             Roles
@@ -79,7 +79,7 @@
                       </li>
 
                       <div class="space"></div>
-                      <li class="d-flex justify-content-center">
+                      <li class="permissionsActive d-flex justify-content-center">
                         <a href="{{route('admin.permissions.index')}}" :active="request()->routeIs('admin.roles.index')" class="text-decoration-none py-2 d-block">
                           <div class="d-flex justify-content-center">
                             <i class="fa-solid fa-users"></i>

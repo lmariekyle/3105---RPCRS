@@ -1,6 +1,5 @@
+/* 
 #side_nav {
-    /* min-width: 150px;
-    max-width: 150px; */
     width: 164px;
     height: 996px;
     left: 12px;
@@ -19,10 +18,7 @@ hr.h-color {
 }
 
 i {
-    /* min-width: 20px;
-    max-width: 20px; */
     font-size: 2.0em;
-    /* margin-top: 38px; */
     margin-bottom: 20px;
     color: black;
     display: none;
@@ -58,11 +54,11 @@ i {
 .sidebar li a {
     color: #fff;
 }
+*/
 
-
-/* .sidebar li:not(:active) {
+.sidebar li:not(:active) {
     visibility: collapse;
-} */
+} 
 
 .GIM {
     margin-top: 75px;
@@ -76,4 +72,4 @@ i {
     color: #DDA15E;
     font-variation-settings: 'slnt' -5;
     text-shadow: 1px 0 0 black, 0 -1px 0 black, 0 1px 0 black, -1px 0 0 black;
-}
+}  */
