@@ -54,11 +54,8 @@
 </x-admin-layout>
 
 <style>
-    
         .permissionsActive{
             background: white;
             border-radius:8px;
         }
-
-        
 </style>

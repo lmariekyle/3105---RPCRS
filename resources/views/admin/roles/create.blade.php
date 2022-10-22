@@ -30,3 +30,9 @@
     </form>
 
 </x-admin-layout>
+<style>
+        .rolesActive{
+            background: white;
+            border-radius:8px;
+        }
+</style>

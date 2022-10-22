@@ -1,13 +1,5 @@
 @extends('layouts.app')
 
-@section('rolesActive-css')
-    <style>
-        .rolesActive{
-            background: white;
-            border-radius:8px;
-        }
-    </style>
-@endsection
 <x-admin-layout>
 
 
@@ -41,4 +33,9 @@
     </form>
 
 </x-admin-layout>
-
+<style>
+        .permissionsActive{
+            background: white;
+            border-radius:8px;
+        }
+</style>
