@@ -17,6 +17,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/login.css') }}" rel="stylesheet">
         <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet"/>
+        <link href="{{ asset('css/admin.css') }}" rel="stylesheet"/>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
         <script src="https://kit.fontawesome.com/5a0ab02d03.js" crossorigin="anonymous"></script>
@@ -57,8 +58,8 @@
         </div>
 
     <hr> -->
-    <div>
-    @include('layouts.navigation')
+    <div class="admin-css">
+    
         {{$slot}} <!--admin.index -->
     </div>
     </body>

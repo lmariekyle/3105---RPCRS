@@ -12,7 +12,9 @@
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         
         <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/admin-css.css') }}" rel="stylesheet">
         <link href="{{ asset('css/membersCreate.css') }}" rel="stylesheet">
+        
 
         <!--FONTS-->
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
