@@ -37,49 +37,90 @@
           </div>
     @endif
 
-    {!! Form::open(['action' => 'EmployeeController@store','method' => 'POST']) !!}
-      <div class="form-group">
-        {{Form::label('status','Status')}}
-        {{Form::select('status', ['Active' => 'Active', 'Inactive' => 'Inactive'], 'Active');}}
-      </div>
-      <div class="form-group">
-        {{Form::label('role','Role')}}
-        {{Form::select('role', ['0' => '0', '1' => '1', '2' => '2']);}}
-      </div>
-      <div class="form-group">
-        {{Form::label('firstname','First Name')}}
-        {{Form::text('firstname','')}}
-      </div>
-      <div class="form-group">
-        {{Form::label('middlename','Middle Name')}}
-        {{Form::text('middlename','')}}
-      </div>
-      <div class="form-group">
-        {{Form::label('lastname','Last Name')}}
-        {{Form::text('lastname','')}}
-      </div>
-      <div class="form-group">
-        {{Form::label('email','Email')}}
-        {{Form::text('email','')}}
-      </div>
-      <div class="form-group">
-        {{Form::label('phone_number','Phone Number')}}
-        {{Form::text('phone_number','')}}
-      </div>
-      <div class="form-group">
-        {{Form::label('date_of_birth','Birth Date')}}
-        {{Form::date('date_of_birth',\Carbon\Carbon::now())}}
-      </div>
-      <div class="form-group">
-        {{Form::label('password','Password')}}
-        {{Form::text('password','')}}
-      </div>
-      {{Form::submit('Submit')}}
+    <div class="GIM-membersCreate">
 
-    {!! Form::close() !!}
-   
-    <button type="button"><a href="/employees">Back</a></button>
-     
+      <h1 class="GIM-membersCreate-header">Add Employee</h1>
+
+      {!! Form::open(['action' => 'EmployeeController@store','method' => 'POST']) !!}
+
+      <div class="GIM-membersCreate-container">
+
+        <div class="GIM-membersCreate-container-input">
+
+          <div class="GIM-membersCreate-formAllignment">
+          <div class="GIM-employeesCreate-dropListSpace">
+            {{Form::label('status','Status')}}
+            {{Form::select('status', ['Active' => 'Active', 'Inactive' => 'Inactive'], 'Active');}}
+          </div>
+          </div>
+
+          <div class="GIM-membersCreate-formAllignment">
+          <div class="GIM-employeesCreate-dropListSpace">
+            {{Form::label('role','Role')}}
+            {{Form::select('role', ['0' => '0', '1' => '1', '2' => '2']);}}
+          </div>
+          </div>
+
+          <div class="GIM-membersCreate-formAllignment">
+          <div class="form-group">
+            {{Form::label('firstname','First Name')}}
+            <br>
+            {{Form::text('firstname','')}}
+          </div>
+          <div class="GIM-membersCreate-rightSide">
+            {{Form::label('middlename','Middle Name')}}
+            <br>
+            {{Form::text('middlename','')}}
+          </div>
+          </div>
+
+          <div class="GIM-membersCreate-formAllignment">
+          <div class="form-group">
+            {{Form::label('lastname','Last Name')}}
+            <br>
+            {{Form::text('lastname','')}}
+          </div>
+          <div class="GIM-membersCreate-rightSide">
+            {{Form::label('email','Email')}}
+            <br>
+            {{Form::text('email','')}}
+          </div>
+          </div>
+
+          <div class="GIM-membersCreate-formAllignment">
+          <div class="form-group">
+            {{Form::label('phone_number','Phone Number')}}
+            <br>
+            {{Form::text('phone_number','')}}
+          </div>
+          <div class="GIM-membersCreate-inputDate">
+            {{Form::label('date_of_birth','Birth Date')}}
+            <br>
+            {{Form::date('date_of_birth',\Carbon\Carbon::now())}}
+          </div>
+          </div>
+
+          <div class="GIM-membersCreate-formAllignment">
+          <div class="form-group">
+            {{Form::label('password','Password')}}
+            <br>
+            {{Form::text('password','')}}
+          </div>
+          </div>
+
+          <div class="GIM-membersCreate-container-button">
+          {{Form::submit('Add Employee')}}
+          </div>
+
+      {!! Form::close() !!}
+        </div>
+      </div>
+    
+      <div class="GIM-membersCreate-goBackLink">
+      <button type="button"><a href="/employees">Back</a></button>
+      </div>
+
+    </div>
     
   </div>
 </div>

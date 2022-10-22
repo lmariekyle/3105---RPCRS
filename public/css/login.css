@@ -14,9 +14,10 @@ label{
 }
 
 .GIM-container {
-  margin: auto;
-  margin-top: 2%;
-  margin-left: 23%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
   
   border: 5px solid #DDA15E;
   filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.25));
@@ -24,7 +25,9 @@ label{
 }
 
 .GIM-header{
-  margin: 48px 0px 20px 280px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 
   font-style: italic;
   font-weight: 400;
@@ -38,7 +41,7 @@ label{
 }
 
 .USER-label{
-  margin: 0px 450px 0px 235px;
+  margin: 0px 0px 0px 235px;
 
   width: 107px;
   height: 24px;
@@ -47,7 +50,7 @@ label{
 }
 
 .USER-input{
-  margin: 6px 450px 23px 235px;
+  margin: 6px 0px 23px 235px;
 
   width: 332px;
   height: 38px;
@@ -59,7 +62,7 @@ label{
 }
 
 .PASS-label{
-  margin: 0px 450px 0px 235px;
+  margin: 0px 0px 0px 235px;
   
   width: 103px;
   height: 0px;
@@ -68,7 +71,7 @@ label{
 }
 
 .PASS-input{
-  margin: 6px 450px 23px 235px;
+  margin: 6px 0px 0px 235px;
 
   width: 332px;
   height: 38px;
@@ -79,8 +82,21 @@ label{
   border: 0px;
 }
 
+.GIM-rememberMe{
+  margin-left: 240px;
+}
+
+.GIM-forgotPassword{
+  margin-left: 240px;
+  margin-bottom: 35px;
+}
+
+.GIM-whiteLinkForForgotPass{
+  color:black;
+}
+
 .login{
-  margin: 0px 0px 10px 315px;
+  margin: 0px 0px 10px 0px;
 
   width: 179px;
   height: 35px;
@@ -100,7 +116,3 @@ label{
   color: #FFFFFF;
 }
 
-.error{
-  margin: 0px 0px 0px 320px;
-  color: red;
-}
