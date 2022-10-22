@@ -1,5 +1,17 @@
 @extends('layout.app')
 
+
+@section('gymMembersActive-css')
+
+    <style>
+        .gymMembersActive{
+            background: white;
+            border-radius:8px;
+        }
+    </style>
+
+@endsection
+
 @section('content')
 <div class="GIM-membersCreate">
     <h1 class="GIM-membersCreate-header">Add New Member</h1>

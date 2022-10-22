@@ -34,9 +34,12 @@
 
 
         <!-- index-css -->
+        @yield('gymMembersActive-css')
+        @yield('employeesActive-css')
         @yield('index-css')
         @yield('show-css')
         @yield('enroll-css')
+        
         <style>
             body{
                 background: #EDEDE9;
@@ -50,14 +53,15 @@
     </head>
 
     <body>
+        
         <div class="main-container d-flex">
             <div class="container">
-                @include('layouts.navigation')
+            
             @yield('content')
             </div>
         </div>
         
-    
+   
     <!-- sidebar-js -->
     
 
@@ -65,7 +69,7 @@
     @yield('index-js')
     @yield('enroll-js')
     @yield('show-js')
-        
+    @yield('role-js')
     </body>
     <script>
         $(".sidebar ul li").on('click' , function(){
