@@ -149,7 +149,7 @@ table.dataTable tbody tr {
                                 <th>CLASS ID</th>
                                 <th>CLASS NAME</th>
                                 <th>STATUS</th>
-                                <th>ENROLEES</th>
+                                <th>ENROLLEES</th>
                                 <th>DESCRIPTION</th>
                                 <th>PRICE</th>
                                 <th>SCHEDULE</th>

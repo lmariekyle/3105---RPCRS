@@ -2,6 +2,13 @@
 
 @section('content')
 
+
+@if(session('error'))
+    <div  class = "alert alert-danger">
+        {{session('error')}}
+    </div>
+@endif
+
 <div class="GIM-membersCreate">
 
     <div class="my-custom-row d-flex flex-row justify-content-between " >
@@ -50,7 +57,7 @@
             {{Form::label('date_of_birth','Date of Birth')}}
             <br>
             {{Form::date('date_of_birth', \Carbon\Carbon::now());}}
-            <div class="errCreate"><span id = "message"> </span> </div>
+            <div class="errCreate">{{$errors->first('date_of_birth')}} </div>
 
         </div>
         </div>
@@ -175,35 +182,5 @@
             });
         </script>
 
-    <script>  
-        function ageCalculator() {  
-            var userinput = document.getElementById("date_of_birth").value;  
-            var dob = new Date(userinput);  
-             
-            
-            //calculate month difference from current date in time  
-            var month_diff = Date.now() - dob.getTime();  
-            
-            //convert the calculated difference in date format  
-            var age_dt = new Date(month_diff);   
-            
-            //extract year from date      
-            var year = age_dt.getUTCFullYear();  
-            var thisYear = Date.getFullYear();
-            
-            //now calculate the age of the user  
-            var age = Math.abs(year - thisYear);  
-            
-            //display the calculated age  
-            if(age<16){
-                document.getElementById("message").innerHTML =    
-                    "You must be atleast 16 years old";  
-                return true;
-            }else{
-                return false;
-            }
-            
-        }  
-    </script> 
-
+    
 @endsection

@@ -63,9 +63,9 @@ class CustomerController extends Controller
             'firstname' => 'required',
             'middlename' => 'required',
             'lastname' => 'required',
-            'date_of_birth' => 'required',
-            'phone_number' => 'required',
-            'email' => 'required',
+            'date_of_birth' => 'required|date_format:Y-m-d|before:'.now()->subYears(13)->toDateString(),
+            'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11',
+            'email' => 'required|email',
             'city' => 'required',
             'province' => 'required',
         ]);
@@ -99,7 +99,7 @@ class CustomerController extends Controller
         $mem->cur_number=$mem->cur_number+1;
         $mem->save();
 
-        return redirect('/members')->with('success', 'Member Added');
+        return redirect('/members')->with('success', 'Member Added Successfully');
     }
 
     /**
@@ -168,7 +168,7 @@ class CustomerController extends Controller
             'firstname' => 'required',
             'middlename' => 'required',
             'lastname' => 'required',
-            'date_of_birth' => 'required',
+            'date_of_birth' => 'required|date_format:Y-m-d|before:'.now()->subYears(13)->toDateString(),
             'phone_number' => 'required',
             'email' => 'required',
         ]);
@@ -188,7 +188,7 @@ class CustomerController extends Controller
         $customer->city = $request->input('city');
         $customer->province = $request->input('province');
         $customer->zip_code = $request->input('zip_code');
-
+        
         $customer->membership_end_date = $current->addYear();
         $customer->membership_expires_in = $current;
 
@@ -217,7 +217,7 @@ class CustomerController extends Controller
         }
         
 
-        return redirect('/members')->with('success', 'Member Updated');
+        return redirect('/members')->with('success', 'Member Updated Successfully');
     }
 
     /**
@@ -237,6 +237,6 @@ class CustomerController extends Controller
         $customships->delete();
         $customer->delete();
 
-        return redirect('/members')->with('success', 'Member Removed');
+        return redirect('/members')->with('success', 'Member Deleted Successfully');
     }
 }

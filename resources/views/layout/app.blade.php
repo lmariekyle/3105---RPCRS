@@ -53,6 +53,8 @@
         <div class="main-container d-flex">
         @include('layouts.navigation')
             <div class="container">
+                
+                @include('inc.flash')
                 @yield('content')
             </div>
         </div>

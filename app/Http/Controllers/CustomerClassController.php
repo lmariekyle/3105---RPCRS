@@ -125,6 +125,6 @@ class CustomerClassController extends Controller
         $customclass->delete();
         
 
-        return redirect(url('/members'.'/'.$customer))->with('success', 'Class Unenrolled');
+        return redirect(url('/members'.'/'.$customer))->with('success', 'Unenrolled user from class');
     }
 }

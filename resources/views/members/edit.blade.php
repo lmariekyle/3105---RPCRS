@@ -6,7 +6,7 @@
     
     <div class="my-custom-row d-flex flex-row justify-content-between " >
         <div class="col-4 align-self-end">
-            <h1 class="head-title"> Add New Member </h1>
+            <h1 class="head-title"> Update Member Information </h1>
         </div>
         <div class="col-4 align-self-end d-flex justify-content-end" >
                 <a href="/members" class="go-back-bg ">
