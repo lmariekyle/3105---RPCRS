@@ -1,5 +1,17 @@
-<x-admin-layout>
+@extends('layout.app')
 
+@section('rolesActive-css')
+
+    <style>
+        .rolesActive{
+            background: white;
+            border-radius:8px;
+        }
+    </style>
+
+@endsection
+
+@section('index-css')
         <!-- css needed for tables -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
@@ -7,7 +19,9 @@
         <!-- my css -->
         <link rel="stylesheet" href="{{ asset('/css/index.css') }}"/>
         <link rel="stylesheet" href="{{ asset('/css/role.css') }}"/>
+@endsection
 
+@section('content')
 
 <div class="GIM-membersCreate" style="width: 50.6%; margin-top: 9.5%;">
 
@@ -88,12 +102,7 @@
                 </div>
             </div>
     </div>
-</div>
-</x-admin-layout>
-<style>
-        .rolesActive{
-            background: white;
-            border-radius:8px;
-        }
-</style>
 
+</div>
+
+@endsection

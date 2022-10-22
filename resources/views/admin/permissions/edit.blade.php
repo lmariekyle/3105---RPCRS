@@ -1,15 +1,4 @@
-<<<<<<< HEAD
-<x-admin-layout>
-    <style>
-        .rolesActive{
-            background: white;
-            border-radius:8px;
-        }
-    </style>
-
-=======
 @extends('layout.app')
->>>>>>> edcbe664dc589aa741ee983e7bf03503126b20d2
 
 @section('roleActive-css')
 

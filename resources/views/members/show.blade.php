@@ -46,7 +46,7 @@ table.dataTable tbody tr {
         </div>
         <div class="col-4 align-self-end d-flex justify-content-end" >
                 <a href="/members" class="go-back-bg ">
-                    <div class="go-back">Go Back</div>
+                    <div class="go-back">View Gym Members</div>
                 </a>
         </div>
 
