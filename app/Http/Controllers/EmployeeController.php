@@ -22,7 +22,9 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = User::paginate(5);
-       return view('employees.index', compact('employees'));	
+        $roles = Role::all();
+    
+       return view('employees.index', compact('employees','roles'));	
     }
 
     /**
@@ -131,12 +133,13 @@ class EmployeeController extends Controller
         $employee = User::find($request->employee_delete_id);
         $employee->delete();
 
+        
         return redirect('/employees')->with('success', 'Employee Deleted successfully');
     }
 
     public function viewEmployee(User $employee)
     {
-        $employee=User::all();
+        $employee = User::find($employee);
         $roles = Role::all();
         $permissions = Permission::all();
         return view('employees.role',compact('employee','roles','permissions'));

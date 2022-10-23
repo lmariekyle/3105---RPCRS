@@ -1,45 +1,302 @@
-<x-admin-layout>
+@extends('layout.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div>
-                        <h1>Roles</h1>
-                    </div>
-                    <div class="role-create-btn-container">
-                        <a href="{{route('employees.index')}}">View Employees</a>
-                    </div>
+
+@section('employeesActive-css')
+
+    <style>
+        .employeesActive{
+            background: white;
+            border-radius:8px;
+        }
+    </style>
+
+@endsection
+
+@section('show-css')
+<link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('/css/show.css') }}"/>
+<link rel="stylesheet" href="{{ asset('/css/gymMembersActive.css') }}"/>
+
+<style>
+tr, th, td,{
+    border:none;
+    /* background-color:white; */
+    box-shadow:none;
+}
+
+table.dataTable thead th {
+    border: none;
+}
+ 
+table.dataTable tbody td {
+    border:none;
+}
+ 
+table.dataTable tbody tr {
+    border:none;
+}
+</style>
+@endsection
+
+@section('content')
+<div class="show-blade-container">
+    <div class="my-custom-row d-flex flex-row justify-content-between " >
+        <div class="col-4 align-self-end">
+            <h1 class="head-title"> Employee Member Profile </h1>
+        </div>
+        <div class="col-4 align-self-end d-flex justify-content-end" >
+                <a href="/employees" class="go-back-bg ">
+                    <div class="go-back">View Employees</div>
+                </a>
+        </div>
+
+    </div>
+    <div class="show-container">
+        <div class="col">
+            <div class="header d-flex">
+                <span class="name px-3">Name</span>
             </div>
+            <br>
+            <div class="px-3">
+                <div class="pb-3 pt-3">
+                    <div class="col">
+                        <h1 class="employee-name">{{$employee->firstname}} {{$employee->middlename[0]}}. {{$employee->lastname}}</h1>
+                    </div>
+
+                </div>
+                <table id="first-table" class="table " style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>STATUS</th>
+                                <th>DATE OF BIRTH</th>
+                                <th>PHONE NUMBER</th>
+                                <th>EMAIL</th>
+                                <th>Role</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ $employee->id}}</td>
+                                <td>{{ $employee->status}}</td>
+                                <td>{{ $employee->date_of_birth}}</td>
+                                <td>{{ $employee->phone_number}}</td>
+                                <td>{{ $employee->email}}</td>
+                                <td></td>
+                                <td>
+                                <a href="/employees/{{$employee->id}}/edit">
+                                    <div>
+                                    <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                                    </svg>
+                                    </div>
+                                </a>
+                                </td>
+                                <td class="deleteTD">
+                                    <label class="removeInput">
+                                        <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                        </svg>
+                                        <input class="hideInput deleteUserBtn" type="button" name="delete" value="{{$employee->id}}">
+                                    </label>
+                                </td>
+                                <td>
+                                    <a href="{{ route('employees.viewEmployee', $employee->id) }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                                        <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                                        <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                                    </svg>
+                                        <!-- <button type="button" class=" p-1">ROLE</button> -->
+                                    </a>
+                                </td>
+                                
+                            </tr>
+                        </tbody>
+                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                    {!! Form::open(['action' => ['employeeController@destroy', $employee->id],'method'=>'POST','class' => '']) !!}
+                                        <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete User</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <input type="hidden" name="employee_delete_id" id="employee_id">
+                                        <h5>Delete this user #{{$employee->id}}?<br> All information stored on this user will be deleted</h5>
+                                        </div>
+                                        <div class="modal-footer">
+                                            {{Form::hidden('_method','DELETE')}}
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-danger">Confirm</button>
+                                        </div>
+                                    {!! Form::close() !!}
+                              </div>
+                            </div>
+                        </div>
+                </table>
+ 
+                <div class="table-div">
+                    <div class="my-custom-row d-flex flex-row justify-content-between " >
+                        <div class="col">
+                            <h2 class="class-head">Enrolled Classes</h2>
+                        </div>
+                        
+                        <a href="/members/{{$employee->id}}/class/create">
+                            <button class="enrollBtn">
+                            Enroll?
+                            <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-arrow-up" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 11a.5.5 0 0 0 .5-.5V6.707l1.146 1.147a.5.5 0 0 0 .708-.708l-2-2a.5.5 0 0 0-.708 0l-2 2a.5.5 0 1 0 .708.708L7.5 6.707V10.5a.5.5 0 0 0 .5.5z"/>
+                                <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                                <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+                            </svg>
+                            </button>
+                        </a>
+                
+                    </div>
+                    
+                    <table id="second-table" class="table" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>CLASS ID</th>
+                                <th>CLASS NAME</th>
+                                <th>STATUS</th>
+                                <th>ENROLLEES</th>
+                                <th>DESCRIPTION</th>
+                                <th>PRICE</th>
+                                <th>SCHEDULE</th>
+                                <th>UNENROLL?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @if (count($classes) >= 0)
+                        @foreach($classes as $class)
+                            <tr>
+                                <td>{{$class->class_id}}</td>
+                                <td>{{$class->name}}</td>
+                                <td>{{$class->status}}</td>
+                        
+                        
+                                <td>{{$class->cur_number}} / {{$class->max_enrollees}}</td>
+                                <td >{{substr($class->description, 0, 30)}}...</td>
+                    
+                        
+                                <td>{{$class->price}}</td>
+                                <td>{{$class->schedule}} {{$class->time}}</td>
+                                <td class="deleteTD">
+                               
+                                    <label class="removeInput">
+                                            
+                                            <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                            </svg>
+                                            <input class="hideInput unenrollUserBtn" type="button" name="delete" value="{{$class->cc_id}}">
+                                    </label>
+                                    
+                                </td>
+                            </tr>
+                            <div class="modal fade" id="unenrollModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                        {!! Form::open(['action' => ['employeeClassController@destroy', $class->cc_id],'method'=>'POST','class' => '']) !!}
+                                            <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Unenroll User</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <input type="hidden" name="employee_unenroll_id" id="class_id">
+                                            <h5>Unenroll this user?<br> This user will be unenrolled from this class</h5>
+                                            </div>
+                                            <div class="modal-footer">
+                                                {{Form::hidden('_method','DELETE')}}
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <button type="submit" class="btn btn-danger">Confirm</button>
+                                            </div>
+                                        {!! Form::close() !!}
+                                </div>
+                                </div>
+                            </div>
+                        </tbody>
+                        @endforeach
+                        @else
+                        @endif
+                    </table>
+                </div>
+            </div>
+
         </div>
     </div>
-        <div> 
-            <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Date of Birth</th>
-                    <th>Phone Number</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            <thead> 
-            <tbody>
-            @foreach ($employee as $employee)            
-            
-                      <tr>
-                        <td>{{ $employee->id}}</td>
-                        <td>{{ $employee->firstname}} {{ $employee->middlename}} {{ $employee->lastname}}</td>
-                        <td>{{ $employee->date_of_birth}}</td>
-                        <td>{{ $employee->phone_number}}</td>
-                        <td>{{ $employee->email}}</td>
-                        <td>{{ $employee->type}}</td>
-                        <td>{{ $employee->status}}</td>
-                        <td>
-            @endforeach
-        </tbody>
-</table>           
-        </div>
-</x-admin-layout>
+</div>
+
+@endsection
+
+@section('show-js')
+        <!-- javascript needed for the tables -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+        <script src="https://unpkg.com/@popperjs/core@2"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+
+        <script>
+                $('#first-table').DataTable({
+                    "bInfo": false, //Dont display info e.g. "Showing 1 to 4 of 4 entries"
+                    "paging": false,//Dont want paging                
+                    "bPaginate": false,//Dont want paging  
+                    searching: false,
+                    "ordering": false,
+                    // columnDefs: [{ targets: [0,1,2,3,4,5,6,7,8,9], orderable: false }],
+                    "language": {
+                        "emptyTable": "Costumer does not exist."
+                    }
+                });
+                $('#second-table').DataTable({
+                    "bInfo": false, //Dont display info e.g. "Showing 1 to 4 of 4 entries"
+                    "paging": false,//Dont want paging                
+                    "bPaginate": false,//Dont want paging  
+                    searching: false,
+                    columnDefs: [{ targets: [3,8], orderable: false }],
+                    "language": {
+                        "emptyTable": "No Enrolled Classes"
+                    }
+                })   
+
+        </script>
+
+@endsection
+
+
+@section('scripts')
+
+        <script>
+            $(document).ready(function(){
+                $('.deleteUserBtn').click(function(e){
+                    e.preventDefault();
+
+                    var employee_id = $(this).val();
+                    $('#employee_id').val(employee_id);
+
+                    $('#deleteModal').modal('show');
+                });
+
+            });
+
+            $(document).ready(function(){
+                $('.unenrollUserBtn').click(function(e){
+                    e.preventDefault();
+
+                    var class_id = $(this).val();
+                    $('#class_id').val(class_id);
+                  
+                    $('#unenrollModal').modal('show');
+                });
+
+            });
+        </script>
+
+@endsection
+ 

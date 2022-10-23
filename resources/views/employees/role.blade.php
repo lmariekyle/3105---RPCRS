@@ -77,8 +77,7 @@
                
                     <tr>
                         <th>ID</th>
-                        <th>NAME</th>
-                        <th>ROLE</th>
+                        <th>NAME</th>                  
                         <th>STATUS</th>
                         <th>ASSIGNED ROLE</th>  
                         <th class="assignRole">ROLES</th>  
@@ -93,8 +92,7 @@
                
                 <tr>
                         <td>{{ $employee->id}}</td>
-                        <td>{{ $employee->firstname}} {{ $employee->middlename}} {{ $employee->lastname}}</td>
-                        <td>{{ $employee->type}}</td>
+                        <td>{{ $employee->firstname}} {{ $employee->middlename}} {{ $employee->lastname}}</td>              
                         <td>{{ $employee->status}}</td>
                         
                         <td width="12%">

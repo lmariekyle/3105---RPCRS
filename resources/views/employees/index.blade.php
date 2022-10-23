@@ -89,7 +89,16 @@
                         <td>{{ $employee->email}}</td>
                         <td>{{ $employee->phone_number}}</td>
                         <td>{{ $employee->date_of_birth}}</td>
-                        <td>{{ $employee->type}}</td>
+                        <td width="12%">
+                            @if($employee->roles)
+                                @foreach($employee->roles as $employee->role)                
+                                        <div class="d-flex justify-content-between">
+                                            <div class="role-name">{{$employee->role->name}}</div>
+                                        </div>
+                                    </form>
+                                @endforeach
+                            @endif
+                        </td>
                         <td>{{ $employee->status}}</td>
                         <!-- <td>
                             <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal" viewBox="0 0 16 16">
