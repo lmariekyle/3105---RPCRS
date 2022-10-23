@@ -1,8 +1,22 @@
 @extends('layout.app')
 
+
+@section('gymMembersActive-css')
+
+    <style>
+        .gymMembersActive{
+            background: white;
+            border-radius:8px;
+        }
+    </style>
+
+@endsection
+
 @section('enroll-css')
 <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet"> 
 <link rel="stylesheet" href="{{ asset('/css/enroll.css') }}"/>
+
+
 <style>
 
 tr, th, td,{
@@ -233,7 +247,7 @@ table.dataTable tbody tr {
                     "ordering": false,
                     // columnDefs: [{ targets: [0,1,2,3,4,5,6,7,8,9], orderable: false }],
                     "language": {
-                        "emptyTable": "Costumer has not enrolled in any classes yet."
+                        "emptyTable": "No Classes Enrolled"
                     }
                 });
                 $('#second-table').DataTable({
@@ -243,7 +257,7 @@ table.dataTable tbody tr {
                     searching: false,
                     columnDefs: [{ targets: [4], orderable: false }],
                     "language": {
-                        "emptyTable": "No Classes."
+                        "emptyTable": "No Classes"
                     }
                 })   
 

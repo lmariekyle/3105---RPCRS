@@ -9,19 +9,24 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+
+
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet"/>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        <script src="https://kit.fontawesome.com/5a0ab02d03.js" crossorigin="anonymous"></script>
+
 
         <!-- Scripts -->
         <script src="{{asset('js/app.js')}}" defer></script>
     </head>
-    <body class="font-sans antialiased">
+    <!-- <body class="font-sans antialiased">
     <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-black text-decoration-none">
-      <svg class="bi pe-none me-2" width="40" height="32"></svg>
-      <span class="fs-4">Sidebar</span>
-    </a>
 
     <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
@@ -35,9 +40,9 @@
                             </div>
                         </button>
                     </x-slot>
-                    <x-slot name="content">
+                    <x-slot name="content"> -->
                         <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
+                        <!-- <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
@@ -51,55 +56,9 @@
 
         </div>
 
-    <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
-      <li class="nav-item">
-        <a href="/dashboard/home" class="nav-link text-black">
-          <svg class="bi pe-none me-2" width="16" height="16"><use href="/dashboard/home"/></svg>
-          Dashboard
-        </a>
-      </li>
-      <li>
-        <a href="/members" class="nav-link text-black">
-          <svg class="bi pe-none me-2" width="16" height="16"><use href="/members"/></svg>
-          Gym Members
-        </a>
-      </li>
-      <li>
-        <a href="/employees" class="nav-link text-black">
-          <svg class="bi pe-none me-2" width="16" height="16"><use href="/employees"/></svg>
-          Employees
-        </a>
-      </li>
-      <li>
-        <a href="/gymclasses" class="nav-link text-black">
-          <svg class="bi pe-none me-2" width="16" height="16"><use href="/gymclasses"/></svg>
-          Classes
-        </a>
-      </li>
-      <li>
-        <a href="/membership" class="nav-link text-black">
-          <svg class="bi pe-none me-2" width="16" height="16"><use href="/membership"/></svg>
-          Membership
-        </a>
-      </li>
-      <li class="nav-item">
-      <x-admin-link :href="route('admin.roles.index')" :active="request()->routeIs('admin.roles.index')">    
-          <svg class="bi pe-none me-2" width="16" height="16"><use href="{{route('admin.roles.index')}}"/></svg>
-          Roles
-        </x-admin-link>
-      </li>
-      <li class="nav-item">
-      <x-admin-link :href="route('admin.permissions.index')"
-                    :active="request()->routeIs('admin.permissions.index')">
-          <svg class="bi pe-none me-2" width="16" height="16"><use href="{{route('admin.permissions.index')}}"/></svg>
-          Permissions
-      </x-admin-link>
-      </li>
-    </ul>
-    <hr>
-
-    <div class="admin-body">
+    <hr> -->
+    <div>
+    @include('layouts.navigation')
         {{$slot}} <!--admin.index -->
     </div>
     </body>

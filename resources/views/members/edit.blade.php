@@ -1,5 +1,16 @@
 @extends('layout.app')
 
+@section('gymMembersActive-css')
+
+    <style>
+        .gymMembersActive{
+            background: white;
+            border-radius:8px;
+        }
+    </style>
+
+@endsection
+
 @section('content')
 <div class="GIM-membersCreate">
 
@@ -32,7 +43,7 @@
             
             <br>
             {{Form::label('status','Status',['class' => 'class-name-for-labels'])}} :
-            <select name="status">
+            <select name="status" style="margin-left: 5px;">
                 <option value="ACTIVE" >ACTIVE</option>
                 <option value="INACTIVE" >INACTIVE</option>
             </select> 

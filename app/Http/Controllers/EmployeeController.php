@@ -16,7 +16,7 @@ class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * 
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -126,9 +126,9 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $employee = User::find($id);
+        $employee = User::find($request->employee_delete_id);
         $employee->delete();
 
         return redirect('/employees')->with('success', 'Employee Deleted successfully');

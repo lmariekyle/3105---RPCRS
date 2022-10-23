@@ -14,7 +14,7 @@
 
 
         <!-- sidebar-css-js -->
-        <link rel="stylesheet" href="{{ asset('/css/sidebar.css') }}"/>
+        <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet"/>
         <link href="{{ asset('css/membersCreate.css') }}" rel="stylesheet">
 
         <!-- fonts -->
@@ -34,9 +34,15 @@
 
 
         <!-- index-css -->
+        @yield('gymMembersActive-css')
+        @yield('employeesActive-css')
+        @yield('rolesActive-css')
+        @yield('permissionsActive-css')
         @yield('index-css')
         @yield('show-css')
         @yield('enroll-css')
+        @yield('role-css')
+
         <style>
             body{
                 background: #EDEDE9;
@@ -50,16 +56,17 @@
     </head>
 
     <body>
+        
         <div class="main-container d-flex">
         @include('layouts.navigation')
             <div class="container">
-                
+                <br>
                 @include('inc.flash')
                 @yield('content')
             </div>
         </div>
         
-    
+   
     <!-- sidebar-js -->
     
 
@@ -67,7 +74,7 @@
     @yield('index-js')
     @yield('enroll-js')
     @yield('show-js')
-        
+    
     </body>
     <script>
         $(".sidebar ul li").on('click' , function(){

@@ -1,5 +1,17 @@
 @extends('layout.app')
 
+
+@section('gymMembersActive-css')
+
+    <style>
+        .gymMembersActive{
+            background: white;
+            border-radius:8px;
+        }
+    </style>
+
+@endsection
+
 @section('content')
 
 
@@ -79,8 +91,8 @@
 
         <div class="GIM-membersCreate-formAllignment">
         <div class="GIM-membersCreate-membershipSpace">
-            {{Form::label('membership','Membership')}}
-            <select name="membership">
+            {{Form::label('membership','Membership')}} :
+            <select name="membership" style="margin-left: 5px;">
                 @foreach($memberships as $membership)
                     <option value="{{$membership->id}}" >{{$membership->name}}</option>
                 @endforeach

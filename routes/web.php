@@ -39,6 +39,8 @@ Route::middleware(['auth','role:admin'])->name('admin.')->prefix('admin')->group
 Route::resource('members', 'CustomerController');
 Route::resource('members.class', 'CustomerClassController')->shallow();
 Route::resource('members.enclass', 'CustEnClassController')->shallow();
+Route::resource('gymclass', 'GymClassController');
+Route::resource('membership', 'MembershipController');
 
 Route::resource('employees','EmployeeController');
 Route::get('/employees/{employee}', [EmployeeController::class, 'viewEmployee'])->name('employees.viewEmployee');
