@@ -70,7 +70,7 @@
                       <li class="rolesActive d-flex justify-content-center">
                         <a href="{{route('admin.roles.index')}}" :active="request()->routeIs('admin.roles.index')" class="text-decoration-none py-2 d-block">
                           <div class="d-flex justify-content-center">
-                            <i class="fa-solid fa-users"></i>
+                            <i class="fa-solid fas fa-clipboard-list"></i>
                           </div>
                           <div class="GIMText">
                             Roles
@@ -82,7 +82,7 @@
                       <li class="permissionsActive d-flex justify-content-center">
                         <a href="{{route('admin.permissions.index')}}" :active="request()->routeIs('admin.roles.index')" class="text-decoration-none py-2 d-block">
                           <div class="d-flex justify-content-center">
-                            <i class="fa-solid fa-users"></i>
+                            <i class="fa-solid fas fa-vote-yea"></i>
                           </div>
                           <div class="GIMText">
                             Permissions

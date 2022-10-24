@@ -36,10 +36,13 @@
         <!-- index-css -->
         @yield('gymMembersActive-css')
         @yield('employeesActive-css')
+        @yield('roleActive-css')
+        @yield('permissionsActive-css')
         @yield('index-css')
         @yield('show-css')
         @yield('enroll-css')
-        
+        @yield('role-css')
+
         <style>
             body{
                 background: #EDEDE9;
@@ -69,7 +72,7 @@
     @yield('index-js')
     @yield('enroll-js')
     @yield('show-js')
-    @yield('role-js')
+    
     </body>
     <script>
         $(".sidebar ul li").on('click' , function(){

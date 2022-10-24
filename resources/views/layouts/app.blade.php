@@ -33,6 +33,7 @@
         @yield('index-css')
         @yield('show-css')
         @yield('enroll-css')
+
         <style>
             body{
                 background: #EDEDE9;
