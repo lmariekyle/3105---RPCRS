@@ -49,6 +49,7 @@
             }
         </style>
 
+        <script src="{{asset('js/app.js')}}" defer></script>
         <script src="https://kit.fontawesome.com/5a0ab02d03.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" 
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
@@ -60,8 +61,9 @@
         <div class="main-container d-flex">
         @include('layouts.navigation')
             <div class="container">
-            
-            @yield('content')
+                <br>
+                @include('inc.flash')
+                @yield('content')
             </div>
         </div>
         

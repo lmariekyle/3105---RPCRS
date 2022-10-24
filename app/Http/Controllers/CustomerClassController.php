@@ -113,10 +113,10 @@ class CustomerClassController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
       
-        $customclass = CustomerClass::findOrFail($id);
+        $customclass = CustomerClass::findOrFail($request->customer_unenroll_id);
         $customer = $customclass->customer_id;
         $class = GymClass::where('id','=',$customclass->class_id)->first();
         $class->cur_number=$class->cur_number-1;
@@ -125,6 +125,6 @@ class CustomerClassController extends Controller
         $customclass->delete();
         
 
-        return redirect(url('/members'.'/'.$customer))->with('success', 'Class Unenrolled');
+        return redirect(url('/members'.'/'.$customer))->with('success', 'Unenrolled user from class');
     }
 }

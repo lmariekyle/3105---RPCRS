@@ -45,6 +45,9 @@
 
 <div class="GIM-membersCreate" style="width: 50.6%; margin-top: 9.5%;">
 
+    
+
+
     <div class="my-custom-row d-flex flex-row justify-content-between " >
         <div class="col-4 align-self-end">
             <h1 class="view-gym-members">Permissions</h1>
@@ -102,6 +105,16 @@
          </table>
     </div>
 
+
+<style>
+    
+        .permissionsActive{
+            background: white;
+            border-radius:8px;
+        }
+
+        
+</style>
 </div>
 
 @endsection

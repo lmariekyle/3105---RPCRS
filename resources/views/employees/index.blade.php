@@ -81,15 +81,25 @@
             @if($employees->count())
             <tbody  class="justify-content-center" style="cursor: pointer;">
             @foreach ($employees as $employee)  
+
             <!--  -->
                
-                <tr>
+                <tr id="target" data-customer= "{{$employee->id}}" style="cursor: pointer;">
                         <td>{{ $employee->id}}</td>
                         <td>{{ $employee->firstname}} {{ $employee->middlename}} {{ $employee->lastname}}</td>
                         <td>{{ $employee->email}}</td>
                         <td>{{ $employee->phone_number}}</td>
                         <td>{{ $employee->date_of_birth}}</td>
-                        <td>{{ $employee->type}}</td>
+                        <td width="12%">
+                            @if($employee->roles)
+                                @foreach($employee->roles as $employee->role)                
+                                        <div class="d-flex justify-content-between">
+                                            <div class="role-name">{{$employee->role->name}}</div>
+                                        </div>
+                                    </form>
+                                @endforeach
+                            @endif
+                        </td>
                         <td>{{ $employee->status}}</td>
                         <!-- <td>
                             <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal" viewBox="0 0 16 16">
@@ -108,24 +118,20 @@
                        
                         </td>
                         <td class="deleteTD">
-                        {!! Form::open(['action' => ['EmployeeController@destroy', $employee->id],'method'=>'POST']) !!}
-           
-                            {{Form::hidden('_method','DELETE')}}
                             <label class="removeInput">
                                     <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                         <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                     </svg>
-                                    <input class="hideInput deleteUserBtn" type="submit" name="Delete" value="{{ $employee->employee_id}}">
+                                    <input class="hideInput deleteUserBtn" name="Delete" value="{{ $employee->id}}">
                             </label>
-                           
-                        {!! Form::close() !!}                              
+                                                   
 
                          
                        
                         </td>
                         <td>
-                            <a href="{{ route('employees.viewEmployee', $employee->id) }}">
+                            <a href="{{ route('employees.viewEmployee', $employee->id , $employee->id)}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
                                 <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
                                 <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
@@ -136,6 +142,31 @@
                 </tr>
                 @endforeach      
             </tbody>
+
+
+            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                        {!! Form::open(['action' => ['EmployeeController@destroy', $employee->id],'method'=>'POST','class' => '']) !!}
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Employee</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="hidden" name="employee_delete_id" id="employee_id">
+                            <h5>Delete this employee?<br> All information stored on this employee will be deleted</h5>
+                            </div>
+                            <div class="modal-footer">
+                                {{Form::hidden('_method','DELETE')}}
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-danger">Confirm</button>
+                            </div>
+                        {!! Form::close() !!}
+                  </div>
+                </div>
+            </div>
+
+
         </table>
        
     </div>
@@ -188,3 +219,35 @@
         </script>
  
 @endsection
+
+
+
+@section('scripts')
+
+        <script>
+            $(document).ready(function(){
+                $('.deleteUserBtn').click(function(e){
+                    e.preventDefault();
+
+                    var customer_id = $(this).val();
+                    $('#employee_id').val(customer_id);
+
+                    $('#deleteModal').modal('show');
+                });
+
+            });
+        </script>
+
+        <script>
+
+            $( "tr" ).dblclick(function() {
+                var val = $(this).data('customer');
+                window.location.href='/employees/'+val;
+                
+            });
+        </script>
+
+
+@endsection
+ 
+

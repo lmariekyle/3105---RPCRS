@@ -21,7 +21,7 @@
                     <li class="gymMembersActive d-flex justify-content-center">
                         <a href="/members" class="text-decoration-none py-2 d-block">
                             <div class="d-flex justify-content-center">
-                                <i class="fa-solid fa-dumbbell"></i>
+                              <i class="fa-solid fa-users"></i>
                             </div>
                             <div class="GIMText">
                               Gym Members
@@ -32,7 +32,7 @@
                     <li class="employeesActive d-flex justify-content-center">
                         <a href="/employees" class="text-decoration-none py-2 d-block">
                             <div class="d-flex justify-content-center">
-                                <i class="fa-solid fa-user" ></i>
+                              <i class="fa-solid fa-id-card"></i>
                             </div>
                             <div class="GIMText">
                                 Employees
@@ -41,9 +41,9 @@
                     </li>
                     <div class="space"></div>
                     <li class="d-flex justify-content-center">
-                        <a href="/classes" class="text-decoration-none py-2 d-block">
+                        <a href="/gymclass" class="text-decoration-none py-2 d-block">
                             <div class="d-flex justify-content-center">
-                              <i class="fa-solid fa-chalkboard"></i>
+                              <i class="fa-solid fa-dumbbell"></i>
                             </div>
                             <div class="GIMText px-3">
                               Classes
@@ -54,7 +54,7 @@
                     <li class="d-flex justify-content-center">
                       <a href="/membership" class="text-decoration-none py-2 d-block">
                         <div class="d-flex justify-content-center">
-                          <i class="fa-solid fa-users"></i>
+                          <i class="fa-solid fa-address-book"></i>
                         </div>
                         <div class="GIMText">
                           Membership

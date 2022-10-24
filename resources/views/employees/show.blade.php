@@ -27,7 +27,7 @@
                 </tr>
             <thead> 
             <tbody>
-            @foreach ($employee as $employee)            
+        
             
                       <tr>
                         <td>{{ $employee->id}}</td>
@@ -38,7 +38,7 @@
                         <td>{{ $employee->type}}</td>
                         <td>{{ $employee->status}}</td>
                         <td>
-            @endforeach
+
         </tbody>
 </table>           
         </div>

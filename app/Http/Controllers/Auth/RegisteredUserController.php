@@ -49,7 +49,6 @@ class RegisteredUserController extends Controller
 
         $user = User::create([
 			'status' => $request->status,
-			'role' => $request->role,
 			'firstname' => $request->firstname,
 			'middlename' => $request->middlename,
 			'lastname' =>  $request->lastname,
@@ -77,7 +76,6 @@ class RegisteredUserController extends Controller
     {
         $this->validate($request, [
 			'status' => 'required',
-			'role' => 'required',
 			'firstname' => 'required',
 			'middlename' => 'required',
 			'lastname' =>  'required',

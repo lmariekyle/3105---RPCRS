@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>GIM</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -21,7 +21,14 @@
                         GIM
                     </div>
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                            <a href="{{ url('/dashboard') }}" class="btnContainer">
+                                <div id="GymIcon">
+                                    <img src="/imgs/gym-icon.png" alt="pizza house logo" id="GymIconPng">
+                                </div>
+                                <div class="btnText">
+                                    Home
+                                </div>
+                            </a>
                         @else
                             
                                 <a href="{{ route('login') }}"  class="btnContainer login">
