@@ -21,7 +21,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = User::paginate(5);
+        $employees = User::where('id', '>', 1)->paginate(5);
+    
        return view('employees.index', compact('employees'));	
     }
 

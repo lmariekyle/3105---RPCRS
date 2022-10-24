@@ -1,13 +1,19 @@
 <x-app-layout>
-    <link rel="stylesheet" href="{{ asset('/css/dashboard.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('/css/welcome.css') }}"/>
     <script src="{{asset('js/app.js')}}" defer></script>
     <x-slot name="header">
         <div class="my-custom-row d-flex flex-row justify-content-between " >
             @role('admin')
-            <div class="col-4 align-self-end">
-                <h1 class="adminText"> {{ __('Admin') }} </h1>
+            <div class="admin-container">
+                <h1 class="adminText"> {{ __('Hello, Admin') }} </h1>
             </div>
             @endrole
+            @role('employee')
+            <div class="admin-container">
+                <h1 class="adminText"> {{ __('Hello, Employee') }} </h1>
+            </div>
+            @endrole
+            
 
         </div>
             <div class="contentContainer">

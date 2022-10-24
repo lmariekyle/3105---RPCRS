@@ -69,9 +69,9 @@ li:hover {
 .sidebar li.active a,
 .sidebar li.active a:hover {
     color: black;
-} */
+}
 
-.sidebar li a {
+*/ .sidebar li a {
     color: #fff;
 }
 
@@ -98,8 +98,8 @@ li:hover {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 2px 20px 20px 15px;
-    max-width: 250px;
+    margin: 2px 20px 20px 2px;
+    width: max-content;
     height: 35px;
     background: white;
     border-radius: 10px;
