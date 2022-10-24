@@ -1,5 +1,3 @@
-
-
 @extends('layout.app')
 
 @section('permissionsActive-css')
@@ -107,7 +105,6 @@
          </table>
     </div>
 
-</x-admin-layout>
 
 <style>
     

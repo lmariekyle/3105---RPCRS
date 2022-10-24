@@ -81,6 +81,7 @@
             @if($employees->count())
             <tbody  class="justify-content-center" style="cursor: pointer;">
             @foreach ($employees as $employee)  
+
             <!--  -->
                
                 <tr id="target" data-customer= "{{$employee->id}}" style="cursor: pointer;">
@@ -89,7 +90,7 @@
                         <td>{{ $employee->email}}</td>
                         <td>{{ $employee->phone_number}}</td>
                         <td>{{ $employee->date_of_birth}}</td>
-                        <td>{{ $employee->type}}</td>
+                        <td>{{$employee->type}}</td>
                         <td>{{ $employee->status}}</td>
                         <!-- <td>
                             <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal" viewBox="0 0 16 16">
