@@ -144,9 +144,29 @@
                 @endforeach      
             </tbody>
         </table>
- 
 
 
+                            <form class="roleForm " method="POST" action="{{ route('employees.roles', $employee->id)}}">
+                                <div class="GIM-employeeAssignRole-Container ">
+                                    <div class="GIM-employeeAssignRole-Input">
+                                    @csrf
+                                        <div class="roles-form ">
+                                            <label for="name" class="role-name">Roles</label>
+                                            <div class="role-selection">
+                                                <select id="role" name="role" autocomplete="role-name" class="role-input">
+                                                    @foreach($roles as $role)
+                                                    <option value="{{$role->name}}">{{$role->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('name') <span>{{$message}}</span> @enderror
+                                            </div>
+                                        </div>
+                                        <div class="role-selection btn-container d-flex justify-content-center">
+                                            <button type="submit" class="assignRoleBtn btn btn-primary">Assign Role</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
 @endsection
 
 

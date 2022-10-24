@@ -92,3 +92,19 @@
 
     margin: 10px 0px 3px 165px;
 }
+
+
+
+/*Lourinsi Container*/
+
+.GIM-employeeAssignRole-Container{
+    width:35%;
+    padding: 15px 20px 0px;
+    border: 3px solid #DDA15E;
+}
+
+.role-selection .btn-container{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
