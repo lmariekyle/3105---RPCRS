@@ -1,9 +1,9 @@
 @extends('layout.app')
 
-@section('roleActive-css')
+@section('rolesActive-css')
 
     <style>
-        .roleActive{
+        .rolesActive{
             background: white;
             border-radius:8px;
         }
@@ -24,20 +24,15 @@
             table.dataTable tbody tr td{
                 /* or whatever height you need to make them all consistent */
             }
-
             table, tr, td, th{
                 word-wrap: break-word;
             }
-
-
             td{
                 border:none;
             }
-
             table.dataTable thead th {
                 border-bottom: 1px solid #111;
             }
-
             .table-container{
                 border: 1px solid #000000;
                 filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -69,6 +64,7 @@
                  <tr>
                  <th>Name</th>
                  <th>Action</th>
+                 <th></th>
                  </tr>
              </thead>
              <!-- thead tag ends here -->
@@ -107,4 +103,37 @@
 
 </div>
 
+@endsection
+
+@section('index-js')
+        <!-- javascript needed for the tables -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+        <script src="https://unpkg.com/@popperjs/core@2"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+        <script>
+            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl)
+            })
+        </script>
+        <!-- javascript external -->
+        <!-- <script type="text/javascript" src="{{ URL::asset('/js/index.js') }}"></script> -->
+        <script>
+            $(document).ready(function () {
+                $('#GIMTable').DataTable({
+
+                    "bInfo": false, //Dont display info e.g. "Showing 1 to 4 of 4 entries"
+                    "paging": false,//Dont want paging                
+                    "bPaginate": false,//Dont want paging  
+                    searching: false,
+                    columnDefs: [{ targets: [1,2], orderable: false }],
+                    "language": {
+                        "emptyTable": "No Data Available"
+                    }
+                })
+
+            });
+        </script>
 @endsection

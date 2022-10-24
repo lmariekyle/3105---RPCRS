@@ -195,7 +195,6 @@
             <script>
                 function deleteRed() {
                     document.getElementById("demo").style.color = "red";
-                    document.write(5 + 6);
                 }
             </script>
 @endsection

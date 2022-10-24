@@ -16,7 +16,7 @@ class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * 
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -46,20 +46,17 @@ class EmployeeController extends Controller
     {
 
         $this->validate($request, [
-			'status' => 'required',
-			'role' => 'required',
 			'firstname' => 'required',
 			'middlename' => 'required',
 			'lastname' =>  'required',
             'email' => 'required|email',
-            'date_of_birth' => 'required',
+            'date_of_birth' => 'required|date_format:Y-m-d|before:'.now()->subYears(18)->toDateString(),
             'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11',
             'password' =>'required'
 		]);
 
         $employee= User::create([
-			'status' => $request->status,
-			'role' => $request->role,
+			'status' => 'ACTIVE',
 			'firstname' => $request->firstname,
 			'middlename' => $request->middlename,
 			'lastname' =>  $request->lastname,
@@ -72,7 +69,7 @@ class EmployeeController extends Controller
         event(new Registered($employee));
         // Auth::login($employee);
 
-    	return back()->with('success', 'Employee added successfully');
+    	return redirect('/employees')->with('success', 'Employee added successfully');
     }
 
     /**
@@ -110,19 +107,18 @@ class EmployeeController extends Controller
     {
         $this->validate($request, [
 			'status' => 'required',
-			'role' => 'required',
 			'firstname' => 'required',
 			'middlename' => 'required',
 			'lastname' =>  'required',
             'email' => 'required|email',
-            'date_of_birth' => 'required',
+            'date_of_birth' => 'required|date_format:Y-m-d|before:'.now()->subYears(18)->toDateString(),
             'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11',
             'password' =>'required'
 		]);
 
         $employee->update($request->all());
 
-        return back()->with('success', 'Employee updated successfully');
+        return redirect('/employees')->with('success', 'Employee Updated successfully');
     }
 
     /**
@@ -131,12 +127,12 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $employee = User::find($id);
+        $employee = User::find($request->employee_delete_id);
         $employee->delete();
 
-        return back()->with('success', 'Employee Deleted successfully');
+        return redirect('/employees')->with('success', 'Employee Deleted successfully');
     }
 
     public function viewEmployee($id)

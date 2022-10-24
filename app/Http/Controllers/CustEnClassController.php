@@ -73,10 +73,10 @@ class CustEnClassController extends Controller
             $class->save();
 
             
-            return redirect(url('/members'.'/'.$id.'/class/create'))->with('success', 'Class Enrolled');
+            return redirect(url('/members'.'/'.$id.'/class/create'))->with('success', 'Enrolled member to class');
         }else{
             
-            return redirect(url('/members'.'/'.$id.'/class/create'))->with('error', 'Duplcated Class');
+            return redirect(url('/members'.'/'.$id.'/class/create'))->with('error', 'Cannot enroll member to the same class');
         }
     }
 
@@ -120,9 +120,10 @@ class CustEnClassController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $customclass = CustomerClass::findOrFail($id);
+      
+        $customclass = CustomerClass::findOrFail($request->customer_unenroll_id);
         $customer = $customclass->customer_id;
         $class = GymClass::where('id','=',$customclass->class_id)->first();
         $class->cur_number=$class->cur_number-1;
@@ -131,6 +132,6 @@ class CustEnClassController extends Controller
         $customclass->delete();
         
 
-        return redirect(url('/members'.'/'.$customer.'/class/create'))->with('success', 'Class Unenrolled');
+        return redirect(url('/members'.'/'.$customer.'/class/create'))->with('success', 'Unenrolled member from class');
     }
 }

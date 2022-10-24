@@ -21,7 +21,14 @@
                         GIM
                     </div>
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="HomeText">Home</a>
+                            <a href="{{ url('/dashboard') }}" class="btnContainer">
+                                <div id="GymIcon">
+                                    <img src="/imgs/gym-icon.png" alt="pizza house logo" id="GymIconPng">
+                                </div>
+                                <div class="btnText">
+                                    Home
+                                </div>
+                            </a>
                         @else
                             
                                 <a href="{{ route('login') }}"  class="btnContainer login">

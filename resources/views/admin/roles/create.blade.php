@@ -1,9 +1,9 @@
 @extends('layout.app')
 
-@section('roleActive-css')
+@section('rolesActive-css')
 
     <style>
-        .roleActive{
+        .rolesActive{
             background: white;
             border-radius:8px;
         }

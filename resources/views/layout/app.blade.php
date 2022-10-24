@@ -36,7 +36,7 @@
         <!-- index-css -->
         @yield('gymMembersActive-css')
         @yield('employeesActive-css')
-        @yield('roleActive-css')
+        @yield('rolesActive-css')
         @yield('permissionsActive-css')
         @yield('index-css')
         @yield('show-css')
@@ -61,8 +61,9 @@
         <div class="main-container d-flex">
         @include('layouts.navigation')
             <div class="container">
-            
-            @yield('content')
+                <br>
+                @include('inc.flash')
+                @yield('content')
             </div>
         </div>
         
