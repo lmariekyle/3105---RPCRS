@@ -22,8 +22,9 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = User::where('id', '>', 1)->paginate(5);
+       $roles = Role::all();
     
-       return view('employees.index', compact('employees'));	
+       return view('employees.index', compact('employees','roles'));		
     }
 
     /**
