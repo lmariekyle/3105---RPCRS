@@ -242,7 +242,7 @@
             $( "tr" ).dblclick(function() {
                 var val = $(this).data('customer');
                 window.location.href='/employees/'+val;
-                
+             
             });
         </script>
 
