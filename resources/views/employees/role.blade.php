@@ -19,6 +19,8 @@
         <!-- my css -->
         <link rel="stylesheet" href="{{ asset('/css/index.css') }}"/>
         <link rel="stylesheet" href="{{ asset('/css/role.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('/css/show.css') }}"/>
+        
         <style>
             table {
                 border:none;
@@ -47,22 +49,18 @@
             }
 
             table.dataTable thead th {
-                /* border-bottom: 1px solid #111; */
+                border-bottom: 1px solid #111;
             }
 
-            .table-container{
-                border: 1px solid #000000;
-                filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-                border-radius: 10px;
-            }
         </style>
 @endsection
 
 
 @section('content')
+
     <div class="my-custom-row d-flex flex-row justify-content-between " >
         <div class="col-4 align-self-end">
-            <h1 class="view-gym-members"> Roles </h1>
+            <h1 class="view-gym-members">Employee Profile</h1>
         </div>
         <div class="col-4 align-self-end d-flex justify-content-end" >
             <a href="{{route('employees.index')}}" class="add-member-bg text-sm">
@@ -70,83 +68,85 @@
             </a>
         </div>
     </div>
-    <div class="cont-table">
-        <table id="GIMTable" class="table-container table ">
-       
-            <thead>
-               
-                    <tr>
-                        <th>ID</th>
-                        <th>NAME</th>
-                        <th>ROLE</th>
-                        <th>STATUS</th>
-                        <th>ASSIGNED ROLE</th>  
-                        <th class="assignRole">ROLES</th>  
-                        <th></th>
-                    </tr>
-               
-            </thead>
-       
-            <tbody  class="justify-content-center" style="cursor: pointer;">
-                    
-            <!--  -->
-               
-                <tr>
-                        <td>{{ $employee->id}}</td>
-                        <td>{{ $employee->firstname}} {{ $employee->middlename}} {{ $employee->lastname}}</td>
-                        <td>{{ $employee->type}}</td>
-                        <td>{{ $employee->status}}</td>
-                        
-                        <td width="12%">
-                            @if($employee->roles)
-                                @foreach($employee->roles as $employee->role)
-                                    <form method="POST" action="{{route('employees.roles.remove', [$employee->id, $employee->role->id ])}}" onsubmit="return confirm('Are you sure?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <div class="d-flex justify-content-between">
-                                            <div class="role-name">{{$employee->role->name}}</div>
-                                            <div class="role-name">
 
-                                                <label>
-                                                <input class="hideInput deleteUserBtn" type="submit" name="image" value="one">
-                                                    <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+
+<div class="show-blade-container">
+    <div class="show-container w-75">
+        <div class="col">
+            <div class="header d-flex">
+                <span class="name px-3">Name</span>
+            </div>
+            <div class="px-3">
+                <div class="pb-3 pt-3">
+                    <div class="col">
+                        <h1 class="customer-name">{{ $employee->firstname}} {{ $employee->middlename[0]}}. {{ $employee->lastname}}</h1>
+                    </div>
+                    <div class="col">
+                        <h2 class="membership-type">ROLE:{{ $employee->type}}</h2>
+                    </div>
+                </div>
+                <table id="GIMTable" class="table " style="width:100%">
+                        <thead>
+                            <tr>
+                            <th>ID</th>
+                            <th>STATUS</th>
+                            <th>ASSIGNED ROLE</th>  
+                            <th class="assignRole">ROLES</th>
+                            <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ $employee->id}}</td>
+                                <td>{{ $employee->status}}</td>
+                                <td>
+                                    @if($employee->roles)
+                                        @foreach($employee->roles as $employee->role)
+                                            <form method="POST" action="{{route('employees.roles.remove', [$employee->id, $employee->role->id ])}}" onsubmit="return confirm('Are you sure?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <div class="d-flex justify-content-start">
+                                                    <div class="role-name">{{$employee->role->name}}</div>
+                                                    <div class="role-name">
+
+                                                        <label>
+                                                        <input class="hideInput deleteUserBtn" type="submit" name="image" value="one">
+                                                            <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                                
+                                                            </svg> 
+                                                        </label>
                                                         
-                                                    </svg> 
-                                                 </label>
-                                                
-                                            </div>
-                                        </div>
-                                    </form>
-                                @endforeach
-                            @endif
-                        </td>
-                        <td class="assignRole" width="8%">
-                            <form class="roleForm " method="POST" action="{{ route('employees.roles', $employee->id)}}">
-                                @csrf
-                                <div class="role-selection ">
-                                    <select id="role" name="role" autocomplete="role-name" class="role-input">
-                                        @foreach($roles as $role)
-                                        <option value="{{$role->name}}">{{$role->name}}</option>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         @endforeach
-                                    </select>
-                                    @error('name') <span>{{$message}}</span> @enderror
-                                </div>
-                        <td width="12%">
-                                <div class="role-selection btn-container ">
-                                    <button type="submit" class="assignRoleBtn btn btn-primary">Assign Role</button>
-                                </div>
-                        </td>
-                            </form>
-                        </td>
-                </tr>
-  
-            </tbody>
-        </table>
+                                    @endif
+                                </td>
+                                <td class="assignRole" width="8%">
+                                    <form class="roleForm " method="POST" action="{{ route('employees.roles', $employee->id)}}">
+                                        @csrf
+                                        <div class="role-selection ">
+                                            <select id="role" name="role" autocomplete="role-name" class="role-input">
+                                                @foreach($roles as $role)
+                                                <option value="{{$role->name}}">{{$role->name}}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('name') <span>{{$message}}</span> @enderror
+                                        </div>
+                                <td width="12%">
+                                        <div class="role-selection btn-container ">
+                                            <button type="submit" class="assignRoleBtn btn btn-primary">Assign Role</button>
+                                        </div>
+                                </td>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                </table>
 
-
-                            <form class="roleForm " method="POST" action="{{ route('employees.roles', $employee->id)}}">
+                            <!-- <form class="roleForm " method="POST" action="{{ route('employees.roles', $employee->id)}}">
                                 <div class="GIM-employeeAssignRole-Container ">
                                     <div class="GIM-employeeAssignRole-Input">
                                     @csrf
@@ -166,7 +166,12 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            </form> -->
+            </div>
+
+        </div>
+    </div>
+</div>
 @endsection
 
 
@@ -194,17 +199,10 @@
                     "paging": false,//Dont want paging                
                     "bPaginate": false,//Dont want paging  
                     searching: false,
-                    columnDefs: [{ targets: [4,5,6], orderable: false }],
+                    "ordering": false,
                     "language": {
-                        "emptyTable": "No Employees"
+                        "emptyTable": "No Employee"
                     }
-                })
- 
-                $("[data-toggle=popover]").popover({
-                    html: true,
-                    content: function() {
-                        return $('#popover-content').html();
-                        }
                 })
             });
         </script>
