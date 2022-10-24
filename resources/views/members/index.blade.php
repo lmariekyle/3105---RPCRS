@@ -110,6 +110,7 @@
                             </a>
                        
                         </td>
+                        @role('admin')
                         <td class="deleteTD">
                                                        
                                 <label class="removeInput">
@@ -123,6 +124,7 @@
                          
                        
                         </td>
+                        @endrole
                 </tr>
                 
                 @endforeach      

@@ -138,9 +138,9 @@ class EmployeeController extends Controller
         return back()->with('success', 'Employee Deleted successfully');
     }
 
-    public function viewEmployee(User $employee)
+    public function viewEmployee($id)
     {
-        $employee=User::all();
+        $employee=User::find($id);
         $roles = Role::all();
         $permissions = Permission::all();
         return view('employees.role',compact('employee','roles','permissions'));

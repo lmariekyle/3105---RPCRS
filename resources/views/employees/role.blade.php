@@ -88,7 +88,7 @@
             </thead>
        
             <tbody  class="justify-content-center" style="cursor: pointer;">
-            @foreach ($employee as $employee)            
+                    
             <!--  -->
                
                 <tr>
@@ -141,7 +141,7 @@
                             </form>
                         </td>
                 </tr>
-                @endforeach      
+  
             </tbody>
         </table>
  
