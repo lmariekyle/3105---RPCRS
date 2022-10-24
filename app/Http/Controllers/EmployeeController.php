@@ -82,7 +82,9 @@ class EmployeeController extends Controller
     public function show($id)
     {
         $employee = User::find($id);
-        return view('employees.show')->with('employee',$employee);
+        $roles = Role::all();
+    	
+        return view('employees.show', compact('roles'))->with('employee',$employee);
     }
 
     /**

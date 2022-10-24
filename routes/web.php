@@ -43,7 +43,7 @@ Route::resource('gymclass', 'GymClassController');
 Route::resource('membership', 'MembershipController');
 
 Route::resource('employees','EmployeeController');
-Route::get('/employees/{employee}', [EmployeeController::class, 'viewEmployee'])->name('employees.viewEmployee');
-Route::post('/employees/{employee}/roles', [EmployeeController::class, 'assignRole'])->name('employees.roles');
-Route::delete('/employees/{employee}/roles/{role}', [EmployeeController::class, 'removeRole'])->name('employees.roles.remove');
+Route::get('/employees/role/{employee}', [EmployeeController::class, 'viewEmployee'])->name('employees.viewEmployee');
+Route::post('/employees/role/{employee}/roles', [EmployeeController::class, 'assignRole'])->name('employees.roles');
+Route::delete('/employees/role/{employee}/roles/{role}', [EmployeeController::class, 'removeRole'])->name('employees.roles.remove');
 require __DIR__.'/auth.php';

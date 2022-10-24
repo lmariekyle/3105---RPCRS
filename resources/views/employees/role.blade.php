@@ -60,11 +60,11 @@
 
     <div class="my-custom-row d-flex flex-row justify-content-between " >
         <div class="col-4 align-self-end">
-            <h1 class="view-gym-members">Employee Profile</h1>
+            <h1 class="view-gym-members">Assign Role</h1>
         </div>
         <div class="col-4 align-self-end d-flex justify-content-end" >
-            <a href="{{route('employees.index')}}" class="add-member-bg text-sm">
-                <div class="add-member">View Employees</div>
+            <a href="{{ route('employees.show', $employee->id) }}" class="add-member-bg text-sm">
+                <div class="add-member">Go Back</div>
             </a>
         </div>
     </div>
@@ -80,9 +80,6 @@
                 <div class="pb-3 pt-3">
                     <div class="col">
                         <h1 class="customer-name">{{ $employee->firstname}} {{ $employee->middlename[0]}}. {{ $employee->lastname}}</h1>
-                    </div>
-                    <div class="col">
-                        <h2 class="membership-type">ROLE:{{ $employee->type}}</h2>
                     </div>
                 </div>
                 <table id="GIMTable" class="table " style="width:100%">
