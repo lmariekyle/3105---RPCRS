@@ -155,6 +155,7 @@
         </table>
        
     </div>
+    <h6> To view a specific employee, double click a row with the employee's information</h6>
 
         @else
         <!-- <div >

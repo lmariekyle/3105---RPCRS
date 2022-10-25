@@ -58,6 +58,7 @@ table.dataTable tbody tr {
             <div class="header d-flex">
                 <span class="name px-3">Name</span>
             </div>
+            <br>
             <div class="px-3">
                 <div class="pb-3">
                     <div class="col">
