@@ -14,7 +14,7 @@
 
 
         <!-- sidebar-css-js -->
-        <link rel="stylesheet" href="{{ asset('/css/sidebar.css') }}"/>
+        <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet"/>
         <link href="{{ asset('css/membersCreate.css') }}" rel="stylesheet">
 
         <!-- fonts -->
@@ -34,15 +34,22 @@
 
 
         <!-- index-css -->
+        @yield('gymMembersActive-css')
+        @yield('employeesActive-css')
+        @yield('rolesActive-css')
+        @yield('permissionsActive-css')
         @yield('index-css')
         @yield('show-css')
         @yield('enroll-css')
+        @yield('role-css')
+
         <style>
             body{
                 background: #EDEDE9;
             }
         </style>
 
+        <script src="{{asset('js/app.js')}}" defer></script>
         <script src="https://kit.fontawesome.com/5a0ab02d03.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" 
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
@@ -50,14 +57,17 @@
     </head>
 
     <body>
+        
         <div class="main-container d-flex">
         @include('layouts.navigation')
             <div class="container">
+                <br>
+                @include('inc.flash')
                 @yield('content')
             </div>
         </div>
         
-    
+   
     <!-- sidebar-js -->
     
 
@@ -65,7 +75,7 @@
     @yield('index-js')
     @yield('enroll-js')
     @yield('show-js')
-        
+    
     </body>
     <script>
         $(".sidebar ul li").on('click' , function(){

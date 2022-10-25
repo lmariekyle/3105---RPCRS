@@ -29,9 +29,7 @@ class CreateGymClassesTable extends Migration
 
             $table->string('schedule'); 
             $table->string('time');
-            
-            $table->foreignId('employee_id')->references('id')->on('employees')->onDelete('cascade')->onUpdate('cascade');
-            
+                        
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

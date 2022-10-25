@@ -1,8 +1,21 @@
 @extends('layout.app')
 
+
+@section('gymMembersActive-css')
+
+    <style>
+        .gymMembersActive{
+            background: white;
+            border-radius:8px;
+        }
+    </style>
+
+@endsection
+
 @section('show-css')
 <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('/css/show.css') }}"/>
+
 <style>
 tr, th, td,{
     border:none;
@@ -32,7 +45,7 @@ table.dataTable tbody tr {
         </div>
         <div class="col-4 align-self-end d-flex justify-content-end" >
                 <a href="/members" class="go-back-bg ">
-                    <div class="go-back">Go Back</div>
+                    <div class="go-back">View Gym Members</div>
                 </a>
         </div>
 
@@ -43,7 +56,7 @@ table.dataTable tbody tr {
                 <span class="name px-3">Name</span>
             </div>
             <div class="px-3">
-                <div class="pb-3">
+                <div class="pb-3 pt-3">
                     <div class="col">
                         <h1 class="customer-name">{{$customer->firstname}} {{$customer->middlename[0]}}. {{$customer->lastname}}</h1>
                     </div>
@@ -89,36 +102,57 @@ table.dataTable tbody tr {
                                 </a>
                                 </td>
                                 <td class="deleteTD">
-                                {!! Form::open(['action' => ['CustomerController@destroy', $customer->id],'method'=>'POST','class' => '']) !!}
-                                
-                                    {{Form::hidden('_method','DELETE')}}
-                                    <!-- {{Form::submit('Delete', ['class'=> ''])}} -->
-                            
                                     <label class="removeInput">
-                                                    <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                                    </svg>
-                                                    <input class="hideInput" type="submit" name="delete">
-                                    </label>                  
-                                {!! Form::close() !!}
-                                </td>
-                                <td>
-                                    <a href="/members/{{$customer->id}}/class/create">
-                                        <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-arrow-up" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M8 11a.5.5 0 0 0 .5-.5V6.707l1.146 1.147a.5.5 0 0 0 .708-.708l-2-2a.5.5 0 0 0-.708 0l-2 2a.5.5 0 1 0 .708.708L7.5 6.707V10.5a.5.5 0 0 0 .5.5z"/>
-                                            <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
-                                            <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+                                        <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                         </svg>
-                                    </a>
+                                        <input class="hideInput deleteUserBtn" type="button" name="delete" value="{{$customer->id}}">
+                                    </label>
                                 </td>
+                                
                             </tr>
                         </tbody>
+                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                    {!! Form::open(['action' => ['CustomerController@destroy', $customer->id],'method'=>'POST','class' => '']) !!}
+                                        <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete User</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <input type="hidden" name="customer_delete_id" id="customer_id">
+                                        <h5>Delete this user #{{$customer->id}}?<br> All information stored on this user will be deleted</h5>
+                                        </div>
+                                        <div class="modal-footer">
+                                            {{Form::hidden('_method','DELETE')}}
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-danger">Confirm</button>
+                                        </div>
+                                    {!! Form::close() !!}
+                              </div>
+                            </div>
+                        </div>
                 </table>
  
                 <div class="table-div">
-                    <div class="col">
-                        <h2 class="class-head">Enrolled Classes</h2>
+                    <div class="my-custom-row d-flex flex-row justify-content-between " >
+                        <div class="col">
+                            <h2 class="class-head">Enrolled Classes</h2>
+                        </div>
+                        
+                        <a href="/members/{{$customer->id}}/class/create">
+                            <button class="enrollBtn">
+                            Enroll?
+                            <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-arrow-up" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 11a.5.5 0 0 0 .5-.5V6.707l1.146 1.147a.5.5 0 0 0 .708-.708l-2-2a.5.5 0 0 0-.708 0l-2 2a.5.5 0 1 0 .708.708L7.5 6.707V10.5a.5.5 0 0 0 .5.5z"/>
+                                <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                                <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+                            </svg>
+                            </button>
+                        </a>
+                
                     </div>
                     <table id="second-table" class="table" style="width:100%">
                         <thead>
@@ -130,7 +164,7 @@ table.dataTable tbody tr {
                                 <th>DESCRIPTION</th>
                                 <th>PRICE</th>
                                 <th>SCHEDULE</th>
-                                <th>EMPLOYEE ID</th>
+                                <th>UNENROLL?</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -145,12 +179,11 @@ table.dataTable tbody tr {
                         
                         
                                 <td>{{$class->cur_number}} / {{$class->max_enrollees}}</td>
-                                <td>{{$class->description}}</td>
+                                <td >{{substr($class->description, 0, 30)}}...</td>
                     
                         
                                 <td>{{$class->price}}</td>
                                 <td>{{$class->schedule}} {{$class->time}}</td>
-                                <td>{{$class->employee_id}}</td>
                                 <td class="deleteTD">
                                 {!! Form::open(['action' => ['CustomerClassController@destroy', $class->cc_id],'method'=>'POST','class' => '']) !!}
                    
@@ -200,7 +233,8 @@ table.dataTable tbody tr {
                     "language": {
                         "emptyTable": "Costumer does not exist."
                     }
-                });
+                })
+
                 $('#second-table').DataTable({
                     "bInfo": false, //Dont display info e.g. "Showing 1 to 4 of 4 entries"
                     "paging": false,//Dont want paging                
@@ -215,3 +249,32 @@ table.dataTable tbody tr {
         </script>
 
 @endsection
+
+
+@section('scripts')
+
+        <script>
+            $(document).ready(function(){
+                $('.deleteUserBtn').click(function(e){
+                    e.preventDefault();
+
+                    var customer_id = $(this).val();
+                    $('#customer_id').val(customer_id);
+
+                    $('#deleteModal').modal('show');
+                });
+
+            });
+            $(document).ready(function(){
+                $('.unenrollUserBtn').click(function(e){
+                    e.preventDefault();
+                    var class_id = $(this).val();
+                    $('#class_id').val(class_id);
+                  
+                    $('#unenrollModal').modal('show');
+                });
+            });
+        </script>
+
+@endsection
+ 

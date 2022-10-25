@@ -1,9 +1,41 @@
 @extends('layout.app')
 
+
+@section('gymMembersActive-css')
+
+    <style>
+        .gymMembersActive{
+            background: white;
+            border-radius:8px;
+        }
+    </style>
+
+@endsection
+
 @section('content')
+
+
+@if(session('error'))
+    <div  class = "alert alert-danger">
+        {{session('error')}}
+    </div>
+@endif
+
 <div class="GIM-membersCreate">
-    <h1 class="GIM-membersCreate-header">Add New Member</h1>
+
+    <div class="my-custom-row d-flex flex-row justify-content-between " >
+        <div class="col-4 align-self-end">
+            <h1 class="head-title"> Add New Member </h1>
+        </div>
+        <div class="col-4 align-self-end d-flex justify-content-end" >
+                <a href="/members" class="go-back-bg ">
+                    <div class="go-back">Go Back</div>
+                </a>
+        </div>
+
+    </div>
     
+    <br>
 
     {!! Form::open(['action' => 'CustomerController@store','method'=>'POST']) !!}
     
@@ -37,7 +69,8 @@
             {{Form::label('date_of_birth','Date of Birth')}}
             <br>
             {{Form::date('date_of_birth', \Carbon\Carbon::now());}}
-            <div class="errCreate">{{$errors->first('date_of_birth')}}</div>
+            <div class="errCreate">{{$errors->first('date_of_birth')}} </div>
+
         </div>
         </div>
 
@@ -58,8 +91,8 @@
 
         <div class="GIM-membersCreate-formAllignment">
         <div class="GIM-membersCreate-membershipSpace">
-            {{Form::label('membership','Membership')}}
-            <select name="membership">
+            {{Form::label('membership','Membership')}} :
+            <select name="membership" style="margin-left: 5px;">
                 @foreach($memberships as $membership)
                     <option value="{{$membership->id}}" >{{$membership->name}}</option>
                 @endforeach
@@ -143,9 +176,7 @@
             {!! Form::close() !!}
         </div>
 
-    </div>
-    <div class="GIM-membersCreate-goBackLink">
-    <a href="/members"><div>Go Back</div></a>
+        </div>
     </div>
 </div>
 @endsection
@@ -163,4 +194,5 @@
             });
         </script>
 
+    
 @endsection

@@ -1,8 +1,34 @@
 @extends('layout.app')
 
+@section('gymMembersActive-css')
+
+    <style>
+        .gymMembersActive{
+            background: white;
+            border-radius:8px;
+        }
+    </style>
+
+@endsection
+
 @section('content')
 <div class="GIM-membersCreate">
-    <h1 class="GIM-membersCreate-header">Edit Member Information</h1>
+
+    
+    <div class="my-custom-row d-flex flex-row justify-content-between " >
+        <div class="col-4 align-self-end">
+            <h1 class="head-title"> Update Member Information </h1>
+        </div>
+        <div class="col-4 align-self-end d-flex justify-content-end" >
+                <a href="/members" class="go-back-bg ">
+                    <div class="go-back">Go Back</div>
+                </a>
+        </div>
+
+    </div>
+    
+    <br>
+
     {!! Form::open(['action' => ['CustomerController@update', $customer->id],'method'=>'POST']) !!}
 
     <div class="GIM-membersCreate-container">
@@ -17,7 +43,7 @@
             
             <br>
             {{Form::label('status','Status',['class' => 'class-name-for-labels'])}} :
-            <select name="status">
+            <select name="status" style="margin-left: 5px;">
                 <option value="ACTIVE" >ACTIVE</option>
                 <option value="INACTIVE" >INACTIVE</option>
             </select> 
@@ -153,9 +179,6 @@
         </div>
 
     </div>
-        <div class="GIM-membersCreate-goBackLink">
-        <a href="/members"><div class="">Go Back</div></a>
-        </div>
 </div>
 @endsection
 
