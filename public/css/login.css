@@ -1,0 +1,101 @@
+body {
+    background: #EDEDE9;
+    font-family: Arial;
+}
+
+label {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
+}
+
+.GIM-container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+    border: 5px solid #DDA15E;
+    filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.25));
+    border-radius: 72px;
+}
+
+.GIM-header {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 128px;
+    line-height: 155px;
+    color: #DDA15E;
+    font-variation-settings: 'slnt' -1;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
+.USER-label {
+    margin: 0px 0px 0px 235px;
+    width: 107px;
+    height: 24px;
+    left: 0px;
+    top: 0px;
+}
+
+.USER-input {
+    margin: 6px 0px 23px 235px;
+    width: 332px;
+    height: 38px;
+    left: 0px;
+    top: 28px;
+    background: #D9D9D9;
+    border: 0px;
+}
+
+.PASS-label {
+    margin: 0px 0px 0px 235px;
+    width: 103px;
+    height: 0px;
+    left: 0px;
+    top: 80px;
+}
+
+.PASS-input {
+    margin: 6px 0px 0px 235px;
+    width: 332px;
+    height: 38px;
+    left: 0px;
+    top: 108px;
+    background: #D9D9D9;
+    border: 0px;
+}
+
+.GIM-rememberMe {
+    margin-left: 240px;
+}
+
+.GIM-forgotPassword {
+    margin-left: 240px;
+    margin-bottom: 35px;
+}
+
+.GIM-whiteLinkForForgotPass {
+    color: black;
+}
+
+.login {
+    margin: 0px 0px 10px 0px;
+    width: 179px;
+    height: 35px;
+    left: 0px;
+    top: 10px;
+    background: #343A40;
+    border: 1px;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    text-align: center;
+    color: #FFFFFF;
+}
