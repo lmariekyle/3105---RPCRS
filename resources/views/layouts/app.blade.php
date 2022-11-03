@@ -39,6 +39,10 @@
             body{
                 background: #EDEDE9;
             }
+            
+            table, tr, td, th{
+                word-break: break-word; 
+            }
         </style>
 
         <!-- Scripts -->

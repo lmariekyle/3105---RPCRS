@@ -7,6 +7,7 @@
             background: white;
             border-radius:8px;
         }
+
     </style>
 
 @endsection
@@ -24,14 +25,10 @@
                 /* or whatever height you need to make them all consistent */
             }
 
-            table, tr, td, th{
-                word-wrap: break-word;
-            }
-
-
             td{
                 border:none;
             }
+            
             table.dataTable thead th {
                 border-bottom: 1px solid #111;
             }
