@@ -1,5 +1,27 @@
 @extends('layout.app')
 
+@section('rolesActive-css')
+    <style>
+        .rolesActive{
+            background: white;
+            border-radius:8px;
+        }
+    </style>
+@endsection
+{{--
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div>
+                        <h1>Roles</h1>
+                    </div>
+                    <div class="role-create-btn-container">
+                        <a href="{{route('admin.permissions.index')}}">View Permissions</a>
+                    </div>
+            </div>
+--}}
+
+
 @section('permissionsActive-css')
 
     <style>
@@ -56,6 +78,11 @@
             </div>
         </div>
     </form>
+
+</div>
+
+</div>
+
 
 </div>
 

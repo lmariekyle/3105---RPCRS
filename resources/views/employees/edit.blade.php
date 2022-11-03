@@ -89,13 +89,13 @@
           </div>
           </div>
 
-          <div class="GIM-membersCreate-formAllignment">
+          <!-- <div class="GIM-membersCreate-formAllignment">
           <div class="form-group">
             {{Form::label('password','Password')}}
             <br>
             {{Form::text('password',$employee->password)}}
           </div>
-          </div>
+          </div> -->
 
           
 

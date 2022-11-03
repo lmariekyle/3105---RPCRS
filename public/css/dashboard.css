@@ -36,8 +36,15 @@
     text-shadow: 1px 0 0 black, 0 -1px 0 black, 0 1px 0 black, -1px 0 0 black;
 }
 
+.container-box{
+    margin-right:75px;
+}
+
+.container-box:last-child{
+    padding-right:75px;
+}
+
 .box{
-    border: 1px solid black;
     width: 220px;
     height: 295px;
 

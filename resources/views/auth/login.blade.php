@@ -40,7 +40,7 @@
                 <div>
                     <x-label for="password" :value="__('Password')" class="PASS-label"/>
 
-                    <x-input id="password" class="PASS-input" style="margin-bottom:8px;" 
+                    <x-input id="password" class="PASS-input" style="margin-bottom:40px;" 
                                     type="password"
                                     name="password"
                                     required autocomplete="current-password" />
@@ -52,20 +52,20 @@
                 </div>
 
                 <!-- Remember Me -->
-                <div class="GIM-rememberMe" style="margin-left:240px;">
+                <!-- <div class="GIM-rememberMe" style="margin-left:240px;">
                     <label for="remember_me" class="inline-flex items-center">
                         <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
                         <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                     </label>
-                </div>
+                </div> -->
 
-                <div class="GIM-forgotPassword" style="margin-left: 240px; margin-bottom: 35px;">
+                <!-- <div class="GIM-forgotPassword" style="margin-left: 240px; margin-bottom: 35px;">
                     @if (Route::has('password.request'))
                         <a class="GIM-whiteLinkForForgotPass" href="{{ route('password.request') }}" style="color: black;">
                             {{ __('Forgot your password?') }}
                         </a>
                     @endif
-                </div>
+                </div> -->
                 <div>
                     <x-button class="login">
                         {{ __('Log in') }}

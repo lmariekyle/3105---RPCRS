@@ -21,10 +21,10 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = User::paginate(5);
-        $roles = Role::all();
+        $employees = User::where('id', '>', 1)->paginate(5);
+       $roles = Role::all();
     
-       return view('employees.index', compact('employees','roles'));	
+       return view('employees.index', compact('employees','roles'));		
     }
 
     /**
@@ -82,7 +82,9 @@ class EmployeeController extends Controller
     public function show($id)
     {
         $employee = User::find($id);
-        return view('employees.show')->with('employee',$employee);
+        $roles = Role::all();
+    	
+        return view('employees.show', compact('roles'))->with('employee',$employee);
     }
 
     /**
@@ -137,9 +139,9 @@ class EmployeeController extends Controller
         return redirect('/employees')->with('success', 'Employee Deleted successfully');
     }
 
-    public function viewEmployee(User $employee)
+    public function viewEmployee($id)
     {
-        $employee = User::find($employee);
+        $employee=User::all();
         $roles = Role::all();
         $permissions = Permission::all();
         return view('employees.role',compact('employee','roles','permissions'));

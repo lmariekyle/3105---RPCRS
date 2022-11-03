@@ -1,16 +1,25 @@
 <x-app-layout>
     <link rel="stylesheet" href="{{ asset('/css/dashboard.css') }}"/>
-
+    <script src="{{asset('js/app.js')}}" defer></script>
     <x-slot name="header">
-        <div class="my-custom-row d-flex flex-row justify-content-between " >
-            <div class="col-4 align-self-end">
-                <h1 class="adminText"> {{ __('Admin') }} </h1>
-            </div>
-        </div>
+
             <div class="contentContainer">
+                <div class="my-custom-row d-flex flex-row justify-content-between " >
+                    @role('admin')
+                    <div class="admin-container">
+                        <h1 class="adminText"> {{ __('Hello, Admin') }} </h1>
+                    </div>
+                    @endrole
+                    @role('employee')
+                    <div class="admin-container">
+                        <h1 class="adminText"> {{ __('Hello, Employee') }} </h1>
+                    </div>
+                    @endrole
+                </div>
+                
                 <div class="centerContainer">
                     <div class="d-flex justify-content-between">
-                        <div class="">
+                        <div class="container-box">
                             <a href="/employees">
                                 <div class="box">
                                     <i class="Iicons fa-solid fa-id-card"></i>
@@ -23,18 +32,17 @@
                                 EMPLOYEES
                             </div>
                         </div>
-                        <div class="">
+                        <div class="container-box">
                             <a href="/members">
                                 <div class="box">
                                     <i class="Iicons fa-solid fa-users"></i>
-                                    
                                 </div>
                             </a>
                             <div class="box-description">
                                 GYM MEMBERS
                             </div>
                         </div>
-                        <div class="">
+                        <div class="container-box">
                             <a href="/gymclass">
                                 <div class="box">
                                     <!-- <svg class="SVGicons" xmlns="http://www.w3.org/2000/svg" width="169" height="169" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -48,7 +56,7 @@
                                 CLASSES
                             </div>
                         </div>
-                        <div class="">
+                        <div class="container-box">
                             <a href="/membership">
                                 <div class="box">
                                     <i class="Iicons fa-solid fa-address-book"></i>

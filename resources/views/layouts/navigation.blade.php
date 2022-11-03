@@ -31,6 +31,7 @@
                             </div>
                         </a>
                     </li>
+                    @role('admin')
                     <div class="space"></div>
                     <li class="employeesActive d-flex justify-content-center">
                         <a href="/employees" class="text-decoration-none py-2 d-block">
@@ -42,6 +43,7 @@
                             </div>
                         </a>
                     </li>
+                    @endrole
                     <div class="space"></div>
                     <li class="classesActive d-flex justify-content-center">
                         <a href="/gymclass" class="text-decoration-none py-2 d-block">
@@ -64,7 +66,7 @@
                         </div>
                       </a>
                     </li>
-                    
+                    @role('admin')
                     </ul>
                     <div class="space"></div>
                       <li class="rolesActive d-flex justify-content-center">
@@ -89,8 +91,8 @@
                           </div>
                         </a>
                       </li>
-
                       </ul>
+                      @endrole
 
                     <hr class="h-color mx-2"></hr>
                             <div class="logout-container">

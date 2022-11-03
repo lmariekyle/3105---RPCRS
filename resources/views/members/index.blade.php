@@ -110,6 +110,7 @@
                             </a>
                        
                         </td>
+                        @role('admin')
                         <td class="deleteTD">
                                                        
                                 <label class="removeInput">
@@ -123,6 +124,7 @@
                          
                        
                         </td>
+                        @endrole
                 </tr>
                 
                 @endforeach      
@@ -157,6 +159,7 @@
         <div class="d-flex justify-content-end">
             {{$data->links()}}
         </div>
+        <h6> To view a specific member, double click a row with the member's information</h6>
     @else
         <!-- <p>no customers</p> -->
     @endif
