@@ -65,7 +65,7 @@
        
             <thead>
                
-                    <tr>
+                    <tr id="target" data-customer= "0">
                         <th>ID</th>
                         <th>NAME</th>
                         <th>PHONE NUMBER</th>
@@ -224,14 +224,15 @@
         </script>
 
         <script>
-
             $( "tr" ).dblclick(function() {
-                var val = $(this).data('customer');
-                window.location.href='/members/'+val;
                 
+                var val = $(this).data('customer');
+                if(val!=0){
+                    window.location.href='/members/'+val;
+                }                
+
             });
         </script>
-
 
 @endsection
  

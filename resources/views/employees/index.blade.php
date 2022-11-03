@@ -7,6 +7,7 @@
             background: white;
             border-radius:8px;
         }
+
     </style>
 
 @endsection
@@ -24,14 +25,10 @@
                 /* or whatever height you need to make them all consistent */
             }
 
-            table, tr, td, th{
-                word-wrap: break-word;
-            }
-
-
             td{
                 border:none;
             }
+            
             table.dataTable thead th {
                 border-bottom: 1px solid #111;
             }
@@ -60,9 +57,8 @@
     <div class="cont-table">
         <table id="GIMTable" class="table-container table table-hover ">
        
-            <thead>
-               
-                    <tr>
+            <thead>           
+                    <tr id="target" data-customer= "0">
                         <th>ID</th>
                         <th>NAME</th>
                         <th>EMAIL</th>
@@ -72,8 +68,7 @@
                         <th>STATUS</th>
                         <th></th>  
                         <th></th>  
-                    </tr>
-               
+                    </tr>      
             </thead>
        
             @if($employees->count())
@@ -225,11 +220,11 @@
         </script>
 
         <script>
-
-            $( "tr" ).dblclick(function() {
+            $( "tr" ).dblclick(function() {    
                 var val = $(this).data('customer');
-                window.location.href='/employees/'+val;
-             
+                if(val!=0){
+                    window.location.href='/employees/'+val;
+                }                
             });
         </script>
 

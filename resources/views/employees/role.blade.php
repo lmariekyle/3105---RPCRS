@@ -43,10 +43,6 @@
             table td:last-child {
                 border-right: none;
             }
-            
-            table, tr, td, th{
-                word-wrap: break-word;
-            }
 
             table.dataTable thead th {
                 border-bottom: 1px solid #111;
