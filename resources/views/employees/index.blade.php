@@ -57,9 +57,8 @@
     <div class="cont-table">
         <table id="GIMTable" class="table-container table table-hover ">
        
-            <thead>
-               
-                    <tr>
+            <thead>           
+                    <tr id="target" data-customer= "0">
                         <th>ID</th>
                         <th>NAME</th>
                         <th>EMAIL</th>
@@ -69,8 +68,7 @@
                         <th>STATUS</th>
                         <th></th>  
                         <th></th>  
-                    </tr>
-               
+                    </tr>      
             </thead>
        
             @if($employees->count())
@@ -222,11 +220,11 @@
         </script>
 
         <script>
-
-            $( "tr" ).dblclick(function() {
+            $( "tr" ).dblclick(function() {    
                 var val = $(this).data('customer');
-                window.location.href='/employees/'+val;
-             
+                if(val!=0){
+                    window.location.href='/employees/'+val;
+                }                
             });
         </script>
 

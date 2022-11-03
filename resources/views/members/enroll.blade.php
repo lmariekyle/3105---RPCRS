@@ -44,7 +44,7 @@ table.dataTable tbody tr {
 <div class="show-blade-container">
     <div class="my-custom-row d-flex flex-row justify-content-between " >
         <div class="col-4 align-self-end">
-            <h1 class="head-title"> Enroll Class </h1>
+            <h1 class="head-title"> Enroll Class</h1>
         </div>
         <div class="col-4 align-self-end d-flex justify-content-end" >
                 <a href="/members/{{$customer->id}}" class="go-back-bg ">
@@ -76,7 +76,7 @@ table.dataTable tbody tr {
                     <table id="first-table" class="table" style="width:100%">
                         <thead>
                             <tr>
-                                <!-- <th>CLASS ID</th> -->
+                                <th>CLASS ID</th>
                                 <th>CLASS NAME</th>
                                 <th>STATUS</th>
                                 <th>ENROLLEES</th>
@@ -92,7 +92,7 @@ table.dataTable tbody tr {
                         @if (count($enrolled) >= 1)
                         @foreach($enrolled as $class)
                             <tr>
-                                <!-- <td>{{$class->class_id}}</td> -->
+                                <td>{{$class->class_id}}</td>
                                 <td>{{$class->name}}</td>
                                 <td>{{$class->status}}</td>
                        
@@ -136,6 +136,7 @@ table.dataTable tbody tr {
                                     </div>
                                     
                                 </td>
+                                <td></td>
                                 
                             </tr>
                             
@@ -154,7 +155,7 @@ table.dataTable tbody tr {
                         <table id="second-table" class="table" style="width:100%">
                         <thead>
                                 <tr>
-                                    <!-- <th>CLASS ID</th> -->
+                                    <th>CLASS ID</th>
                                     <th>CLASS NAME</th>
                                     <th>STATUS</th>
                                     <th>ENROLEES</th>
@@ -171,7 +172,7 @@ table.dataTable tbody tr {
                             @foreach($classes as $class)
 
                                 <tr>
-                                    <!-- <td>{{$class->class_id}}</td> -->
+                                    <td>{{$class->id}}</td>
                                     <td>{{$class->name}}</td>
                                     <td>{{$class->status}}</td>
                         
@@ -201,6 +202,7 @@ table.dataTable tbody tr {
                                         </label>
                                     {!! Form::close() !!}
                                     </td>
+                                    <td></td>
                                 </tr>
                                 
                             @endforeach
@@ -245,7 +247,7 @@ table.dataTable tbody tr {
                     "paging": false,//Dont want paging                
                     "bPaginate": false,//Dont want paging  
                     searching: false,
-                    "ordering": false,
+                    columnDefs: [{ targets: [3,4,5,6], orderable: false }],
                     // columnDefs: [{ targets: [0,1,2,3,4,5,6,7,8,9], orderable: false }],
                     "language": {
                         "emptyTable": "No Classes Enrolled"
@@ -256,7 +258,7 @@ table.dataTable tbody tr {
                     "paging": false,//Dont want paging                
                     "bPaginate": false,//Dont want paging  
                     searching: false,
-                    columnDefs: [{ targets: [4], orderable: false }],
+                    columnDefs: [{ targets: [3,4,5,6], orderable: false }],
                     "language": {
                         "emptyTable": "No Classes"
                     }
