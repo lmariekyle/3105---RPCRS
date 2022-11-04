@@ -116,7 +116,7 @@ class EmployeeController extends Controller
             'email' => 'required|email',
             'date_of_birth' => 'required|date_format:Y-m-d|before:'.now()->subYears(18)->toDateString(),
             'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11',
-            'password' =>'required'
+           
 		]);
 
         $employee->update($request->all());

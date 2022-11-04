@@ -124,7 +124,7 @@
           <div class="GIM-membersCreate-container-button">
             
             
-            <button type="button" class="editUserBtn">Update Member</button>
+            <button type="button" class="editUserBtn">Update Employee</button>
             
           </div>
 
