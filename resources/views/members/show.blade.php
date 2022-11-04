@@ -99,6 +99,7 @@ table.dataTable tbody tr {
                                     </div>
                                 </a>
                                 </td>
+                                @role
                                 <td class="deleteTD">
                                     <label class="removeInput">
                                 
@@ -109,6 +110,7 @@ table.dataTable tbody tr {
                                         <input class="hideInput deleteUserBtn" type="" name="delete" value="{{$customer->id}}">
                                     </label>
                                 </td>
+                                @endrole
                             </tr>
                         </tbody>
                         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
