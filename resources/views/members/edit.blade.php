@@ -73,6 +73,7 @@
             {{Form::label('date_of_birth','Date of Birth',['class' => 'class-name-for-labels'])}}
             <br>
             {{Form::date('date_of_birth', $customer->date_of_birth)}}
+            <div class="errCreate">{{$errors->first('date_of_birth')}}</div>
         </div>
         </div>
 
@@ -81,11 +82,13 @@
             {{Form::label('phone_number','Phone Number',['class' => 'class-name-for-labels'])}}
             <br>
             {{Form::text('phone_number',$customer->phone_number,)}}
+            <div class="errCreate">{{$errors->first('phone_number')}}</div>
         </div>
         <div class="GIM-membersCreate-rightSide">
             {{Form::label('email','E-mail',['class' => 'class-name-for-labels'])}}
             <br>
             {{Form::email('email',$customer->email)}}
+            <div class="errCreate">{{$errors->first('email')}}</div>
         </div>
         </div>
 
@@ -174,7 +177,7 @@
 
 
         <div class="GIM-membersCreate-container-button">
-            <button type="button" class="editUserBtn">Update Member</button>
+            <button type="button" class="editUserBtn">Update</button>
             {!! Form::close() !!}
         </div>
 

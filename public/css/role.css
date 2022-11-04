@@ -103,8 +103,6 @@
     border: 3px solid #DDA15E;
 }
 
-.role-selection .btn-container{
-    display:block;
-    margin-left:auto;
-    margin-right:auto;
+.assignRoleBtn{
+    word-break: break-word; 
 }

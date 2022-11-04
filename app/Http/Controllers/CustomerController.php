@@ -169,8 +169,8 @@ class CustomerController extends Controller
             'middlename' => 'required',
             'lastname' => 'required',
             'date_of_birth' => 'required|date_format:Y-m-d|before:'.now()->subYears(13)->toDateString(),
-            'phone_number' => 'required',
-            'email' => 'required',
+            'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11',
+            'email' => 'required|email',
         ]);
 
         $customer = Customer::find($id);
