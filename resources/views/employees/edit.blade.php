@@ -61,7 +61,7 @@
             <br>
             {{Form::text('middlename',$employee->middlename)}}
           </div>
-          </div>
+          </div> 
 
           <div class="GIM-membersCreate-formAllignment">
           <div class="form-group">
@@ -73,6 +73,7 @@
             {{Form::label('email','Email')}}
             <br>
             {{Form::text('email',$employee->email)}}
+            <div class="errCreate">{{$errors->first('email')}}</div>
           </div>
           </div>
 
@@ -81,11 +82,13 @@
             {{Form::label('phone_number','Phone Number')}}
             <br>
             {{Form::text('phone_number',$employee->phone_number)}}
+            <div class="errCreate">{{$errors->first('phone_number')}}</div>
           </div>
           <div class="GIM-membersCreate-inputDate">
             {{Form::label('date_of_birth','Birth Date')}}
             <br>
             {{Form::date('date_of_birth',$employee->date_of_birth)}}
+            <div class="errCreate">{{$errors->first('date_of_birth')}}</div>
           </div>
           </div>
 
@@ -124,7 +127,7 @@
           <div class="GIM-membersCreate-container-button">
             
             
-            <button type="button" class="editUserBtn">Update Employee</button>
+            <button type="button" class="editUserBtn">Update</button>
             
           </div>
 
