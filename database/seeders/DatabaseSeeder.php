@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminSeeder::class);
         $this->call(MembershipSeeder::class);
         $this->call(GymClassSeeder::class);
+        $this->call(CustomerSeeder::class);
+        $this->call(CustMemSeeder::class);
 
     }
 }

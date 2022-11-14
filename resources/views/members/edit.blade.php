@@ -44,6 +44,8 @@
             <br>
             {{Form::label('status','Status',['class' => 'class-name-for-labels'])}} :
             <select name="status" style="margin-left: 5px;">
+                <option value="{{$customer->status}}" >{{$customer->status}}</option>
+                <option disabled></option>
                 <option value="ACTIVE" >ACTIVE</option>
                 <option value="INACTIVE" >INACTIVE</option>
             </select> 
@@ -97,6 +99,8 @@
             {{Form::label('membership','Membership',['class' => 'class-name-for-labels'])}}
             <h4> Current Membership Plan: {{$currplan->name}} </h4>
             <select name="membership">
+                <option value={{$currplan->name}}> {{$currplan->name}} </option>
+                <option disabled></option>
                 @foreach($memberships as $membership)
                     <option value="{{$membership->id}}">{{$membership->name}}</option>
                 @endforeach

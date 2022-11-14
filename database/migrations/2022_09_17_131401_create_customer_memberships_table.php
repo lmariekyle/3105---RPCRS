@@ -18,6 +18,10 @@ class CreateCustomerMembershipsTable extends Migration
             $table->foreignId('customer_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('membership_id')->references('id')->on('memberships')->onDelete('cascade')->onUpdate('cascade');
 
+            $table->dateTime('membership_start_date')->useCurrent();
+            $table->dateTime('membership_end_date');
+            $table->dateTime('membership_expires_in');
+
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
