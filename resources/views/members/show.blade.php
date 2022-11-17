@@ -99,7 +99,7 @@ table.dataTable tbody tr {
                                     </div>
                                 </a>
                                 </td>
-                                @role('admin')
+                                @role('Admin')
                                 <td class="deleteTD">
                                     <label class="removeInput">
                                 
