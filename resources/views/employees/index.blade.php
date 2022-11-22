@@ -89,7 +89,7 @@
                                         <div class="d-flex justify-content-between">
                                             <div class="role-name">{{$employee->role->name}}</div>
                                         </div>
-                                    </form>
+                                  
                                 @endforeach
                             @endif
                         </td>

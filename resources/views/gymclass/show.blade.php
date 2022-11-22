@@ -72,6 +72,8 @@ table.dataTable tbody tr {
                                 <th>DESCRIPTION</th>
                                 <th>PRICE</th>
                                 <th>SCHEDULE</th>
+                                <th>INSTRUCTOR</th>
+                                <th></th>
                                 <th>ACTION</th>
                                 <th></th>
                             </tr>
@@ -86,7 +88,17 @@ table.dataTable tbody tr {
                                 <td>{{$gymclass->cur_number}} / {{$gymclass->max_enrollees}}</td>
                                 <td>{{$gymclass->price}}</td>
                                 <td>({{$gymclass->schedule}}) {{$gymclass->time}}</td>
-                                
+                                <td>
+                                    @if($instructors->count())
+                                    @foreach($instructors as $instructor)                                            
+                                        <div class="d-flex justify-content-start">
+                                            <div>  {{$instructor->employeefirstname}} {{$instructor->employeelastname}}</div>
+                                        </div>                                        
+                                    @endforeach
+                                    @else
+                                    VACANT
+                                    @endif
+                                </td>
                                 
                                 <td>
                                 <a href="/gymclass/{{$gymclass->id}}/edit">
@@ -107,6 +119,9 @@ table.dataTable tbody tr {
                                         </svg>
                                         <input class="hideInput deleteUserBtn" type="" name="delete" value="{{$gymclass->id}}">
                                     </label>
+                                </td>
+                                <td>
+                                    <a href="{{ route('staffdetails.show', $gymclass->id) }}">put icon here for add insntructor</a>
                                 </td>
                                 @endrole
                             </tr>

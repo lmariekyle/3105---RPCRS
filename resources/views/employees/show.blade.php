@@ -88,8 +88,7 @@ table.dataTable tbody tr {
                                         @foreach($employee->roles as $employee->role)                
                                                 <div class="d-flex justify-content-between">
                                                     <div class="role-name">{{$employee->role->name}}</div>
-                                                </div>
-                                            </form>
+                                                </div>                                       
                                         @endforeach
                                     @endif
                                 </td>

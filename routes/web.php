@@ -8,7 +8,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerClassController;
 use App\Http\Controllers\CustEnClassController;
 use App\Http\Controllers\EmployeeController;
-
+use App\Http\Controllers\GymClassController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,6 +40,7 @@ Route::resource('members', 'CustomerController');
 Route::resource('members.class', 'CustomerClassController')->shallow();
 Route::resource('members.enclass', 'CustEnClassController')->shallow();
 Route::resource('gymclass', 'GymClassController');
+Route::resource('staffdetails', 'StaffDetailsController');
 Route::resource('gymclass.customers', 'ClassCustomerController')->shallow();
 Route::resource('gymclass.enmem', 'ClassEnCustomerController')->shallow();
 Route::resource('membership', 'MembershipController');
@@ -48,4 +49,8 @@ Route::resource('employees','EmployeeController');
 Route::get('/employees/role/{employee}', [EmployeeController::class, 'viewEmployee'])->name('employees.viewEmployee');
 Route::post('/employees/role/{employee}/roles', [EmployeeController::class, 'assignRole'])->name('employees.roles');
 Route::delete('/employees/role/{employee}/roles/{role}', [EmployeeController::class, 'removeRole'])->name('employees.roles.remove');
+
+Route::get('/gymclass/instructor/{gymclass}', [GymClassController::class, 'viewInstructor'])->name('gymclass.viewInstructor');
+Route::post('/employees/instructor/{gymclass}/add', [GymClassController::class, 'assignInstructor'])->name('gymclass.assignInstructor');
+Route::delete('/employees/instructor/{gymclass}/remove/{instructor}', [GymClassController::class, 'removeInstructor'])->name('gymclass.removeInstructor');
 require __DIR__.'/auth.php';

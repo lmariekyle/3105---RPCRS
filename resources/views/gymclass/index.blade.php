@@ -73,8 +73,8 @@
                             <th>ENROLEES</th>
                             <th>DESCRIPTION</th>
                             <th>PRICE</th>
-                            <th>SCHEDULE</th>
-                            <th>ACTION</th>
+                            <th>SCHEDULE</th>                           
+                            <th>ACTION</th>                       
                             <th></th>
                         
                     </tr>
@@ -102,6 +102,17 @@
             
                     <td>{{$class->price}}</td>
                     <td>({{$class->schedule}}) {{$class->time}}</td>
+                    {{-- <td>
+                        @foreach($instructors as $instructor) 
+                           @if($instructor->class_id == $class->id)                     
+                            <div class="d-flex justify-content-start">
+                                <div>  {{$instructor->employeefirstname}} {{$instructor->employeelastname}}</div>
+                            </div>
+                            @else
+                            VACANT
+                            @endif          
+                        @endforeach
+                    </td> --}}
                     @role('admin')
                         <td>
                             <a href="/gymclass/{{$class->id}}/edit">
