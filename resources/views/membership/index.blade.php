@@ -1,6 +1,20 @@
 @extends('layout.app')
 
+@section('membershipActive-css')
 
+    <style>
+        .membershipActive{
+            background: white;
+            border-radius:8px;
+        }
+    </style>
+
+        <style>
+            /* .tdIcon{
+                text-align: right;
+            } */
+        </style>
+@endsection
  
 @section('content')
 

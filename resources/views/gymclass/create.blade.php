@@ -1,10 +1,17 @@
 @extends('layout.app')
 
 
+<<<<<<< HEAD
 @section('gymMembersActive-css')
 
     <style>
         .gymMembersActive{
+=======
+@section('classesActive-css')
+
+    <style>
+        .classesActive{
+>>>>>>> 3792465ee8b3a4cf6f5610cabccb9d70ad553809
             background: white;
             border-radius:8px;
         }

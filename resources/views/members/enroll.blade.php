@@ -37,6 +37,12 @@ table.dataTable tbody tr {
     border:none;
 }
 </style>
+
+        <style>
+            /* .tdIcon{
+                text-align: right;
+            } */
+        </style>
 @endsection
 
 
@@ -104,7 +110,7 @@ table.dataTable tbody tr {
                                 <!-- <td>{{$class->price}} </td> -->
                                 <td>{{$class->schedule}} {{$class->time}} </td>
 
-                                <td>
+                                <td class="deleteTD">
                                     <label class="removeInput">
                                         <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -184,7 +190,7 @@ table.dataTable tbody tr {
                                     <!-- <td>{{$class->price}} </td> -->
                                     <td>{{$class->schedule}} {{$class->time}} </td>
                                     <!-- <td>{{$class->employee_id}} </td> -->
-                                    <td class="deleteTD">
+                                    <td class="deleteTD tdIcon">
                                     {!! Form::open(['action' => ['CustEnClassController@store',$customer->id],'method'=>'POST','class' => '']) !!}
 
                                         <!-- {{Form::submit('Enroll?', ['class'=> ''])}} -->

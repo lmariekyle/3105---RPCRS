@@ -45,6 +45,12 @@
             }
 
         </style>
+
+        <style>
+            /* .tdIcon{
+                text-align: right;
+            } */
+        </style>
 @endsection
  
 @section('content')
@@ -116,7 +122,7 @@
                        
                         </td>
                         @role('admin')
-                        <td class="deleteTD">
+                        <td class="deleteTD tdIcon">
                                                        
                                 <label class="removeInput">
                                 

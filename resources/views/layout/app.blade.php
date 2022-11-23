@@ -36,6 +36,8 @@
         <!-- index-css -->
         @yield('gymMembersActive-css')
         @yield('employeesActive-css')
+        @yield('classesActive-css')
+        @yield('membershipActive-css')
         @yield('rolesActive-css')
         @yield('permissionsActive-css')
         @yield('index-css')
