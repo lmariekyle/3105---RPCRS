@@ -7,8 +7,10 @@ use App\Models\Customer;
 use App\Models\CustomerMembership;
 use App\Models\CustomerClass;
 use App\Models\Membership;
+use App\Models\GymClass;
 use Carbon\Carbon;
 use DB;
+use League\CommonMark\Extension\CommonMark\Parser\Inline\EscapableParser;
 
 class CustomerController extends Controller
 {
@@ -19,15 +21,29 @@ class CustomerController extends Controller
      */
     public function index()
     {
-    /*    $customers = Customer::orderBy('id','asc')->paginate(10);
-        $customships = CustomerMembership::all();
+    /*    
+        
         $membership = Membership::all();
     */
-        $data = CustomerMembership::join('customers', 'customers.id', '=', 'customer_memberships.customer_id')
+        
+    /*    $data = CustomerMembership::join('customers', 'customers.id', '=', 'customer_memberships.customer_id')
                                     ->join('memberships', 'memberships.id', '=', 'customer_memberships.membership_id')
                                     ->orderBy('customers.id',"asc")
-                                    ->paginate(10);
+                                    ->paginate(10);*/
 
+        
+        $data = Customer::orderBy('id','asc')->paginate(10);
+
+        foreach ($data as $key) {
+            $customships = CustomerMembership::where ('customer_id', '=', $key->id)->first();
+
+            if($customships==null){
+                $key->name="NONE";
+            }else{
+                $membership = Membership::where('id','=',$customships->membership_id)->first();
+                $key->name = $membership->name;
+            }
+        }
        
        /* $data = [
             'customers' => $customers,
@@ -85,13 +101,12 @@ class CustomerController extends Controller
         $customer->province = $request->input('province');
         $customer->zip_code = $request->input('zip_code');
 
-        $customer->membership_end_date = $current->addYear();
-        $customer->membership_expires_in = $current;
-
         $customer->save();
         
         $cc = new CustomerMembership;
         $cc->customer_id=$customer->id;
+        $cc->membership_end_date = $current->addYear();
+        $cc->membership_expires_in = $current;
         $cc->membership_id=$request->input('membership');
         $cc->save();
 
@@ -112,7 +127,16 @@ class CustomerController extends Controller
     {
         $customer = Customer::find($id);
         $customships = CustomerMembership::where ('customer_id', '=', $id)->first();
-        $membership = Membership::where ('id','=',$customships->membership_id)->first();
+        if($customships==null){
+            $customer->name="NONE";
+            $customer->membership_start_date = "- - -";
+            $customer->membership_end_date = "- - -";
+        }else{
+            $membership = Membership::where('id','=',$customships->membership_id)->first();
+            $customer->name = $membership->name;
+            $customer->membership_start_date = $customships->membership_start_date;
+            $customer->membership_end_date = $customships->membership_end_date;
+        }
 
         $classes = CustomerClass::join('customers', 'customer_classes.customer_id', '=', 'customers.id')
                     ->join('gym_classes', 'customer_classes.class_id', '=', 'gym_classes.id')
@@ -124,7 +148,6 @@ class CustomerController extends Controller
 
         $data = [
             'customer' => $customer,
-            'membership' => $membership,
             'classes' => $classes
         ];
 
@@ -143,7 +166,12 @@ class CustomerController extends Controller
         
         $customer = Customer::find($id);
         $customships = CustomerMembership::where ('customer_id', '=', $id)->first();
-        $currplan = Membership::where ('id','=',$customships->membership_id)->first();
+        $currplan=(object)array("name"=>" ");
+            if($customships==null){
+                $currplan->name="NONE";
+            }else{
+                $currplan = Membership::where ('id','=',$customships->membership_id)->first();
+            }
         $memberships = Membership::all();
         $data = [
             'customer' => $customer,
@@ -171,6 +199,8 @@ class CustomerController extends Controller
             'date_of_birth' => 'required|date_format:Y-m-d|before:'.now()->subYears(13)->toDateString(),
             'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11',
             'email' => 'required|email',
+            'city' => 'required',
+            'province' => 'required',
         ]);
 
         $customer = Customer::find($id);
@@ -188,32 +218,43 @@ class CustomerController extends Controller
         $customer->city = $request->input('city');
         $customer->province = $request->input('province');
         $customer->zip_code = $request->input('zip_code');
-        
-        $customer->membership_end_date = $current->addYear();
-        $customer->membership_expires_in = $current;
 
         $customer->save();
         
         $cc = CustomerMembership::where ('customer_id', '=', $id)->first();
 
-        //if the membership plan has not changed
-        if ($cc->membership_id==$request->input('membership')) {
+        
+        if($cc==null) {
+            $newmem = Membership::where('id','=',$request->input('membership'))->first();
+            $newmem->cur_number=$newmem->cur_number+1;
+            $newmem->save();
+
+            
+            $cc = new CustomerMembership;
+            $cc->customer_id=$id;
+
+            $cc->membership_end_date = $current->addYear();
+            $cc->membership_expires_in = $current;
+            $cc->membership_id=$request->input('membership');
             $cc->save();
 
-        
         //if the membership plan has changed
-        } else {
-    
+        }else if ($request->input('membership')==null){
             $mem = Membership::where('id','=',$cc->membership_id)->first();
             $mem->cur_number=$mem->cur_number-1;
             $mem->save();
-    
+            
             $newmem = Membership::where('id','=',$request->input('membership'))->first();
-            $newmem->cur_number=$mem->cur_number+1;
+            $newmem->cur_number=$newmem->cur_number+1;
             $newmem->save();
 
             $cc->membership_id=$request->input('membership');
             $cc->save();
+        
+            //if the membership plan has not changed
+        }else {
+            $cc->save();
+        
         }
         
 
@@ -230,11 +271,27 @@ class CustomerController extends Controller
     {
         $customer = Customer::find($request->customer_delete_id);
         $customships = CustomerMembership::where ('customer_id', '=', $request->customer_delete_id)->first();
-        $mem = Membership::where ('id','=',$customships->membership_id)->first();
-        $mem->cur_number=$mem->cur_number-1;
-        $mem->save();
 
-        $customships->delete();
+        if($customships==null){
+            
+        }else{
+            $mem = Membership::where ('id','=',$customships->membership_id)->first();
+            $mem->cur_number=$mem->cur_number-1;
+            $mem->save();
+
+            $customships->delete();
+        }
+
+        $customclass = CustomerClass::where('customer_id', '=', $customer->id);
+
+        foreach ($customclass as $key) {
+            $class = GymClass::where('id','=',$key->class_id)->first();
+            $class->cur_number=$class->cur_number-1;
+            $class->save();
+            
+        }
+
+        $customclass->delete();
         $customer->delete();
 
         return redirect('/members')->with('success', 'Member Deleted Successfully');

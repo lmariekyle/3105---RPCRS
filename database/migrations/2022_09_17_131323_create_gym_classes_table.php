@@ -19,7 +19,7 @@ class CreateGymClassesTable extends Migration
             $table->id();
 
             $table->string('name');
-            $table->string('status')->default('AVAILABLE');
+            $table->string('status')->default('ACTIVE');
             $table->mediumText('description');
 
             $table->integer('max_enrollees',false);
