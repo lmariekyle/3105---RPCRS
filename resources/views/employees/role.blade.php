@@ -45,12 +45,19 @@
             }
             
             table, tr, td, th{
-                word-wrap: break-word;
+                word-wrap: break-word:
             }
 
             table.dataTable thead th {
                 border-bottom: 1px solid #111;
             }
+
+        </style>
+        <style>
+            /* .tdIcon{
+                text-align: right;
+            } */
+
 
         </style>
 @endsection
@@ -85,10 +92,11 @@
                 <table id="GIMTable" class="table " style="width:100%">
                         <thead>
                             <tr>
-                            <th>ID</th>
+                            <th class="tdIcon">ID</th>
                             <th>STATUS</th>
-                            <th>ASSIGNED ROLE</th>  
-                            <th class="assignRole">ROLES</th>
+                            <th width="12%">ROLE</th>  
+                            <th> </th>
+                            <th class="assignRole" >ASSIGN ROLES</th>
                             <th></th>
                             </tr>
                         </thead>
@@ -101,11 +109,17 @@
                                         @foreach($employee->roles as $employee->role)
                                             <form method="POST" action="{{route('employees.roles.remove', [$employee->id, $employee->role->id ])}}" onsubmit="return confirm('Are you sure?');">
                                                 @csrf
+                                                {{$employee->role->name}}
+                                            </form>
+                                        @endforeach
+                                    @endif
+                                </td>
+                                <td width="10%" class="text-align: left">
+                                    @if($employee->roles)
+                                        @foreach($employee->roles as $employee->role)
+                                            <form method="POST" action="{{route('employees.roles.remove', [$employee->id, $employee->role->id ])}}" onsubmit="return confirm('Are you sure?');">
+                                                @csrf
                                                 @method('DELETE')
-                                                <div class="d-flex justify-content-start">
-                                                    <div class="role-name">{{$employee->role->name}}</div>
-                                                    <div class="role-name">
-
                                                         <label>
                                                         <input class="hideInput deleteUserBtn" type="submit" name="image" value="one">
                                                             <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -114,14 +128,11 @@
                                                                 
                                                             </svg> 
                                                         </label>
-                                                        
-                                                    </div>
-                                                </div>
                                             </form>
                                         @endforeach
                                     @endif
                                 </td>
-                                <td class="assignRole" width="8%">
+                                <td class="assignRole" width="15%">
                                     <form class="roleForm " method="POST" action="{{ route('employees.roles', $employee->id)}}">
                                         @csrf
                                         <div class="role-selection ">
@@ -132,7 +143,7 @@
                                             </select>
                                             @error('name') <span>{{$message}}</span> @enderror
                                         </div>
-                                <td width="12%">
+                                <td width="12%" class="text-align:left">
                                         <div class="role-selection btn-container ">
                                             <button type="submit" class="assignRoleBtn btn btn-primary">Assign Role</button>
                                         </div>

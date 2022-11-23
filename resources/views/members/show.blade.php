@@ -34,6 +34,12 @@ table.dataTable tbody tr {
     border:none;
 }
 </style>
+
+        <style>
+            /* .tdIcon{
+                text-align: right;
+            } */
+        </style>
 @endsection
 
 @section('content')
@@ -90,7 +96,7 @@ table.dataTable tbody tr {
                         
                                 <td>{{$customer->membership_start_date}}</td>
                                 <td>{{$customer->membership_end_date}}</td>
-                                <td>
+                                <td class="tdIcon">
                                 <a href="/members/{{$customer->id}}/edit">
                                     <div>
                                     <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
@@ -99,8 +105,8 @@ table.dataTable tbody tr {
                                     </div>
                                 </a>
                                 </td>
-                                @role('admin')
-                                <td class="deleteTD">
+                                @role('Admin')
+                                <td class="deleteTD tdIcon">
                                     <label class="removeInput">
                                 
                                         <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -159,7 +165,7 @@ table.dataTable tbody tr {
                                 <th>DESCRIPTION</th>
                                 <th>PRICE</th>
                                 <th>SCHEDULE</th>
-                                <th>UNENROLL</th>
+                                <th class="tdIcon">UNENROLL</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -179,7 +185,7 @@ table.dataTable tbody tr {
                         
                                 <td>{{$class->price}}</td>
                                 <td>{{$class->schedule}} {{$class->time}}</td>
-                                <td class="deleteTD">
+                                <td class="deleteTD tdIcon">
                                     <label class="removeInput">
                                         <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>

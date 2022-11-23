@@ -1,10 +1,10 @@
 @extends('layout.app')
 
 
-@section('gymMembersActive-css')
+@section('classesActive-css')
 
     <style>
-        .gymMembersActive{
+        .classesActive{
             background: white;
             border-radius:8px;
         }

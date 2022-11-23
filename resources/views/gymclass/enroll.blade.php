@@ -1,10 +1,10 @@
 @extends('layout.app')
 
 
-@section('gymMembersActive-css')
+@section('classesActive-css')
 
     <style>
-        .gymMembersActive{
+        .classesActive{
             background: white;
             border-radius:8px;
         }
@@ -37,6 +37,12 @@ table.dataTable tbody tr {
     border:none;
 }
 </style>
+
+        <style>
+            /* .tdIcon{
+                text-align: right;
+            } */
+        </style>
 @endsection
 
 
@@ -88,7 +94,6 @@ table.dataTable tbody tr {
                                 <th>CLASS</th>
                                 <th>STATUS</th>
                                 <th></th>  
-                                <th></th> 
                             </tr>
                         </thead>
                         <tbody>
@@ -100,7 +105,7 @@ table.dataTable tbody tr {
                             <td>{{$customer->name}}</td>
                             <td>{{$customer->status}}</td>
                     
-                            <td class="deleteTD">
+                            <td class="deleteTD tdIcon">
                                 <label class="removeInput">
                                     <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -112,7 +117,6 @@ table.dataTable tbody tr {
 
                             
                             </td>
-                            <td></td>
                             
                             {{-- Delete Modal --}}
                             <div class="modal fade" id="unenrollModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -159,7 +163,6 @@ table.dataTable tbody tr {
                                     <th>CLASS</th>
                                     <th>STATUS</th>
                                     <th></th>  
-                                    <th></th> 
                                 </tr>
                             </thead>
                             <tbody>
@@ -191,7 +194,6 @@ table.dataTable tbody tr {
                                         </label>
                                     {!! Form::close() !!}
                                     </td>
-                                    <td></td>
                                 </tr>
                                 
                             @endforeach
@@ -260,7 +262,7 @@ table.dataTable tbody tr {
                     "paging": false,//Dont want paging                
                     "bPaginate": false,//Dont want paging  
                     searching: false,
-                    columnDefs: [{ targets: [3,4,5,6], orderable: false }],
+                    columnDefs: [{ targets: [4], orderable: false }],
                     // columnDefs: [{ targets: [0,1,2,3,4,5,6,7,8,9], orderable: false }],
                     "language": {
                         "emptyTable": "No Classes Enrolled"
@@ -271,7 +273,7 @@ table.dataTable tbody tr {
                     "paging": false,//Dont want paging                
                     "bPaginate": false,//Dont want paging  
                     searching: false,
-                    columnDefs: [{ targets: [3,4,5,6], orderable: false }],
+                    columnDefs: [{ targets: [4], orderable: false }],
                     "language": {
                         "emptyTable": "No Classes"
                     }

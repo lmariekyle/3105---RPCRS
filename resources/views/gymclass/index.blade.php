@@ -1,9 +1,9 @@
 @extends('layout.app')
 
-@section('gymMembersActive-css')
+@section('classesActive-css')
 
     <style>
-        .gymMembersActive{
+        .classesActive{
             background: white;
             border-radius:8px;
         }
@@ -45,6 +45,12 @@
             }
 
         </style>
+
+        <style>
+            /* .tdIcon{
+                text-align: right;
+            } */
+        </style>
 @endsection
  
 @section('content')
@@ -73,8 +79,9 @@
                             <th>ENROLEES</th>
                             <th>DESCRIPTION</th>
                             <th>PRICE</th>
-                            <th>SCHEDULE</th>                           
-                            <th>ACTION</th>                       
+                            <th>SCHEDULE</th>
+                            <th></th>
+                            <th></th>
                             <th></th>
                         
                     </tr>
@@ -102,19 +109,8 @@
             
                     <td>{{$class->price}}</td>
                     <td>({{$class->schedule}}) {{$class->time}}</td>
-                    {{-- <td>
-                        @foreach($instructors as $instructor) 
-                           @if($instructor->class_id == $class->id)                     
-                            <div class="d-flex justify-content-start">
-                                <div>  {{$instructor->employeefirstname}} {{$instructor->employeelastname}}</div>
-                            </div>
-                            @else
-                            VACANT
-                            @endif          
-                        @endforeach
-                    </td> --}}
                     @role('admin')
-                        <td>
+                        <td class="tdIcon">
                             <a href="/gymclass/{{$class->id}}/edit">
                                 <div>
                                 <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
@@ -124,7 +120,7 @@
                             </a>
                         </td>
 
-                        <td class="deleteTD">
+                        <td class="deleteTD tdIcon">
                                                        
                                 <label class="removeInput">
                                 
@@ -205,7 +201,7 @@
                     "paging": false,//Dont want paging                
                     "bPaginate": false,//Dont want paging  
                     searching: false,
-                    columnDefs: [{ targets: [7,8], orderable: false }],
+                    columnDefs: [{ targets: [4,6,7,8,9], orderable: false }],
                     "language": {
                         "emptyTable": "No Gym Classes"
                     }
