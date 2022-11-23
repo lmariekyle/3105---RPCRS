@@ -16,17 +16,17 @@ class MembershipSeeder extends Seeder
     {
         $membership=Membership::create([ 
             'name' => 'BRONZE',
-            'cur_number' => '0',
+            'cur_number' => '2',
             'description' => 'A 1-year membership that has access to the gym floor',
         ]);
         $membership=Membership::create([ 
             'name' => 'SILVER',
-            'cur_number' => '0',
+            'cur_number' => '2',
             'description' => 'A 1-year membership that has access to the gym floor and free classes',
         ]);
         $membership=Membership::create([ 
             'name' => 'GOLD',
-            'cur_number' => '0',
+            'cur_number' => '1',
             'description' => 'A 1-year membership that has access to the gym floor, free classes, and a free private instructor',
         ]);
     }
