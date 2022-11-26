@@ -11,6 +11,21 @@
 
 @endsection
 
+@section('popover-css')
+    <style>
+        .popover-header{
+            background-color: white; 
+            color: black; 
+            text-align:center;
+        }
+
+        .popover-body {
+            color: black;
+            font-size: 28px;
+        }
+    </style>
+@endsection
+
 @section('index-css')
         <!-- css needed for tables -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
@@ -94,17 +109,21 @@
                             <tr>
                             <th class="tdIcon">ID</th>
                             <th>STATUS</th>
-                            <th width="12%">ROLE</th>  
+                            <th width="12%" style="text-align: right">ROLE</th>  
                             <th> </th>
-                            <th class="assignRole" >ASSIGN ROLES</th>
+                            <th class="assignRole" style="text-align: right">ASSIGN ROLES</th>
                             <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>{{ $employee->id}}</td>
-                                <td>{{ $employee->status}}</td>
-                                <td>
+                                @if($employee->status=="ACTIVE")
+                                    <td style="color:green">{{ $employee->status}}</td>
+                                @else
+                                    <td style="color:red">{{ $employee->status}}</td>
+                                @endif
+                                <td style="text-align: right">
                                     @if($employee->roles)
                                         @foreach($employee->roles as $employee->role)
                                             <form method="POST" action="{{route('employees.roles.remove', [$employee->id, $employee->role->id ])}}" onsubmit="return confirm('Are you sure?');">
@@ -114,7 +133,7 @@
                                         @endforeach
                                     @endif
                                 </td>
-                                <td width="10%" class="text-align: left">
+                                <td width="10%" >
                                     @if($employee->roles)
                                         @foreach($employee->roles as $employee->role)
                                             <form method="POST" action="{{route('employees.roles.remove', [$employee->id, $employee->role->id ])}}" onsubmit="return confirm('Are you sure?');">
@@ -122,17 +141,19 @@
                                                 @method('DELETE')
                                                         <label>
                                                         <input class="hideInput deleteUserBtn" type="submit" name="image" value="one">
+                                                        <span id="deletePopover" data-toggle="popover-hover" data-container="body" title="Delete Role" data-content="">
                                                             <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                                                 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                                                 <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                                                 
                                                             </svg> 
+                                                        </span>
                                                         </label>
                                             </form>
                                         @endforeach
                                     @endif
                                 </td>
-                                <td class="assignRole" width="15%">
+                                <td class="assignRole" width="15%" style="text-align: right">
                                     <form class="roleForm " method="POST" action="{{ route('employees.roles', $employee->id)}}">
                                         @csrf
                                         <div class="role-selection ">
@@ -143,7 +164,7 @@
                                             </select>
                                             @error('name') <span>{{$message}}</span> @enderror
                                         </div>
-                                <td width="12%" class="text-align:left">
+                                <td width="12%" style="text-align: right">
                                         <div class="role-selection btn-container ">
                                             <button type="submit" class="assignRoleBtn btn btn-primary">Assign Role</button>
                                         </div>
@@ -212,6 +233,15 @@
                         "emptyTable": "No Employee"
                     }
                 })
+            });
+        </script>
+
+        <script>
+            $(function () {
+                $('[data-toggle="popover-hover"]').popover({
+                    trigger: 'hover',
+                    content: '',
+                });
             });
         </script>
 

@@ -31,7 +31,7 @@
                             </div>
                         </a>
                     </li>
-                    @role('admin')
+                    @role('Admin')
                     <div class="space"></div>
                     <li class="employeesActive d-flex justify-content-center">
                         <a href="/employees" class="text-decoration-none py-2 d-block">

@@ -44,6 +44,8 @@
         @yield('show-css')
         @yield('enroll-css')
         @yield('role-css')
+        @yield('popover-css')
+        @yield('enrollBtn-css')
 
         <style>
             body{
