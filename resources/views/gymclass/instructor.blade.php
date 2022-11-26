@@ -38,6 +38,9 @@
         <link rel="stylesheet" href="{{ asset('/css/show.css') }}"/>
         
         <style>
+            body{
+                word-wrap: break-word:
+            }
             table {
                 border:none;
                 border-collapse: collapse;
@@ -125,7 +128,7 @@
                                         @foreach($instructors as $instructor)
                                         <form method="POST" action="{{route('staffdetails.destroy', $instructor->employee_id)}}">
                                             @csrf
-                                            {{$instructor->employeefirstname}} {{$instructor->employeelastname}} 
+                                        {{$instructor->employeefirstname}} {{$instructor->employeelastname}} 
                                             
                                         </form>                                
                                         @endforeach

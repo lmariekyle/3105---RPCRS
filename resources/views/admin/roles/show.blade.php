@@ -63,15 +63,16 @@
              <!-- thead tag starts from here -->
              <thead class="roleTableHeader">
                  <tr>
+                 <th>ID</th>
                  <th>Name</th>
-                 <th>Role</th>
-                 <th></th>
+                 <th>Assigned Role</th>
                  </tr>
              </thead>
              <!-- thead tag ends here -->
              <tbody class="justify-content-center" style="cursor: pointer;">
                 @foreach($employees as $employee)
                  <tr>
+                 <td>{{$employee->id}}</td>
                  <td>{{ $employee->firstname}} {{ $employee->middlename}} {{ $employee->lastname}}</td>
                  <td>
                  @if($employee->roles)
@@ -116,7 +117,7 @@
                     "paging": false,//Dont want paging                
                     "bPaginate": false,//Dont want paging  
                     searching: false,
-                    columnDefs: [{ targets: [1,2], orderable: false }],
+                    columnDefs: [{ targets: [2], orderable: false }],
                     "language": {
                         "emptyTable": "No Data Available"
                     }

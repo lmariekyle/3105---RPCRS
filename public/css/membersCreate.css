@@ -184,3 +184,21 @@
 .GIM-employeesCreate-dropListSpace{
     margin: 5px 0px;
 }
+
+/*----------This is for Gym Classes page----------*/
+.GIM-gymDigitInput1 input{
+    width: 88px;
+}
+
+.GIM-gymDigitInput2 input{
+    width: 65px;
+}
+
+.GIM-gymRightSide{
+    margin-top:9px;
+}
+
+.GIM-gymTextArea textarea{
+    background: #D9D9D9;
+    width: 182%;
+}
