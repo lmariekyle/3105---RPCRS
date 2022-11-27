@@ -28,7 +28,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::middleware(['auth','role:admin'])->name('admin.')->prefix('admin')->group(function(){
+Route::middleware(['auth','role:Admin'])->name('admin.')->prefix('Admin')->group(function(){
     Route::get('/',[IndexController::class, 'index'])->name('index');
     Route::resource('/roles', 'Admin\RoleController');
     Route::post('/roles/{role}/permissions',[RoleController::class, 'givePermission'])->name('roles.permissions');
@@ -40,6 +40,8 @@ Route::resource('members', 'CustomerController');
 Route::resource('members.class', 'CustomerClassController')->shallow();
 Route::resource('members.enclass', 'CustEnClassController')->shallow();
 Route::resource('gymclass', 'GymClassController');
+Route::resource('gymclass.customers', 'ClassCustomerController')->shallow();
+Route::resource('gymclass.enmem', 'ClassEnCustomerController')->shallow();
 Route::resource('membership', 'MembershipController');
 
 Route::resource('employees','EmployeeController');

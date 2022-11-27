@@ -31,7 +31,7 @@
                             </div>
                         </a>
                     </li>
-                    @role('admin')
+                    @role('Admin')
                     <div class="space"></div>
                     <li class="employeesActive d-flex justify-content-center">
                         <a href="/employees" class="text-decoration-none py-2 d-block">
@@ -66,7 +66,7 @@
                         </div>
                       </a>
                     </li>
-                    @role('admin')
+                    @role('Admin')
                     </ul>
                     <div class="space"></div>
                       <li class="rolesActive d-flex justify-content-center">
@@ -79,19 +79,6 @@
                           </div>
                         </a>
                       </li>
-
-                      <div class="space"></div>
-                      <li class="permissionsActive d-flex justify-content-center">
-                        <a href="{{route('admin.permissions.index')}}" :active="request()->routeIs('admin.roles.index')" class="text-decoration-none py-2 d-block">
-                          <div class="d-flex justify-content-center">
-                            <i class="fa-solid fas fa-vote-yea"></i>
-                          </div>
-                          <div class="GIMText">
-                            Permissions
-                          </div>
-                        </a>
-                      </li>
-                      </ul>
                       @endrole
 
                     <hr class="h-color mx-2"></hr>

@@ -22,8 +22,8 @@ class GymClassSeeder extends Seeder
             'max_enrollees' => '20',
             'cur_number' => '0',
             'price' => '500.00',
-            'schedule' => '(MWF)',
-            'time' => '8:00AM - 9:00AM',
+            'schedule' => 'MWF',
+            'time' => '8:00 AM - 9:00 AM',
         ]);
         $gymclass=GymClass::create([ 
             'name' => 'BOXING',
@@ -33,7 +33,7 @@ class GymClassSeeder extends Seeder
             'cur_number' => '0',
             'price' => '500.00',
             'schedule' => 'WEEKDAYS',
-            'time' => '6:00AM - 7:00AM',
+            'time' => '6:00 AM - 7:00 AM',
         ]);
         $gymclass=GymClass::create([ 
             'name' => 'SWIMMING',
@@ -42,8 +42,8 @@ class GymClassSeeder extends Seeder
             'max_enrollees' => '20',
             'cur_number' => '0',
             'price' => '500.00',
-            'schedule' => '(TTHS)',
-            'time' => '10:00AM - 11:00AM',
+            'schedule' => 'TTHS',
+            'time' => '10:00 AM - 11:00 AM',
         ]);
     }
 }

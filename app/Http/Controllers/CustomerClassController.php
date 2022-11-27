@@ -28,25 +28,30 @@ class CustomerClassController extends Controller
      */
     public function create($id)
     {   
-        $customer = Customer::find($id);
-        $classes = GymClass::paginate(10);
         $customships = CustomerMembership::where ('customer_id', '=', $id)->first();
-        $membership = Membership::where ('id','=',$customships->membership_id)->first();
-        $enrolled = CustomerClass::join('customers', 'customers.id', '=', 'customer_classes.customer_id')
-                    ->join('gym_classes', 'gym_classes.id', '=', 'customer_classes.class_id')
-                    ->where ('customer_id', '=', $id)
-                    ->select('*','customer_classes.id as cc_id')
-                    ->orderBy('gym_classes.id',"asc")
-                    ->paginate(10);
+        if($customships==null){
+            return redirect(url('/members'.'/'.$id))->with('error', 'Cannot Enroll without Membership Plan');
+        }else{
+            
+            $customer = Customer::find($id);
+            $classes = GymClass::paginate(10);
+            $membership = Membership::where ('id','=',$customships->membership_id)->first();
+            $enrolled = CustomerClass::join('customers', 'customers.id', '=', 'customer_classes.customer_id')
+                        ->join('gym_classes', 'gym_classes.id', '=', 'customer_classes.class_id')
+                        ->where ('customer_id', '=', $id)
+                        ->select('*','customer_classes.id as cc_id')
+                        ->orderBy('gym_classes.id',"asc")
+                        ->paginate(10);
 
-        $data = [
-            'customer' => $customer,
-            'membership' => $membership,
-            'classes' => $classes,
-            'enrolled' => $enrolled
-        ];
-        
-        return view('members.enroll')->with($data);
+            $data = [
+                'customer' => $customer,
+                'membership' => $membership,
+                'classes' => $classes,
+                'enrolled' => $enrolled
+            ];
+            
+            return view('members.enroll')->with($data);
+        }
 
     }
 
