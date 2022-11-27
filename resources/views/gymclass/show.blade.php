@@ -1,39 +1,77 @@
 @extends('layout.app')
 
 
-@section('gymMembersActive-css')
+@section('classesActive-css')
 
     <style>
-        .gymMembersActive{
+        .classesActive{
             background: white;
             border-radius:8px;
         }
+
+
     </style>
 
 @endsection
+
+@section('enrollBtn-css')
+        <style>
+            .enrollBtn{
+                width:200px;
+                font-size: 20px;
+            }
+        </style>
+@endsection
+
+@section('popover-css')
+    <style>
+        .popover-header{
+            background-color: white; 
+            color: black; 
+            text-align:center;
+        }
+
+        .popover-body {
+            color: black;
+            font-size: 28px;
+        }
+    </style>
+@endsection
+
 
 @section('show-css')
 <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('/css/show.css') }}"/>
 
-<style>
-tr, th, td,{
-    border:none;
-    /* background-color:white; */
-    box-shadow:none;
-}
-table.dataTable thead th {
-    border: none;
-}
- 
-table.dataTable tbody td {
-    border:none;
-}
- 
-table.dataTable tbody tr {
-    border:none;
-}
-</style>
+        <style>
+        tr, th, td,{
+            border:none;
+            /* background-color:white; */
+            box-shadow:none;
+        }
+        table.dataTable thead th {
+            border: none;
+        }
+        
+        table.dataTable tbody td {
+            border:none;
+        }
+        
+        table.dataTable tbody tr {
+            border:none;
+        }
+        </style>
+
+        <style>
+            /* .tdIcon{
+                text-align: right;
+            } */
+        </style>
+        <style>
+            .iconRight{
+                text-align: right;
+            }
+        </style>
 @endsection
 
 @section('content')
@@ -69,26 +107,52 @@ table.dataTable tbody tr {
                                 <th>CLASS ID</th>
                                 <th>STATUS</th>
                                 <th>ENROLEES</th>
-                                <th>DESCRIPTION</th>
                                 <th>PRICE</th>
                                 <th>SCHEDULE</th>
-                                <th>ACTION</th>
+                                <th>INSTRUCTOR</th>
+                                @role('Admin')
                                 <th></th>
+                                <th></th>
+                                <th></th>
+                                @endrole
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>{{$gymclass->id}}</td>
-                                <td>{{$gymclass->name}}</td>
-                                <td>{{$gymclass->status}}</td>
-                        
+                                @if($gymclass->status=="ACTIVE")
+                                    <td style="color:green">{{$gymclass->status}}</td>
+                                @else
+                                    <td style="color:red">{{$gymclass->status}}</td>
+                                @endif
                         
                                 <td>{{$gymclass->cur_number}} / {{$gymclass->max_enrollees}}</td>
                                 <td>{{$gymclass->price}}</td>
                                 <td>({{$gymclass->schedule}}) {{$gymclass->time}}</td>
-                                
-                                
+                                <td width="12%">
+                                    @if($instructors->count())
+                                    @foreach($instructors as $instructor)                                            
+                                        <div class="d-flex justify-content-start">
+                                            <div>  {{$instructor->employeefirstname}} {{$instructor->employeelastname}}</div>
+                                        </div>                                        
+                                    @endforeach
+                                    @else
+                                    None 
+                                    @endif
+                                </td>
                                 <td>
+                                <span id="assignPopover" data-toggle="popover-hover" data-container="body" title="Assign Instructor" data-content="">
+                                    <a href="{{ route('staffdetails.show', $gymclass->id) }}">
+                                        <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                                            <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                                            <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                                        </svg>
+                                    </a>
+                                </span>
+                                </td>
+                                @role('Admin')
+                                <td>
+                                <span id="editPopover" data-toggle="popover-hover" data-container="body" title="Edit Class" data-content="">
                                 <a href="/gymclass/{{$gymclass->id}}/edit">
                                     <div>
                                     <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
@@ -96,18 +160,20 @@ table.dataTable tbody tr {
                                     </svg>
                                     </div>
                                 </a>
+                                </span>
                                 </td>
-                                @role('admin')
                                 <td class="deleteTD">
                                     <label class="removeInput">
-                                
+                                    <span class="deletePopover" data-toggle="popover-hover" data-container="body" title="Delete Class" data-content="">
                                         <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                             <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                         </svg>
+                                    </span>
                                         <input class="hideInput deleteUserBtn" type="" name="delete" value="{{$gymclass->id}}">
                                     </label>
                                 </td>
+
                                 @endrole
                             </tr>
                             
@@ -137,18 +203,25 @@ table.dataTable tbody tr {
 
                         
                 </table>
- 
+                <div class="space d-flex justify-content-center">
+                </div>               
+                <div class="enrollBtnDiv  d-flex justify-content-center">
+                    <a href="/gymclass/{{$gymclass->id}}/enmem/create">
+                        <button class="enrollBtn btn btn-primary">
+                            Enroll
+                        </button>
+                    </a>
+                </div>
+
                 <div class="table-div">
                     <div class="my-custom-row d-flex flex-row justify-content-between " >
                         <div class="col">
                             <h2 class="class-head">Enrolled Members</h2>
                         </div>
                         
-                        <a href="/gymclass/{{$gymclass->id}}/enmem/create">
-                            <button class="enrollBtn btn btn-primary">
-                            Enroll?
-                            </button>
-                        </a>
+                        <div class="space d-flex justify-content-center">
+                </div>
+
                 
                     </div>
                     
@@ -160,7 +233,6 @@ table.dataTable tbody tr {
                                 <th>CLASS</th>
                                 <th>STATUS</th>
                                 <th></th>  
-                                <th></th> 
                                 
                             </tr>
                         </thead>
@@ -172,21 +244,27 @@ table.dataTable tbody tr {
                                 <td>{{$customer->id}}</td>
                                 <td>{{$customer->firstname}} {{$customer->lastname}}</td>
                                 <td>{{$customer->name}}</td>
-                                <td>{{$customer->status}}</td>
+                                @if($gymclass->status=="ACTIVE")
+                                    <td style="color:green">{{$gymclass->status}}</td>
+                                @else
+                                    <td style="color:red">{{$gymclass->status}}</td>
+                                @endif
                         
-                                <td class="deleteTD">
+                                <td class="deleteTD tdIcon">
                                     <label class="removeInput">
+                                    <span class="deletePopover" data-toggle="popover-hover" data-container="body" title="Unenroll" data-content="">
                                         <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                             <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                         </svg>
+                                    </span>
                                     <!--    <input class="hideInput" type="submit" value="Unenroll"> -->
                                         <input class="hideInput unenrollUserBtn" type="button" name="delete" value="{{$customer->cc_id}}">
+                                    
                                     </label>
 
                                 
                                 </td>
-                                <td></td>
                                 <div class="modal fade" id="unenrollModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                     <div class="modal-content">
@@ -239,7 +317,7 @@ table.dataTable tbody tr {
                     "bPaginate": false,//Dont want paging  
                     searching: false,
                     "ordering": false,
-                    // columnDefs: [{ targets: [0,1,2,3,4,5,6,7,8,9], orderable: false }],
+                     //columnDefs: [{ targets: [0,1,2,3,4,5,6,7,8,9], orderable: false }],
                     "language": {
                         "emptyTable": "Class does not exist."
                     }
@@ -249,11 +327,20 @@ table.dataTable tbody tr {
                     "paging": false,//Dont want paging                
                     "bPaginate": false,//Dont want paging  
                     searching: false,
-                    columnDefs: [{ targets: [3,4,6,7,8], orderable: false }],
+                    columnDefs: [{ targets: [2,3,4], orderable: false }],
                     "language": {
                         "emptyTable": "No Enrolled Members"
                     }
                 })   
+        </script>
+
+        <script>
+            $(function () {
+                $('[data-toggle="popover-hover"]').popover({
+                    trigger: 'hover',
+                    content: '',
+                });
+            });
         </script>
 
 @endsection

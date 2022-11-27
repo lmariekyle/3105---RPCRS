@@ -36,12 +36,16 @@
         <!-- index-css -->
         @yield('gymMembersActive-css')
         @yield('employeesActive-css')
+        @yield('classesActive-css')
+        @yield('membershipActive-css')
         @yield('rolesActive-css')
         @yield('permissionsActive-css')
         @yield('index-css')
         @yield('show-css')
         @yield('enroll-css')
         @yield('role-css')
+        @yield('popover-css')
+        @yield('enrollBtn-css')
 
         <style>
             body{

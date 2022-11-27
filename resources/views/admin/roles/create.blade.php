@@ -19,6 +19,8 @@
         <!-- my css -->
         <link rel="stylesheet" href="{{ asset('/css/index.css') }}"/>
         <link rel="stylesheet" href="{{ asset('/css/role.css') }}"/>
+
+        
 @endsection
 
 @section('content')
