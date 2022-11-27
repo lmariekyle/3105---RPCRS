@@ -1,10 +1,10 @@
 @extends('layout.app')
 
 
-@section('gymMembersActive-css')
+@section('classesActive-css')
 
     <style>
-        .gymMembersActive{
+        .classesActive{
             background: white;
             border-radius:8px;
         }
@@ -25,7 +25,7 @@
 
     <div class="my-custom-row d-flex flex-row justify-content-between " >
         <div class="col-4 align-self-end">
-            <h1 class="head-title"> Add New Gym Class </h1>
+            <h1 class="head-title"> Edit Gym Class </h1>
         </div>
         <div class="col-4 align-self-end d-flex justify-content-end" >
                 <a href="/gymclass" class="go-back-bg ">
@@ -70,7 +70,7 @@
                 </div>
             </div>
 
-            <div class="GIM-membersCreate-formAllignment">
+            <div class="GIM-membersCreate-formAllignment GIM-gymDigitInput1">
                 <div>
                     {{Form::label('price','Class Price')}}
                     <br>
@@ -78,7 +78,7 @@
                     <div class="errCreate">{{$errors->first('price')}} </div>
                 </div>
                 
-                <div>
+                <div class="GIM-membersCreate-rightSide GIM-gymDigitInput2" style="margin-left:10%;">
                     {{Form::label('max_enrollees','Maximum Enrollees')}}
                     <br>
                     {{Form::text('max_enrollees',$gymclass->max_enrollees,["placeholder"=>"20"])}}
@@ -86,38 +86,37 @@
                 </div>
 
             </div>
-        
-            <div class="GIM-membersCreate-formAllignment">
-                <h4> TIME:  Currently: {{$gymclass->time}} </h4>
-                <div class="GIM-membersCreate-membershipSpace">
-                    {{Form::label('apm','Morning or Afternoon?')}}
-                    <br>
-                    <select id="apm" name="apm" style="margin-left: 5px;">
-                        <option value={{$time[1]}}> {{$time[1]}} </option>
-                        <option disabled></option>
-                        <option value="AM" > AM </option>
-                        <option value="PM" > PM </option>
-                    </select> 
-                    
-                </div>
-            </div>
-        
+                <br>
             <div class="GIM-membersCreate-formAllignment">
                 <div>
-                    {{Form::label('start','Starting Time')}}
-                    <br>
-                    {{Form::text('start',$time[0],["placeholder"=>"00:00"])}}
-                    <div class="errCreate">{{$errors->first('start')}}</div>
-                </div>
+                <h5> TIME:  Currently: {{$gymclass->time}} </h5>   
+                    {{Form::label('apm','Morning or Afternoon?')}}
+                        <select id="apm" name="apm" style="margin-left: 5px;">
+                            <option value={{$time[1]}}> {{$time[1]}} </option>
+                            <option disabled></option>
+                            <option value="AM" > AM </option>
+                            <option value="PM" > PM </option>
+                        </select> 
+                </div>       
+        
+                <div class="GIM-membersCreate-rightSide GIM-gymRightSide" style="margin-left:25%; margin-top:0%;">
+                    <div class="GIM-membersCreate-formAllignment GIM-gymDigitInput2">
+                        <div>
+                            {{Form::label('start','Starting Time')}}
+                            <br>
+                            {{Form::text('start',$time[0],["placeholder"=>"00:00"])}}
+                            <div class="errCreate">{{$errors->first('start')}}</div>
+                        </div>
 
-                <div class="GIM-membersCreate-rightSide">
-                    {{Form::label('end','Ending Time')}}
-                    <br>
-                    {{Form::text('end',$time[3],["placeholder"=>"00:00"])}}
-                    <div class="errCreate">{{$errors->first('end')}}</div>
+                        <div class="GIM-membersCreate-rightSide GIM-gymDigitInput2">
+                            {{Form::label('end','Ending Time')}}
+                            <br>
+                            {{Form::text('end',$time[3],["placeholder"=>"00:00"])}}
+                            <div class="errCreate">{{$errors->first('end')}}</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
 
         <div class="GIM-membersCreate-formAllignment">
             <div>
@@ -129,7 +128,7 @@
         </div>
     
         
-        <div class="GIM-membersCreate-formAllignment">
+        <div class="GIM-membersCreate-formAllignment GIM-gymTextArea">
             <div>
                 {{Form::label('description','Description')}}
                 <br>

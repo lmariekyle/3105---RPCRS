@@ -9,6 +9,8 @@ use App\Models\Employee;
 use App\Models\CustomerClass;
 use App\Models\Membership;
 use App\Models\GymClass;
+use App\Models\User;
+use DB;
 
 class GymClassController extends Controller
 {
@@ -21,6 +23,7 @@ class GymClassController extends Controller
     {
         
         $data = GymClass::orderBy('id','asc')->paginate(10);
+   
         return view('gymclass.index')->with('data',$data);
     }
 
@@ -103,6 +106,11 @@ class GymClassController extends Controller
                                     ->orderBy('customer_id',"asc")
                                     ->paginate(10);
         
+        $instructors = DB::table('users')
+                     ->join('staff_details','users.id', '=', 'staff_details.employee_id')
+                     ->where('class_id', '=', $id)
+                     ->select('users.id as employee_id','users.firstname as employeefirstname','users.lastname as employeelastname')
+                     ->get();
 
         foreach ($customclass as $key) {
             
@@ -116,6 +124,7 @@ class GymClassController extends Controller
         $data = [
             'gymclass' => $gymclass,
             'customer' => $customclass,
+            'instructors' => $instructors
         ];
 
         //return $customclass;
@@ -216,4 +225,6 @@ class GymClassController extends Controller
 
         return redirect('/gymclass')->with('success', 'Gym Class Deleted Successfully');
     }
+    
+
 }

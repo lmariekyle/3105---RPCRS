@@ -1,15 +1,31 @@
 @extends('layout.app')
 
-@section('gymMembersActive-css')
+@section('classesActive-css')
 
     <style>
-        .gymMembersActive{
+        .classesActive{
             background: white;
             border-radius:8px;
         }
     </style>
 
 @endsection
+
+@section('popover-css')
+    <style>
+        .popover-header{
+            background-color: white; 
+            color: black; 
+            text-align:center;
+        }
+
+        .popover-body {
+            color: black;
+            font-size: 28px;
+        }
+    </style>
+@endsection
+
 
 @section('index-css')
         <!-- css needed for tables -->
@@ -45,6 +61,12 @@
             }
 
         </style>
+
+        <style>
+            /* .tdIcon{
+                text-align: right;
+            } */
+        </style>
 @endsection
  
 @section('content')
@@ -74,8 +96,10 @@
                             <th>DESCRIPTION</th>
                             <th>PRICE</th>
                             <th>SCHEDULE</th>
-                            <th>ACTION</th>
+                            @role('Admin')
                             <th></th>
+                            <th></th>
+                            @endrole
                         
                     </tr>
                
@@ -102,8 +126,9 @@
             
                     <td>{{$class->price}}</td>
                     <td>({{$class->schedule}}) {{$class->time}}</td>
-                    @role('admin')
-                        <td>
+                    @role('Admin')
+                        <td class="tdIcon">
+                        <span id="editPopover" data-toggle="popover-hover" data-container="body" title="Edit Class" data-content="">
                             <a href="/gymclass/{{$class->id}}/edit">
                                 <div>
                                 <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
@@ -111,25 +136,24 @@
                                 </svg>
                                 </div>
                             </a>
+                        </span>
                         </td>
 
-                        <td class="deleteTD">
+                        <td class="deleteTD tdIcon">
                                                        
                                 <label class="removeInput">
-                                
+                                <span id="deletePopover" data-toggle="popover-hover" data-container="body" title="Delete Class" data-content="">
                                     <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                         <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                     </svg>
+                                </span>
                                     <input class="hideInput deleteUserBtn" type="" name="delete" value="{{$class->id}}">
                                 </label>
                          
                        
                         </td>
-                        @endrole
-                    <td></td>
-                    
-                        
+                        @endrole            
                 </tr>
                 
                 @endforeach      
@@ -194,21 +218,24 @@
                     "paging": false,//Dont want paging                
                     "bPaginate": false,//Dont want paging  
                     searching: false,
-                    columnDefs: [{ targets: [7,8], orderable: false }],
+                    columnDefs: [{ targets: [4,6,7,8], orderable: false }],
                     "language": {
                         "emptyTable": "No Gym Classes"
                     }
                 })
-
-                $("[data-toggle=popover]").popover({
-                    html: true, 
-                    content: function() {
-                        return $('#popover-content').html();
-                        }
-                })
             });
         </script>
 
+
+
+        <script>
+            $(function () {
+                $('[data-toggle="popover-hover"]').popover({
+                    trigger: 'hover',
+                    content: '',
+                });
+            });
+        </script>
 @endsection
  
 

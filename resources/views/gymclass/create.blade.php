@@ -1,10 +1,10 @@
 @extends('layout.app')
 
 
-@section('gymMembersActive-css')
+@section('classesActive-css')
 
     <style>
-        .gymMembersActive{
+        .classesActive{
             background: white;
             border-radius:8px;
         }
@@ -51,7 +51,7 @@
                 </div>
             </div>
 
-            <div class="GIM-membersCreate-formAllignment">
+            <div class="GIM-membersCreate-formAllignment GIM-gymDigitInput1">
                 <div>
                     {{Form::label('price','Class Price')}}
                     <br>
@@ -59,7 +59,7 @@
                     <div class="errCreate">{{$errors->first('price')}} </div>
                 </div>
                 
-                <div>
+                <div class="GIM-membersCreate-rightSide GIM-gymDigitInput2" style="margin-left:10%;">
                     {{Form::label('max_enrollees','Maximum Enrollees')}}
                     <br>
                     {{Form::text('max_enrollees','',["placeholder"=>"20"])}}
@@ -70,34 +70,33 @@
             <br>
             
             <div class="GIM-membersCreate-formAllignment">
-                <h4>TIME:</h4>
-                <div class="GIM-membersCreate-membershipSpace">
-                    {{Form::label('apm','Morning or Afternoon?')}}
-                    <br>
-                    <select name="apm" style="margin-left: 5px;">
-                        <option value="AM" > AM </option>
-                        <option value="PM" > PM </option>
-                    </select> 
-                    
-                </div>
-            </div>
-        
-            <div class="GIM-membersCreate-formAllignment">
                 <div>
-                    {{Form::label('start','Starting Time')}}
-                    <br>
-                    {{Form::text('start','',["placeholder"=>"00:00"])}}
-                    <div class="errCreate">{{$errors->first('start')}}</div>
+                <h4>TIME:</h4>
+                    {{Form::label('apm','Morning or Afternoon?')}}
+                        <select name="apm" style="margin-left: 5px;">
+                            <option value="AM" > AM </option>
+                            <option value="PM" > PM </option>
+                        </select> 
                 </div>
+                    
+                <div class="GIM-membersCreate-rightSide GIM-gymRightSide" style="margin-left:25%;">
+                    <div class="GIM-membersCreate-formAllignment GIM-gymDigitInput2">
+                        <div>
+                            {{Form::label('start','Starting Time')}}
+                            <br>
+                            {{Form::text('start','',["placeholder"=>"00:00"])}}
+                            <div class="errCreate">{{$errors->first('start')}}</div>
+                        </div>
 
-                <div class="GIM-membersCreate-rightSide">
-                    {{Form::label('end','Ending Time')}}
-                    <br>
-                    {{Form::text('end','',["placeholder"=>"00:00"])}}
-                    <div class="errCreate">{{$errors->first('end')}}</div>
+                        <div class="GIM-membersCreate-rightSide GIM-gymDigitInput2">
+                            {{Form::label('end','Ending Time')}}
+                            <br>
+                            {{Form::text('end','',["placeholder"=>"00:00"])}}
+                            <div class="errCreate">{{$errors->first('end')}}</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
 
         <div class="GIM-membersCreate-formAllignment">
             <div>
@@ -109,11 +108,11 @@
         </div>
     
         
-        <div class="GIM-membersCreate-formAllignment">
+        <div class="GIM-membersCreate-formAllignment GIM-gymTextArea">
             <div>
                 {{Form::label('description','Description')}}
                 <br>
-                {{Form::textarea('description','',["placeholder"=>"MWF,TTH,Weekdays..."])}}
+                {{Form::textarea('description','',["placeholder"=>"This class is about..."])}}
                 <div class="errCreate">{{$errors->first('description')}}</div>
             </div>
         </div>
