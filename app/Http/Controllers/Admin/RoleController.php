@@ -51,14 +51,6 @@ class RoleController extends Controller
 
         $roles= Role::all();
         $employees = User::role($role->name)->get();
-        
-        // if($role->name == 'Admin'){
-        //     $employees = User::role('Admin')->get();
-        //     }elseif($role->name == 'Employee'){
-        //             $employees = User::role('Employee')->get();
-        //     }else{
-        //             $employees = User::role('Instructor')->get();
-        // }
 
         return view('admin.roles.show',compact('employees','roles'));
     }
