@@ -40,11 +40,11 @@ table.dataTable tbody tr {
 <div class="show-blade-container">
     <div class="my-custom-row d-flex flex-row justify-content-between " >
         <div class="col-4 align-self-end">
-            <h1 class="head-title"> Gym Member Profile </h1>
+            <h1 class="head-title"> Gym Class Profile </h1>
         </div>
         <div class="col-4 align-self-end d-flex justify-content-end" >
-                <a href="/members" class="go-back-bg ">
-                    <div class="go-back">View Gym Members</div>
+                <a href="/gymclass" class="go-back-bg ">
+                    <div class="go-back">View Gym Classes</div>
                 </a>
         </div>
 
@@ -52,46 +52,44 @@ table.dataTable tbody tr {
     <div class="show-container">
         <div class="col">
             <div class="header d-flex">
-                <span class="name px-3">Name</span>
+                <span class="name px-3">Class Name</span>
             </div>
             <div class="px-3">
                 <div class="pb-3 pt-3">
                     <div class="col">
-                        <h1 class="customer-name">{{$customer->firstname}} {{$customer->middlename[0]}}. {{$customer->lastname}}</h1>
+                        <h1 class="customer-name">{{$gymclass->name}}</h1>
                     </div>
-                    <div class="col">
-                        <h2 class="membership-type">Membership Type: {{$customer->name}}</h2>
+                    <div>
+                        {{$gymclass->description}}
                     </div>
                 </div>
                 <table id="first-table" class="table " style="width:100%">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>CLASS ID</th>
                                 <th>STATUS</th>
-                                <th>DATE OF BIRTH</th>
-                                <th>PHONE NUMBER</th>
-                                <th>EMAIL</th>
-                                <th>Membership Start</th>
-                                <th>Membership End</th>
-                                <th></th>
+                                <th>ENROLEES</th>
+                                <th>DESCRIPTION</th>
+                                <th>PRICE</th>
+                                <th>SCHEDULE</th>
+                                <th>ACTION</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{$customer->id}}</td>
-                                <td>{{$customer->status}}</td>
-                                <td>{{$customer->date_of_birth}}</td>
+                                <td>{{$gymclass->id}}</td>
+                                <td>{{$gymclass->name}}</td>
+                                <td>{{$gymclass->status}}</td>
                         
                         
-                                <td>{{$customer->phone_number}}</td>
-                                <td>{{$customer->email}}</td>
-                    
-                        
-                                <td>{{$customer->membership_start_date}}</td>
-                                <td>{{$customer->membership_end_date}}</td>
+                                <td>{{$gymclass->cur_number}} / {{$gymclass->max_enrollees}}</td>
+                                <td>{{$gymclass->price}}</td>
+                                <td>({{$gymclass->schedule}}) {{$gymclass->time}}</td>
+                                
+                                
                                 <td>
-                                <a href="/members/{{$customer->id}}/edit">
+                                <a href="/gymclass/{{$gymclass->id}}/edit">
                                     <div>
                                     <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
                                         <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
@@ -99,7 +97,7 @@ table.dataTable tbody tr {
                                     </div>
                                 </a>
                                 </td>
-                                @role('Admin')
+                                @role('admin')
                                 <td class="deleteTD">
                                     <label class="removeInput">
                                 
@@ -107,23 +105,25 @@ table.dataTable tbody tr {
                                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                             <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                         </svg>
-                                        <input class="hideInput deleteUserBtn" type="" name="delete" value="{{$customer->id}}">
+                                        <input class="hideInput deleteUserBtn" type="" name="delete" value="{{$gymclass->id}}">
                                     </label>
                                 </td>
                                 @endrole
                             </tr>
+                            
                         </tbody>
+                            
                         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                               <div class="modal-content">
-                                    {!! Form::open(['action' => ['CustomerController@destroy', $customer->id],'method'=>'POST','class' => '']) !!}
+                                    {!! Form::open(['action' => ['GymClassController@destroy', $gymclass->id],'method'=>'POST','class' => '']) !!}
                                         <div class="modal-header">
                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Delete User</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <input type="hidden" name="customer_delete_id" id="customer_id">
-                                        <h5>Delete this user #{{$customer->id}}?<br> All information stored on this user will be deleted</h5>
+                                            <input type="hidden" name="class_delete_id" id="class_id">
+                                        <h5>Delete this user?<br> All information stored on this user will be deleted</h5>
                                         </div>
                                         <div class="modal-footer">
                                             {{Form::hidden('_method','DELETE')}}
@@ -134,51 +134,46 @@ table.dataTable tbody tr {
                               </div>
                             </div>
                         </div>
+
+                        
                 </table>
  
                 <div class="table-div">
                     <div class="my-custom-row d-flex flex-row justify-content-between " >
                         <div class="col">
-                            <h2 class="class-head">Enrolled Classes</h2>
+                            <h2 class="class-head">Enrolled Members</h2>
                         </div>
                         
-                        <a href="/members/{{$customer->id}}/class/create">
+                        <a href="/gymclass/{{$gymclass->id}}/enmem/create">
                             <button class="enrollBtn btn btn-primary">
                             Enroll?
                             </button>
                         </a>
                 
                     </div>
+                    
                     <table id="second-table" class="table" style="width:100%">
                         <thead>
-                            <tr>
-                                <th>CLASS ID</th>
-                                <th>CLASS NAME</th>
+                            <tr id="target" data-customer= "0">
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>CLASS</th>
                                 <th>STATUS</th>
-                                <th>ENROLEES</th>
-                                <th>DESCRIPTION</th>
-                                <th>PRICE</th>
-                                <th>SCHEDULE</th>
-                                <th>UNENROLL</th>
-                                <th></th>
+                                <th></th>  
+                                <th></th> 
+                                
                             </tr>
                         </thead>
                         <tbody>
-                        @if (count($classes) >= 0)
-                        @foreach($classes as $class)
+                        @if (count($customer) >= 0)
+                        @foreach($customer as $customer)
                         <!-- onclick="location.href='';" style="cursor: pointer;" -->
                             <tr>
-                                <td>{{$class->id}}</td>
-                                <td>{{$class->name}}</td>
-                                <td>{{$class->status}}</td>
+                                <td>{{$customer->id}}</td>
+                                <td>{{$customer->firstname}} {{$customer->lastname}}</td>
+                                <td>{{$customer->name}}</td>
+                                <td>{{$customer->status}}</td>
                         
-                        
-                                <td>{{$class->cur_number}} / {{$class->max_enrollees}}</td>
-                                <td >{{substr($class->description, 0, 30)}}...</td>
-                    
-                        
-                                <td>{{$class->price}}</td>
-                                <td>{{$class->schedule}} {{$class->time}}</td>
                                 <td class="deleteTD">
                                     <label class="removeInput">
                                         <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -186,7 +181,7 @@ table.dataTable tbody tr {
                                             <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                         </svg>
                                     <!--    <input class="hideInput" type="submit" value="Unenroll"> -->
-                                        <input class="hideInput unenrollUserBtn" type="button" name="delete" value="{{$class->cc_id}}">
+                                        <input class="hideInput unenrollUserBtn" type="button" name="delete" value="{{$customer->cc_id}}">
                                     </label>
 
                                 
@@ -195,13 +190,13 @@ table.dataTable tbody tr {
                                 <div class="modal fade" id="unenrollModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                     <div class="modal-content">
-                                            {!! Form::open(['action' => ['CustomerClassController@destroy', $class->cc_id],'method'=>'POST','class' => '']) !!}
+                                            {!! Form::open(['action' => ['ClassCustomerController@destroy', $customer->cc_id],'method'=>'POST','class' => '']) !!}
                                                 <div class="modal-header">
                                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Unenroll User</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <input type="hidden" name="customer_unenroll_id" id="class_id">
+                                                    <input type="hidden" name="customer_unenroll_id" id="customer_id">
                                                 <h5>Unenroll this user?<br> This user will be unenrolled from this class</h5>
                                                 </div>
                                                 <div class="modal-footer">
@@ -209,7 +204,7 @@ table.dataTable tbody tr {
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                                 <button type="submit" class="btn btn-danger">Confirm</button>
                                                 </div>
-                                            {!! Form::close() !!}
+                                            {!! Form::close() !!} 
                                     </div>
                                     </div>
                                 </div>
@@ -246,7 +241,7 @@ table.dataTable tbody tr {
                     "ordering": false,
                     // columnDefs: [{ targets: [0,1,2,3,4,5,6,7,8,9], orderable: false }],
                     "language": {
-                        "emptyTable": "Costumer does not exist."
+                        "emptyTable": "Class does not exist."
                     }
                 })
                 $('#second-table').DataTable({
@@ -256,7 +251,7 @@ table.dataTable tbody tr {
                     searching: false,
                     columnDefs: [{ targets: [3,4,6,7,8], orderable: false }],
                     "language": {
-                        "emptyTable": "No Enrolled Classes"
+                        "emptyTable": "No Enrolled Members"
                     }
                 })   
         </script>
@@ -270,16 +265,19 @@ table.dataTable tbody tr {
             $(document).ready(function(){
                 $('.deleteUserBtn').click(function(e){
                     e.preventDefault();
-                    var customer_id = $(this).val();
-                    $('#customer_id').val(customer_id);
+
+                    var class_id = $(this).val();
+                    $('#class_id').val(class_id);
+
                     $('#deleteModal').modal('show');
                 });
+
             });
             $(document).ready(function(){
                 $('.unenrollUserBtn').click(function(e){
                     e.preventDefault();
-                    var class_id = $(this).val();
-                    $('#class_id').val(class_id);
+                    var customer_id = $(this).val();
+                    $('#customer_id').val(customer_id);
                   
                     $('#unenrollModal').modal('show');
                 });

@@ -5,12 +5,12 @@
 
             <div class="contentContainer">
                 <div class="my-custom-row d-flex flex-row justify-content-between " >
-                    @role('admin')
+                    @role('Admin')
                     <div class="admin-container">
                         <h1 class="adminText"> {{ __('Hello, Admin') }} </h1>
                     </div>
                     @endrole
-                    @role('employee')
+                    @role('Employee')
                     <div class="admin-container">
                         <h1 class="adminText"> {{ __('Hello, Employee') }} </h1>
                     </div>
