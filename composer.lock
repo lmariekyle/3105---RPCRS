@@ -2986,18 +2986,6 @@
         },
         {
             "name": "spatie/laravel-permission",
-<<<<<<< HEAD
-            "version": "5.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "3a9bc00e6d338a9c61f830af654aa5c326407632"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/3a9bc00e6d338a9c61f830af654aa5c326407632",
-                "reference": "3a9bc00e6d338a9c61f830af654aa5c326407632",
-=======
             "version": "5.6.0",
             "source": {
                 "type": "git",
@@ -3008,7 +2996,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/76dd1533294e6a48877f17fdc2b499cff16d4661",
                 "reference": "76dd1533294e6a48877f17fdc2b499cff16d4661",
->>>>>>> 3627517c5689384b7e76354220dceb2fa3abe824
                 "shasum": ""
             },
             "require": {
@@ -3069,11 +3056,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-permission/issues",
-<<<<<<< HEAD
-                "source": "https://github.com/spatie/laravel-permission/tree/5.7.0"
-=======
                 "source": "https://github.com/spatie/laravel-permission/tree/5.6.0"
->>>>>>> 3627517c5689384b7e76354220dceb2fa3abe824
             },
             "funding": [
                 {
@@ -3081,11 +3064,7 @@
                     "type": "github"
                 }
             ],
-<<<<<<< HEAD
-            "time": "2022-11-23T07:01:37+00:00"
-=======
             "time": "2022-11-19T02:06:18+00:00"
->>>>>>> 3627517c5689384b7e76354220dceb2fa3abe824
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -5016,18 +4995,6 @@
         },
         {
             "name": "symfony/string",
-<<<<<<< HEAD
-            "version": "v5.4.15",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/string.git",
-                "reference": "571334ce9f687e3e6af72db4d3b2a9431e4fd9ed"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/571334ce9f687e3e6af72db4d3b2a9431e4fd9ed",
-                "reference": "571334ce9f687e3e6af72db4d3b2a9431e4fd9ed",
-=======
             "version": "v6.1.7",
             "source": {
                 "type": "git",
@@ -5038,7 +5005,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/string/zipball/823f143370880efcbdfa2dbca946b3358c4707e5",
                 "reference": "823f143370880efcbdfa2dbca946b3358c4707e5",
->>>>>>> 3627517c5689384b7e76354220dceb2fa3abe824
                 "shasum": ""
             },
             "require": {
@@ -5094,11 +5060,7 @@
                 "utf8"
             ],
             "support": {
-<<<<<<< HEAD
-                "source": "https://github.com/symfony/string/tree/v5.4.15"
-=======
                 "source": "https://github.com/symfony/string/tree/v6.1.7"
->>>>>>> 3627517c5689384b7e76354220dceb2fa3abe824
             },
             "funding": [
                 {
