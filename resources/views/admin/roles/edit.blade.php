@@ -62,46 +62,6 @@
         </div>
     </form>
 
-    <div class="permissions-role">
-        <h2 class="view-gym-members">Role Permissions</h2>
-            <div class="GIM-roleContainer" style="margin-bottom: 5%;">
-                <div class="GIM-roleContainer-input">
-                        <div class="GIM-membersCreate-formAllignment">
-                            @if($role->permissions)
-                                @foreach($role->permissions as $role->permission)
-                                <form method="POST" action="{{route('admin.roles.permissions.revoke', [$role->id, $role->permission->id ])}}" onsubmit="return confirm('Are you sure?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <label for="roletype">Current Permission :  </label>
-                                        <button type="submit" class="roleTypePerm">{{$role->permission->name}}</button>
-                                        </form>
-                                @endforeach
-                            @endif
-                        </div>
-                    <br>
-                        <div>
-                        <form method="POST" action="{{ route('admin.roles.permissions', $role->id)}}">
-                            @csrf
-                                <div>
-                                <label for="permission" class="role-name">Permission :</label>
-                                <select id="permission" name="permission" autocomplete="permission-name" class="role-input">
-                                    @foreach($permissions as $permission)
-                                    <option value="{{$permission->name}}">{{$permission->name}}</option>
-                                    @endforeach
-                                </select>
-                                @error('name') <span>{{$message}}</span> @enderror
-                                </div>
-                                <div class="GIM-membersCreate-formAllignment" style="margin-top: 3%;">
-                                    <div class="permissionButton">
-                                        <button type="submit" class="btn-design">Update Permission</button>
-                                    </div>
-                                </div>
-                        </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </div>
 
 </div>
 
