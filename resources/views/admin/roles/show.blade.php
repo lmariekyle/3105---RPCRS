@@ -55,6 +55,11 @@
         <div class="col-4 align-self-end">
             <h1 class="view-gym-members">Roles</h1>
         </div>
+        <div class="col-4 align-self-end d-flex justify-content-end" >
+            <a href="{{route('admin.roles.index')}}" class="add-member-bg text-sm">
+                <div class="add-member">Back</div>
+            </a>
+        </div>
     </div>
 
     <div>
