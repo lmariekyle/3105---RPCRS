@@ -44,6 +44,8 @@ Route::resource('staffdetails', 'StaffDetailsController');
 Route::resource('gymclass.customers', 'ClassCustomerController')->shallow();
 Route::resource('gymclass.enmem', 'ClassEnCustomerController')->shallow();
 Route::resource('membership', 'MembershipController');
+Route::resource('membership.customers', 'CustomerMembershipController')->shallow();
+Route::resource('membership.encust', 'CustEnMembershipController')->shallow();
 
 Route::resource('employees','EmployeeController');
 Route::get('/employees/role/{employee}', [EmployeeController::class, 'viewEmployee'])->name('employees.viewEmployee');

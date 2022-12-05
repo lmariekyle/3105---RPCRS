@@ -17,8 +17,12 @@ class CreateMembershipsTable extends Migration
             $table->id();
 
             $table->string('name');
+            $table->string('status')->default('ACTIVE');
             $table->integer('cur_number',false);
-            $table->mediumText('description');
+            $table->mediumText('description'); 
+
+            $table->float('price');
+            $table->string('duration'); 
 
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
