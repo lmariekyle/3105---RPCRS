@@ -162,12 +162,12 @@
                               <div class="modal-content">
                                     {!! !! Form::open(['action' => ['MembershipController@destroy', $membership->id],'method'=>'POST','class' => '']) !!}
                                         <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete User</h1>
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Membership</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <input type="hidden" name="membership_delete_id" id="membership_id">
-                                        <h5>Delete this user?<br> All information stored on this user will be deleted</h5>
+                                        <h5>Delete this membership?<br> All information stored on this membership will be deleted</h5>
                                         </div>
                                         <div class="modal-footer">
                                             {{Form::hidden('_method','DELETE')}}
@@ -248,12 +248,12 @@
                                     <div class="modal-content">
                                             {!! Form::open(['action' => ['CustomerMembershipController@destroy', $customer->cc_id],'method'=>'POST','class' => '']) !!}
                                                 <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Unenroll User</h1>
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Unenroll Member</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <input type="hidden" name="customer_unenroll_id" id="customer_id">
-                                                <h5>Unenroll this user?<br> This user will be unenrolled from this class</h5>
+                                                <h5>Unenroll this member?<br> This member will be unenrolled from this class</h5>
                                                 </div>
                                                 <div class="modal-footer">
                                                     {{Form::hidden('_method','DELETE')}}
