@@ -164,12 +164,12 @@
                   <div class="modal-content">
                         {!! Form::open(['action' => ['CustomerController@destroy', $customer->id],'method'=>'POST','class' => '']) !!}
                             <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete User</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Member</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <input type="hidden" name="customer_delete_id" id="customer_id">
-                            <h5>Delete this user?<br> All information stored on this user will be deleted</h5>
+                            <h5>Delete this member?<br> All information stored on this member will be deleted</h5>
                             </div>
                             <div class="modal-footer">
                                 {{Form::hidden('_method','DELETE')}}
