@@ -44,6 +44,19 @@
                         </a>
                     </li>
                     @endrole
+                    @role('SuperAdmin')
+                    <div class="space"></div>
+                    <li class="employeesActive d-flex justify-content-center">
+                        <a href="/employees" class="text-decoration-none py-2 d-block">
+                            <div class="d-flex justify-content-center">
+                              <i class="fa-solid fa-id-card"></i>
+                            </div>
+                            <div class="GIMText">
+                                Employees
+                            </div>
+                        </a>
+                    </li>
+                    @endrole
                     <div class="space"></div>
                     <li class="classesActive d-flex justify-content-center">
                         <a href="/gymclass" class="text-decoration-none py-2 d-block">
@@ -66,7 +79,7 @@
                         </div>
                       </a>
                     </li>
-                    @role('Admin')
+                    @role('SuperAdmin')
                     </ul>
                     <div class="space"></div>
                       <li class="rolesActive d-flex justify-content-center">

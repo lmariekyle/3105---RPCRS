@@ -142,7 +142,7 @@ class EmployeeController extends Controller
     public function viewEmployee($id)
     {
         $employee=User::find($id);
-        $roles = Role::all();
+        $roles = Role::where('id', '>', 1)->paginate(5);
         $permissions = Permission::all();
         return view('employees.role',compact('employee','roles','permissions'));
     }

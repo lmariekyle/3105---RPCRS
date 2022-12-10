@@ -12,7 +12,7 @@ class RoleController extends Controller
 {
     public function index(){
         // $roles = Role::whereNotIn('name', ['admin'])->get();
-        $roles = Role::all();
+        $roles = Role::where('id', '>', 1)->paginate(5);
         return view('admin.roles.index', compact('roles'));
     }
 
