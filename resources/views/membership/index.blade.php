@@ -77,7 +77,7 @@
         </div>
         <div class="col-4 align-self-end d-flex justify-content-end" >
             <a href="/membership/create" class="add-member-bg ">
-                <div class="add-member">Add Gym Membership</div>
+                <div class="add-member" style="font-size:94.3%;">Add Gym Membership</div>
             </a>
         </div>
     </div>
