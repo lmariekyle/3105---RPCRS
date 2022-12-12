@@ -90,7 +90,9 @@
             <div>
                 {{Form::label('description','Description')}}
                 <br>
+                <div class="GIM-membershipResizeTextArea">
                 {{Form::textarea('description','',["placeholder"=>"This membership is about..."])}}
+                </div>
                 <div class="errCreate">{{$errors->first('description')}}</div>
             </div>
         </div>
@@ -117,7 +119,7 @@
             </div>
         </div>
 
-        <div class="GIM-membersCreate-container-button">
+        <div class="GIM-membersCreate-container-button GIM-membershipRemakeButton">
             <button type="button" class="addUserBtn">Add Gym Membership</button>
             {!! Form::close() !!}
         </div>

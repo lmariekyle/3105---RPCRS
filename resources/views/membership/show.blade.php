@@ -82,7 +82,7 @@
         </div>
         <div class="col-4 align-self-end d-flex justify-content-end" >
                 <a href="/membership" class="go-back-bg ">
-                    <div class="go-back">View Gym Memberships</div>
+                    <div class="go-back" style="font-size:88.3%;">View Gym Memberships</div>
                 </a>
         </div>
 
