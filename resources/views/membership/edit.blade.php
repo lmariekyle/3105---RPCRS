@@ -1,10 +1,10 @@
 @extends('layout.app')
 
 
-@section('classesActive-css')
+@section('membershipActive-css')
 
     <style>
-        .classesActive{
+        .membershipActive{
             background: white;
             border-radius:8px;
         }

@@ -1,10 +1,10 @@
 @extends('layout.app')
 
 
-@section('classesActive-css')
+@section('membershipActive-css')
 
     <style>
-        .classesActive{
+        .membershipActive{
             background: white;
             border-radius:8px;
         }
@@ -287,7 +287,7 @@ table.dataTable tbody tr {
                     "paging": false,//Dont want paging                
                     "bPaginate": false,//Dont want paging  
                     searching: false,
-                    columnDefs: [{ targets: [4], orderable: false }],
+                    columnDefs: [{ targets: [3,4], orderable: false }],
                     // columnDefs: [{ targets: [0,1,2,3,4,5,6,7,8,9], orderable: false }],
                     "language": {
                         "emptyTable": "No Classes Enrolled"

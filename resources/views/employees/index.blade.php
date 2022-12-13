@@ -89,8 +89,15 @@
                         <th>DATE OF BIRTH</th>
                         <th>ROLE</th>
                         <th>STATUS</th>
-                        <th></th>  
-                        <th></th>  
+                        <th></th>
+                         
+                        @role('SuperAdmin')  
+                        <th></th>
+                        @endrole 
+ 
+                        @role('Admin')  
+                        <th></th>
+                        @endrole 
                     </tr>      
             </thead>
        
@@ -146,6 +153,7 @@
                             </label>         
                         </td>
                         @endrole
+
                         @role('Admin')
                         <td class="deleteTD tdIcon">
                             <label class="removeInput">
