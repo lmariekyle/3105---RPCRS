@@ -202,3 +202,13 @@
     background: #D9D9D9;
     width: 182%;
 }
+
+/*----------This is for Membership page-----------*/
+.GIM-membershipResizeTextArea textarea{
+    width:199.2%;
+}
+
+.GIM-membershipRemakeButton button{
+    margin-left:365px;
+    font-size:101%;
+}

@@ -57,7 +57,7 @@
         </div>
         <div class="col-4 align-self-end d-flex justify-content-end" >
             <a href="{{route('admin.roles.index')}}" class="add-member-bg text-sm">
-                <div class="add-member">Back</div>
+                <div class="add-member">Go Back</div>
             </a>
         </div>
     </div>

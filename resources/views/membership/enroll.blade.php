@@ -1,10 +1,10 @@
 @extends('layout.app')
 
 
-@section('classesActive-css')
+@section('membershipActive-css')
 
     <style>
-        .classesActive{
+        .membershipActive{
             background: white;
             border-radius:8px;
         }
@@ -68,7 +68,7 @@ table.dataTable tbody tr {
             <h1 class="head-title"> Enroll Class</h1>
         </div>
         <div class="col-4 align-self-end d-flex justify-content-end" >
-                <a href="/gymclass/{{$gymclass->id}}" class="go-back-bg ">
+                <a href="/membership/{{$membership->id}}" class="go-back-bg ">
                     <div class="go-back">Go Back</div>
                 </a>
         </div>
@@ -83,17 +83,17 @@ table.dataTable tbody tr {
             <div class="px-3">
                 <div class="pb-3">
                     <div class="col">
-                        <h1 class="customer-name">{{$gymclass->name}}</h1>
+                        <h1 class="customer-name">{{$membership->name}}</h1>
                     </div>
                     <div class="col">
-                        <h2 class="membership-type">Enrollees: {{$gymclass->cur_number}} / {{$gymclass->max_enrollees}}</h2>
+                        <h2 class="membership-type">Enrollees: {{$membership->cur_number}}</h2>
                         
                     </div>
                     <div class="col">
-                        <h2 class="membership-type">Class Price: {{$gymclass->price}}</h2>
+                        <h2 class="membership-type">Class Price: {{$membership->price}}</h2>
                     </div>
                     <div class="col">
-                        <h2 class="membership-type">Class Schedule: ({{$gymclass->schedule}}) {{$gymclass->time}}</h2>
+                        <h2 class="membership-type">Class Schedule: ({{$membership->duration}})</h2>
                     </div>
 
                 </div>
@@ -106,8 +106,8 @@ table.dataTable tbody tr {
                             <tr id="target" data-customer= "0">
                                 <th>ID</th>
                                 <th>NAME</th>
-                                <th>CLASS</th>
                                 <th>STATUS</th>
+                                <th>END OF MEMBERSHIP</th>
                                 <th></th>  
                             </tr>
                         </thead>
@@ -117,12 +117,12 @@ table.dataTable tbody tr {
                             <tr id="target" data-class= "{{$customer->id}}">
                             <td>{{$customer->id}}</td>
                             <td>{{$customer->firstname}} {{$customer->lastname}}</td>
-                            <td>{{$customer->name}}</td>
                             @if($customer->status=="ACTIVE")
                                 <td style="color:green">{{$customer->status}}</td>
                             @else
                                 <td style="color:red">{{$customer->status}}</td>
                             @endif
+                            <td>{{$customer->membership_end_date}}</td>
                             <td class="deleteTD tdIcon">
                                 <label class="removeInput">
                                 <span id="deletePopover" data-toggle="popover-hover" data-container="body" title="Unenroll" data-content="">
@@ -142,7 +142,7 @@ table.dataTable tbody tr {
                             <div class="modal fade" id="unenrollModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                 <div class="modal-content">
-                                        {!! Form::open(['action' => ['ClassEnCustomerController@destroy', $customer->cc_id],'method'=>'POST','class' => '']) !!}
+                                        {!! Form::open(['action' => ['CustEnMembershipController@destroy', $customer->cc_id],'method'=>'POST','class' => '']) !!}
                                             <div class="modal-header">
                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Unenroll Member</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -200,7 +200,7 @@ table.dataTable tbody tr {
                                     @endif
                                     <td class="deleteTD">
 
-                                    {!! Form::open(['action' => ['ClassEnCustomerController@store',$gymclass->id],'method'=>'POST','class' => '']) !!}
+                                    {!! Form::open(['action' => ['CustEnMembershipController@store',$membership->id],'method'=>'POST','class' => '']) !!}
 
                                         <!-- {{Form::submit('Enroll?', ['class'=> ''])}} -->
 
@@ -213,7 +213,7 @@ table.dataTable tbody tr {
                                             </svg>
                                         </span>
                                             <input class="hideInput" type="submit" name="customer" value="Enroll?">
-                                            <input type="hidden" name="class" value="{{$gymclass->id}}">
+                                            <input type="hidden" name="membership" value="{{$membership->id}}">
                                             <input type="hidden" name="customer" value="{{$customer->id}}">
 
                                         </label>
@@ -287,7 +287,7 @@ table.dataTable tbody tr {
                     "paging": false,//Dont want paging                
                     "bPaginate": false,//Dont want paging  
                     searching: false,
-                    columnDefs: [{ targets: [2,4], orderable: false }],
+                    columnDefs: [{ targets: [3,4], orderable: false }],
                     // columnDefs: [{ targets: [0,1,2,3,4,5,6,7,8,9], orderable: false }],
                     "language": {
                         "emptyTable": "No Classes Enrolled"
@@ -298,7 +298,7 @@ table.dataTable tbody tr {
                     "paging": false,//Dont want paging                
                     "bPaginate": false,//Dont want paging  
                     searching: false,
-                    columnDefs: [{ targets: [2,4], orderable: false }],
+                    columnDefs: [{ targets: [4], orderable: false }],
                     "language": {
                         "emptyTable": "No Classes"
                     }
