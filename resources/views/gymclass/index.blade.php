@@ -165,12 +165,12 @@
                   <div class="modal-content">
                         {!! Form::open(['action' => ['GymClassController@destroy', $class->id],'method'=>'POST','class' => '']) !!}
                             <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete User</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Gym Class</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <input type="hidden" name="class_delete_id" id="class_id">
-                            <h5>Delete this user?<br> All information stored on this user will be deleted</h5>
+                            <h5>Delete this gym class?<br> All information stored on this gym class will be deleted</h5>
                             </div>
                             <div class="modal-footer">
                                 {{Form::hidden('_method','DELETE')}}
