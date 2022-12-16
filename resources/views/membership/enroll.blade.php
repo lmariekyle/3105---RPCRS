@@ -65,7 +65,7 @@ table.dataTable tbody tr {
 <div class="show-blade-container">
     <div class="my-custom-row d-flex flex-row justify-content-between " >
         <div class="col-4 align-self-end">
-            <h1 class="head-title"> Enroll Class</h1>
+            <h1 class="head-title"> Enroll Gym Member</h1>
         </div>
         <div class="col-4 align-self-end d-flex justify-content-end" >
                 <a href="/membership/{{$membership->id}}" class="go-back-bg ">
@@ -86,14 +86,14 @@ table.dataTable tbody tr {
                         <h1 class="customer-name">{{$membership->name}}</h1>
                     </div>
                     <div class="col">
-                        <h2 class="membership-type">Enrollees: {{$membership->cur_number}}</h2>
+                        <h2 class="membership-type">Members: {{$membership->cur_number}}</h2>
                         
                     </div>
                     <div class="col">
-                        <h2 class="membership-type">Class Price: {{$membership->price}}</h2>
+                        <h2 class="membership-type">Membership Price: {{$membership->price}}</h2>
                     </div>
                     <div class="col">
-                        <h2 class="membership-type">Class Schedule: ({{$membership->duration}})</h2>
+                        <h2 class="membership-type">Membership Duration: ({{$membership->duration}})</h2>
                     </div>
 
                 </div>
