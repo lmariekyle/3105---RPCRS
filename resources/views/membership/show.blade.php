@@ -102,7 +102,7 @@
                 <table id="first-table" class="table " style="width:100%">
                         <thead>
                             <tr>
-                                <th>CLASS ID</th>
+                                <th>MEMBERSHIP ID</th>
                                 <th>STATUS</th>
                                 <th>ENROLEES</th>
                                 <th>PRICE</th>
