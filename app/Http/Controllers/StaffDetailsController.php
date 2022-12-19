@@ -41,7 +41,7 @@ class StaffDetailsController extends Controller
 
         $emp= StaffDetails::where(['employee_id' => $request->employee_id, 'class_id' => $request->class_id]);
 
-        if($emp==NULL){
+        if($emp!=NULL){
             $instructor= StaffDetails::create([
                 'employee_id' => $request->employee_id,
                 'class_id' => $request->class_id,
