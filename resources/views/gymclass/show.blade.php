@@ -268,7 +268,7 @@
                                 <div class="modal fade" id="unenrollModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                     <div class="modal-content">
-                                            {!! Form::open(['action' => ['ClassCustomerController@destroy', $customer->cc_id],'method'=>'POST','class' => '']) !!}
+                                            {!! Form::open(['action' => ['ClassEnCustomerController@destroy', $customer->cc_id],'method'=>'POST','class' => '']) !!}
                                                 <div class="modal-header">
                                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Unenroll User</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

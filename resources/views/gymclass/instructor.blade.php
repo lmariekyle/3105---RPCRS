@@ -132,7 +132,9 @@
                                             
                                         </form>                                
                                         @endforeach
-                                        @endif
+                                    @else
+                                        Vacant
+                                    @endif
                                 </td>
                                 
                                 <td width="10%" style="text-align: left">
@@ -167,18 +169,25 @@
                                         <div>
                                             <input type="text" name="class_id" value="{{$gymclass->id}}" hidden>    
                                             <select name="employee_id">
-                                            
+                                                @if($employees->count())   
                                             @foreach ($employees as $employee) 
                                                    <option value="{{$employee->id}}">{{$employee->firstname}} {{$employee->lastname}}</option>
-                                            @endforeach
-                                         
+                                            @endforeach                                            
+                                                @else
+                                                <option disabled selected hidden value="1">None</option>
+                                                @endif
                                             </select>                                     
                                         </div>
                                 </td>
                                 
                                 <td width="12%" style="text-align: right">
+                                    
                                         <div class="role-selection btn-container ">
+                                            @if($employees->count())   
                                             <button type="submit" class="assignRoleBtn btn btn-primary">Assign Instructor</button>
+                                            @else
+                                            <button type="submit" class="assignRoleBtn btn btn-primary" disabled>Assign Instructor</button>
+                                            @endif
                                         </div>
                                     </form> 
                                 </td>

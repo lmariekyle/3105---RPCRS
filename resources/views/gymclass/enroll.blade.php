@@ -106,7 +106,7 @@ table.dataTable tbody tr {
                             <tr id="target" data-customer= "0">
                                 <th>ID</th>
                                 <th>NAME</th>
-                                <th>CLASS</th>
+                                <th>MEMBERSHIP</th>
                                 <th>STATUS</th>
                                 <th></th>  
                             </tr>
@@ -180,7 +180,7 @@ table.dataTable tbody tr {
                                 <tr>
                                     <th>ID</th>
                                     <th>NAME</th>
-                                    <th>CLASS</th>
+                                    <th>MEMBERSHIP</th>
                                     <th>STATUS</th>
                                     <th></th>  
                                 </tr>
