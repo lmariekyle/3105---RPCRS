@@ -227,7 +227,7 @@
         </div>
         <h6> To view a specific membership, double click a row with the membership's information</h6>
     @else
-        <!-- <p>no classs</p> -->
+       <p>No Active Memberships Available</p>
     @endif
    
 @endsection
