@@ -31,10 +31,7 @@
             --}}
         </div>
     </div>
-    <div class="GIM-membersCreate-container">
-        <h3> This page will have content in the next release.</h3>
-    </div>
-   
+
     <div class="cont-table">
         <table id="GIMTable" class="table-container table table-hover ">
        
