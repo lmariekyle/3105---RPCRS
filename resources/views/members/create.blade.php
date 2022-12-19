@@ -93,7 +93,6 @@
         <div class="GIM-membersCreate-membershipSpace">
             {{Form::label('membership','Membership')}} :
             <select name="membership" style="margin-left: 5px;">
-                    <option value="NONE"> NONE </option>
                 @foreach($memberships as $membership)
                     <option value="{{$membership->id}}" >{{$membership->name}}</option>
                 @endforeach

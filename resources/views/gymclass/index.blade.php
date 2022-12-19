@@ -96,14 +96,6 @@
                             <th>DESCRIPTION</th>
                             <th>PRICE</th>
                             <th>SCHEDULE</th>
-                            
-                            
-                        
-                            @role('SuperAdmin')
-                            <th></th>
-                            <th></th>
-                            @endrole
-
                             @role('Admin')
                             <th></th>
                             <th></th>
@@ -134,36 +126,6 @@
             
                     <td>{{$class->price}}</td>
                     <td>({{$class->schedule}}) {{$class->time}}</td>
-
-                    @role('SuperAdmin')
-                        <td class="tdIcon">
-                        <span id="editPopover" data-toggle="popover-hover" data-container="body" title="Edit Class" data-content="">
-                            <a href="/gymclass/{{$class->id}}/edit">
-                                <div>
-                                <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
-                                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
-                                </svg>
-                                </div>
-                            </a>
-                        </span>
-                        </td>
-
-                        <td class="deleteTD tdIcon">
-                                                       
-                                <label class="removeInput">
-                                <span id="deletePopover" data-toggle="popover-hover" data-container="body" title="Delete Class" data-content="">
-                                    <svg class="icons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                    </svg>
-                                </span>
-                                    <input class="hideInput deleteUserBtn" type="" name="delete" value="{{$class->id}}">
-                                </label>
-                         
-                       
-                        </td>
-                    @endrole       
-
                     @role('Admin')
                         <td class="tdIcon">
                         <span id="editPopover" data-toggle="popover-hover" data-container="body" title="Edit Class" data-content="">
@@ -203,12 +165,12 @@
                   <div class="modal-content">
                         {!! Form::open(['action' => ['GymClassController@destroy', $class->id],'method'=>'POST','class' => '']) !!}
                             <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Gym Class</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Delete User</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <input type="hidden" name="class_delete_id" id="class_id">
-                            <h5>Delete this gym class?<br> All information stored on this gym class will be deleted</h5>
+                            <h5>Delete this user?<br> All information stored on this user will be deleted</h5>
                             </div>
                             <div class="modal-footer">
                                 {{Form::hidden('_method','DELETE')}}
@@ -226,7 +188,7 @@
         <div class="d-flex justify-content-end">
             {{$data->links()}}
         </div>
-        <h6> To view a specific class, double click a row with the class's information</h6>
+        <h6> To view a specific member, double click a row with the member's information</h6>
     @else
         <!-- <p>no classs</p> -->
     @endif
@@ -256,7 +218,7 @@
                     "paging": false,//Dont want paging                
                     "bPaginate": false,//Dont want paging  
                     searching: false,
-                    columnDefs: [{ targets: [3,4,6,7,8], orderable: false }],
+                    columnDefs: [{ targets: [4,6,7,8], orderable: false }],
                     "language": {
                         "emptyTable": "No Gym Classes"
                     }

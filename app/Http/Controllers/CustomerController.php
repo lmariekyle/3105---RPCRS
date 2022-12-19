@@ -103,36 +103,16 @@ class CustomerController extends Controller
 
         $customer->save();
         
-        if($request->input('membership')!="NONE"){
-            $mem = Membership::where('id','=',$request->input('membership'))->first();
-            $cc = new CustomerMembership;
-            
-            $mem->cur_number=$mem->cur_number+1;
-
-            $dur=str_split($mem->duration,1);
-
-        if(strcmp($dur[0],"1")==0){
-            if(strcmp($dur[2],"Y")==0){
-                $cc->membership_end_date = $current->addYear();
-            }else if(strcmp($dur[2],"M")==0){
-                $cc->membership_end_date = $current->addMonth();
-            }else{ 
-                $val=str_split($mem->duration,2);
-                $cc->membership_end_date = $current->addMonths((int)$val[0]);
-            }
-            
-        }else{
-            $val = (int)$dur[0];
-            $cc->membership_end_date = $current->addMonths($val);
-        }
-
+        $cc = new CustomerMembership;
         $cc->customer_id=$customer->id;
+        $cc->membership_end_date = $current->addYear();
         $cc->membership_expires_in = $current;
         $cc->membership_id=$request->input('membership');
-
         $cc->save();
+
+        $mem = Membership::where('id','=',$request->input('membership'))->first();
+        $mem->cur_number=$mem->cur_number+1;
         $mem->save();
-        }
 
         return redirect('/members')->with('success', 'Member Added Successfully');
     }
@@ -245,38 +225,21 @@ class CustomerController extends Controller
 
         
         if($cc==null) {
-
             $newmem = Membership::where('id','=',$request->input('membership'))->first();
-            $cc = new CustomerMembership;
-            
             $newmem->cur_number=$newmem->cur_number+1;
-
-            $dur=str_split($newmem->duration,1);
-
-            if(strcmp($dur[0],"1")==0){
-                if(strcmp($dur[2],"Y")==0){
-                    $cc->membership_end_date = $current->addYear();
-                }else if(strcmp($dur[2],"M")==0){
-                    $cc->membership_end_date = $current->addMonth();
-                }else{ 
-                    $val=str_split($newmem->duration,2);
-                    $cc->membership_end_date = $current->addMonths((int)$val[0]);
-                }
-            }else{
-                $val = (int)$dur[0];
-                $cc->membership_end_date = $current->addMonths($val);
-            }
-
-            $cc->customer_id=$customer->id;
-            $cc->membership_expires_in = $current;
-            $cc->membership_id=$request->input('membership');
-
             $newmem->save();
 
+            
+            $cc = new CustomerMembership;
+            $cc->customer_id=$id;
+
+            $cc->membership_end_date = $current->addYear();
+            $cc->membership_expires_in = $current;
+            $cc->membership_id=$request->input('membership');
             $cc->save();
 
         //if the membership plan has changed
-        }else if ($cc->membership_id!=$request->input('membership')){
+        }else if ($request->input('membership')==null){
             $mem = Membership::where('id','=',$cc->membership_id)->first();
             $mem->cur_number=$mem->cur_number-1;
             $mem->save();
@@ -284,27 +247,8 @@ class CustomerController extends Controller
             $newmem = Membership::where('id','=',$request->input('membership'))->first();
             $newmem->cur_number=$newmem->cur_number+1;
             $newmem->save();
-            
-            $dur=str_split($newmem->duration,1);
 
             $cc->membership_id=$request->input('membership');
-
-            $dur=str_split($newmem->duration,1);
-
-            if(strcmp($dur[0],"1")==0){
-                if(strcmp($dur[2],"Y")==0){
-                    $cc->membership_end_date = $current->addYear();
-                }else if(strcmp($dur[2],"M")==0){
-                    $cc->membership_end_date = $current->addMonth();
-                }else{ 
-                    $val=str_split($mem->duration,2);
-                    $cc->membership_end_date = $current->addMonths((int)$val[0]);
-                }
-            }else{
-                $val = (int)$dur[0];
-                $cc->membership_end_date = $current->addMonths($val);
-            }
-
             $cc->save();
         
             //if the membership plan has not changed
@@ -327,7 +271,6 @@ class CustomerController extends Controller
     {
         $customer = Customer::find($request->customer_delete_id);
         $customships = CustomerMembership::where ('customer_id', '=', $request->customer_delete_id)->first();
-        $customclass = CustomerClass::where('customer_id', '=', $request->customer_delete_id)->first();
 
         if($customships==null){
             
@@ -339,18 +282,16 @@ class CustomerController extends Controller
             $customships->delete();
         }
 
-            
-        while($customclass!=null){
-            $class = GymClass::where('id','=',$customclass->class_id)->first();
+        $customclass = CustomerClass::where('customer_id', '=', $customer->id);
+
+        foreach ($customclass as $key) {
+            $class = GymClass::where('id','=',$key->class_id)->first();
             $class->cur_number=$class->cur_number-1;
             $class->save();
             
-            $customclass->delete();
-
-            $customclass = CustomerClass::where('customer_id', '=', $request->customer_delete_id)->first();
         }
 
-
+        $customclass->delete();
         $customer->delete();
 
         return redirect('/members')->with('success', 'Member Deleted Successfully');

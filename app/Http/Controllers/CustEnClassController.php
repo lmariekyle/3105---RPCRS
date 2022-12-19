@@ -64,26 +64,16 @@ class CustEnClassController extends Controller
         $enrolled = CustomerClass::where(['customer_id' => $id, 'class_id' => $request->input('class')])->first();
         
         if($enrolled == null){
-            
+            $cc = new CustomerClass;
+            $cc->class_id = $request->input('class');
+            $cc->customer_id = $request->input('customer');
+            $cc->save();
             $class = GymClass::where('id','=',$request->input('class'))->first();
+            $class->cur_number=$class->cur_number+1;
+            $class->save();
 
-            if($class->cur_number<$class->max_enrollees){
-
-                $cc = new CustomerClass;
-
-                $cc->class_id = $request->input('class');
-                $cc->customer_id = $request->input('customer');
-                $cc->save();
-
-                $class->cur_number=$class->cur_number+1;
-                $class->save();
-                
-                return redirect(url('/members'.'/'.$id.'/class/create'))->with('success', 'Enrolled member to class');
-            }else{
-                return redirect(url('/members'.'/'.$id.'/class/create'))->with('error', 'Cannot enroll member to class with max capacity');
-            }
             
-           
+            return redirect(url('/members'.'/'.$id.'/class/create'))->with('success', 'Enrolled member to class');
         }else{
             
             return redirect(url('/members'.'/'.$id.'/class/create'))->with('error', 'Cannot enroll member to the same class');

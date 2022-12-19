@@ -51,6 +51,8 @@ class GymClassController extends Controller
             'schedule' => 'required',
             'description' => 'required',
             'max_enrollees' => 'required',
+            'start' => 'required',
+            'end' => 'required',
             'start' => ['required','regex:/^(0?[1-9]|1[0-2]):[0-5][0-9]$/'],
             'end' => ['required','regex:/^(0?[1-9]|1[0-2]):[0-5][0-9]$/'],
             'apm' => 'required',

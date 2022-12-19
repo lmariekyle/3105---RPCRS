@@ -38,24 +38,13 @@ class StaffDetailsController extends Controller
      */
     public function store(Request $request)
     {
+        $instructor= StaffDetails::create([
+			'employee_id' => $request->employee_id,
+			'class_id' => $request->class_id,
+		
+		]);
 
-        $emp= StaffDetails::where(['employee_id' => $request->employee_id, 'class_id' => $request->class_id]);
-
-        if($emp==NULL){
-            $instructor= StaffDetails::create([
-                'employee_id' => $request->employee_id,
-                'class_id' => $request->class_id,
-            
-            ]);
-
-            return back()->with('success', 'Instructor added successfully');
-
-        }else{
-
-            return back()->with('error', 'Cannot add instructor to the same class');
-
-        }
-
+        return back()->with('success', 'Instructor added successfully');
     }
     
 

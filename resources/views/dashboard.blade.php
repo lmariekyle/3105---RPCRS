@@ -10,11 +10,6 @@
                         <h1 class="adminText"> {{ __('Hello, Admin') }} </h1>
                     </div>
                     @endrole
-                    @role('SuperAdmin')
-                    <div class="admin-container">
-                        <h1 class="adminText"> {{ __('Hello, Admin') }} </h1>
-                    </div>
-                    @endrole
                     @role('Employee')
                     <div class="admin-container">
                         <h1 class="adminText"> {{ __('Hello, Employee') }} </h1>

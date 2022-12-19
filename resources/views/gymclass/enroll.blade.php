@@ -144,12 +144,12 @@ table.dataTable tbody tr {
                                 <div class="modal-content">
                                         {!! Form::open(['action' => ['ClassEnCustomerController@destroy', $customer->cc_id],'method'=>'POST','class' => '']) !!}
                                             <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Unenroll Member</h1>
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Unenroll User</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <input type="hidden" name="customer_unenroll_id" id="customer_id">
-                                            <h5>Unenroll this member?<br> This member will be unenrolled from this class</h5>
+                                            <h5>Unenroll this user?<br> This user will be unenrolled from this class</h5>
                                             </div>
                                             <div class="modal-footer">
                                                 {{Form::hidden('_method','DELETE')}}
@@ -287,7 +287,7 @@ table.dataTable tbody tr {
                     "paging": false,//Dont want paging                
                     "bPaginate": false,//Dont want paging  
                     searching: false,
-                    columnDefs: [{ targets: [2,4], orderable: false }],
+                    columnDefs: [{ targets: [4], orderable: false }],
                     // columnDefs: [{ targets: [0,1,2,3,4,5,6,7,8,9], orderable: false }],
                     "language": {
                         "emptyTable": "No Classes Enrolled"
@@ -298,7 +298,7 @@ table.dataTable tbody tr {
                     "paging": false,//Dont want paging                
                     "bPaginate": false,//Dont want paging  
                     searching: false,
-                    columnDefs: [{ targets: [2,4], orderable: false }],
+                    columnDefs: [{ targets: [4], orderable: false }],
                     "language": {
                         "emptyTable": "No Classes"
                     }
