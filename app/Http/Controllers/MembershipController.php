@@ -156,16 +156,10 @@ class MembershipController extends Controller
      */
     public function destroy(Request $request)
     {
-        $membership = Membership::find($request->membership_delete_id);
+        $membership = Membership::find($request->membership);
 
-        $custmem = CustomerMembership::where('membership_id', '=', $request->membership_delete_id);
-        foreach ($custmem as $key ) {
-            
-            $memclass = CustomerClass::where('customer_id', '=', $key->customer_id);
-            foreach ($memclass as $flag ) {
-                $flag->delete();
-            }
-                
+        $custmem = CustomerMembership::where('membership_id', '=', $request->membership)->get();
+        foreach ($custmem as $key ) {               
             $key->delete();
         }
 
