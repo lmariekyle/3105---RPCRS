@@ -15,6 +15,9 @@ class ClassesTest extends TestCase
      */
     public function test_index_accessed()
     {
+        
+        $response = $this->get('/members');
 
+        $response->assertStatus(500);
     }
 }
