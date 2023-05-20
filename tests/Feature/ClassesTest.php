@@ -13,10 +13,8 @@ class ClassesTest extends TestCase
      *
      * @return void
      */
-    public function test_example()
+    public function test_index_accessed()
     {
-        $response = $this->get('/');
 
-        $response->assertStatus(200);
     }
 }

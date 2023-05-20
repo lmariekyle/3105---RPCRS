@@ -122,7 +122,7 @@ class MemberTest extends TestCase
         $this->assertTrue(true);
     }
 
-    public function test_get_enroll_members_to_class_page()
+    public function test_get_enroll_member_to_class_page()
     {
         $response = $this->get('/members/7/class/create');
         $response->assertStatus(500);
@@ -144,7 +144,7 @@ class MemberTest extends TestCase
     
     public function test_unenroll_classes(){
         
-        $customclass = CustomerClass::findOrFail(1);
+        $customclass = CustomerClass::findOrFail(2);
         $class = GymClass::where('id','=',$customclass->class_id)->first();
         $class->cur_number=$class->cur_number-1;
         $class->save();
