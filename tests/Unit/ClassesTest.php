@@ -21,12 +21,12 @@ class ClassesTest extends TestCase
     public function test_get_gym_classes_page()
     {
         $response = $this->get('/gymclass');
-        $response->assertStatus(500);
+        $response->assertStatus(200);
     }
     public function test_get_create_gymclass_page()
     {
         $response = $this->get('/gymclass/create');
-        $response->assertStatus(500);
+        $response->assertStatus(200);
     }
 
     public function test_add_gymclass_form()
@@ -69,14 +69,14 @@ class ClassesTest extends TestCase
     {
         /*given the id number 4*/
         $response = $this->get('/gymclass/4');
-        $response->assertStatus(500);
+        $response->assertStatus(200);
 
     }
     
     public function test_get_update_gymclass_page()
     {
         $response = $this->get('/gymclass/4/edit');
-        $response->assertStatus(500);
+        $response->assertStatus(200);
     }
 
     public function test_update_form()
@@ -112,7 +112,7 @@ class ClassesTest extends TestCase
        public function test_get_enroll_instructor_to_class_page()
     {
         $response = $this->get('/staffdetails/4');
-        $response->assertStatus(500);
+        $response->assertStatus(200);
     }
 
     public function test_assign_instructor(){

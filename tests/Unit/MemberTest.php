@@ -20,12 +20,12 @@ class MemberTest extends TestCase
     public function test_get_members_page()
     {
         $response = $this->get('/members');
-        $response->assertStatus(500);
+        $response->assertStatus(200);
     }
     public function test_get_create_members_page()
     {
         $response = $this->get('/members/create');
-        $response->assertStatus(500);
+        $response->assertStatus(200);
     }
 
     public function test_add_form()
@@ -57,14 +57,14 @@ class MemberTest extends TestCase
     {
         /*given the id number 7*/
         $response = $this->get('/members/7');
-        $response->assertStatus(500);
+        $response->assertStatus(200);
 
     }
     
     public function test_get_update_members_page()
     {
         $response = $this->get('/members/7/edit');
-        $response->assertStatus(500);
+        $response->assertStatus(200);
     }
 
     public function test_update_form()
@@ -125,7 +125,7 @@ class MemberTest extends TestCase
     public function test_get_enroll_member_to_class_page()
     {
         $response = $this->get('/members/7/class/create');
-        $response->assertStatus(500);
+        $response->assertStatus(200);
     }
 
     public function test_assign_classes(){

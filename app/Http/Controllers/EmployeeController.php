@@ -132,10 +132,9 @@ class EmployeeController extends Controller
      */
     public function destroy(Request $request)
     {
-        $employee = User::find($request->employee_delete_id);
+        $employee = User::find($request)->first;
         $employee->delete();
 
-        
         return redirect('/employees')->with('success', 'Employee Deleted successfully');
     }
 
@@ -148,21 +147,13 @@ class EmployeeController extends Controller
     }
 
     public function assignRole(Request $request,User $employee){
-
-        if($employee->hasRole($request->role)){
-            return back()->with('message','Role Exists');
-        }
         $employee->assignRole($request->role);
         return back()->with('message','Role Added');
     }
 
     public function removeRole(User $employee, Role $role){
-
-        if($employee->hasRole($role)){
-            $employee->removeRole($role);
-            return back()->with('message','Role Removed');
-        }
-        return back()->with('message','Role Not Exists');
+        $employee->removeRole($role);
+        return back()->with('message','Role Removed');
     }
     
 }

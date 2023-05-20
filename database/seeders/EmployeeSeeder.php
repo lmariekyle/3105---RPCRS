@@ -23,6 +23,6 @@ class EmployeeSeeder extends Seeder
             'phone_number' => '09189999998',
             'email' => 'ponla@gmail.com',
             'password' => 'ponlaDaBest',
-        ]);
+        ])->assignRole('Instructor');;
     }
 }

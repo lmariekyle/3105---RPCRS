@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\GymClass;
 use App\Models\User;
 use App\Models\StaffDetails;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class StaffDetailsController extends Controller
 {
@@ -19,10 +19,9 @@ class StaffDetailsController extends Controller
      */
     public function store(Request $request)
     {
+        $emp= StaffDetails::where(['employee_id' => $request->employee_id, 'class_id' => $request->class_id])->first();
 
-        $emp= StaffDetails::where(['employee_id' => $request->employee_id, 'class_id' => $request->class_id]);
-
-        if($emp!=NULL){
+        if($emp==NULL){
             $instructor= StaffDetails::create([
                 'employee_id' => $request->employee_id,
                 'class_id' => $request->class_id,

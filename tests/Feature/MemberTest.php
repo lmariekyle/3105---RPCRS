@@ -16,12 +16,12 @@ class MemberTest extends TestCase
     {
         $response = $this->get('/members');
 
-        $response->assertStatus(500);
+        $response->assertStatus(200);
     }
     public function test_get_create_members_page()
     {
         $response = $this->get('/members/create');
 
-        $response->assertStatus(500);
+        $response->assertStatus(200);
     }
 }

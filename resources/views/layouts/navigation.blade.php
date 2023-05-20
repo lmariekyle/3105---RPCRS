@@ -99,7 +99,7 @@
                               <x-dropdown>
                                   <x-slot name="trigger">
                                       <button class="logout-dropdown">
-                                          <div>{{ Auth::user()->firstname }}</div>
+                                          <div>{{ Auth::user() ? Auth::user()->firstname : "" }}</div>
                                           <div class="logout-icon">
                                           <i class="fa-solid fa-arrow-down"></i>
                                           </div>

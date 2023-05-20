@@ -126,7 +126,7 @@
                                 <td style="text-align: right">
                                     @if($employee->roles)
                                         @foreach($employee->roles as $employee->role)
-                                            <form method="POST" action="{{route('employees.roles.remove', [$employee->id, $employee->role->id ])}}" onsubmit="return confirm('Are you sure?');">
+                                            <form method="DELETE" action="{{route('employees.roles.remove', [$employee->id, $employee->role->id ])}}" onsubmit="return confirm('Are you sure?');">
                                                 @csrf
                                                 {{$employee->role->name}}
                                             </form>
