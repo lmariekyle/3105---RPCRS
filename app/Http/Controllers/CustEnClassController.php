@@ -68,6 +68,6 @@ class CustEnClassController extends Controller
         $customclass->delete();
         
 
-        return redirect->back()->with('success', 'Unenrolled member from class');
+        return back()->with('success', 'Unenrolled member from class');
     }
 }
